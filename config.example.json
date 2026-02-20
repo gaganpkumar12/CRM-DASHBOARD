@@ -1,0 +1,17 @@
+{
+  "zoho": {
+    "region": "in",
+    "clientId": "YOUR_CLIENT_ID",
+    "clientSecret": "YOUR_CLIENT_SECRET",
+    "refreshToken": "YOUR_REFRESH_TOKEN"
+  },
+  "dashboard": {
+    "nc1Label": "NC1",
+    "overdueMinutes": 30,
+    "lookbackDays": 30,
+    "ncSlaHours": {
+      "nc1ToNc2": 4,
+      "nc2ToNc3": 24
+    }
+  }
+}

@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Insights – Zoho CRM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div id="sparkleFx" aria-hidden="true"></div>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <span class="brand-title">Gclaw Command</span>
+        <span class="brand-tag">Zoho CRM HQ</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="index.html" class="sidebar-link">🏠 Home</a>
+        <a href="ai-insights.html" class="sidebar-link active">🤖 AI Insights</a>
+      </nav>
+    </aside>
+
+    <div class="main-column">
+      <nav class="top-nav card">
+        <div class="nav-title">AI Insights</div>
+        <div class="nav-links">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="ai-insights.html" class="nav-link active">AI Insights</a>
+        </div>
+      </nav>
+
+      <div class="container">
+        <header class="header card">
+          <div>
+            <h1>AI Insights & Call Intelligence</h1>
+            <p id="aiMeta">Live aggregation of the latest call logs (auto-refreshes every few minutes).</p>
+          </div>
+          <div class="meta header-actions">
+            <span id="aiLastUpdated">Last updated: --</span>
+            <button id="aiRefreshBtn" class="refresh-btn" type="button">↻ Refresh Insights</button>
+          </div>
+        </header>
+
+        <section class="kpis" id="aiKpiGrid"></section>
+
+        <section class="grid two-col">
+          <article class="card">
+            <h3>Duration Mix (All Calls)</h3>
+            <ul class="insight-list" id="aiBucketList"></ul>
+          </article>
+          <article class="card">
+            <h3>Status Distribution</h3>
+            <ul class="insight-list" id="aiStatusList"></ul>
+          </article>
+        </section>
+
+        <section class="grid two-col">
+          <article class="card">
+            <h3>Overall Talk Time</h3>
+            <canvas id="talkTimeChart"></canvas>
+          </article>
+          <article class="card">
+            <h3>Talk Time Summary</h3>
+            <ul class="insight-list" id="talkTimeStats"></ul>
+          </article>
+        </section>
+
+        <section class="card">
+          <h3>Agent Talk Time Leaderboard</h3>
+          <p class="meta">Ranks reps by cumulative talk minutes in the latest 10,000 calls.</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Agent</th>
+                  <th>Total Talk (min)</th>
+                  <th>Connected Calls</th>
+                  <th>Avg Talk / Call (min)</th>
+                </tr>
+              </thead>
+              <tbody id="talkLeaderboard"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="card">
+          <h3>Agent Efficiency (Latest 10,000 Calls)</h3>
+          <p class="meta">Includes zero-duration calls to expose dialer quality. Highlighted buckets indicate where each rep spends most call time.</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Agent</th>
+                  <th>Total Calls</th>
+                  <th>Connected</th>
+                  <th>Connect %</th>
+                  <th>Avg Duration (s)</th>
+                  <th>Zero-dial %</th>
+                  <th>Avg Booking Time (min)</th>
+                  <th>AI Insight</th>
+                  <th>Insight Evidence</th>
+                  <th>Top Hour (IST)</th>
+                </tr>
+              </thead>
+              <tbody id="agentInsightsBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="repeatLossSection" class="card">
+          <h3>Repeat Loss Audit</h3>
+          <p class="meta">Uses rejected leads + repeat identifiers to highlight repeat loss patterns.</p>
+          <div id="repeatLossContent" class="insight-grid"></div>
+        </section>
+
+        <section id="engagementSection" class="card">
+          <h3>Customer Engagement Engine</h3>
+          <p class="meta">Scores engagement based on repeat touches, call coverage, and recency.</p>
+          <div id="engagementContent" class="insight-grid"></div>
+        </section>
+
+        <section id="winBackSection" class="card">
+          <h3>Win-Back Prediction Hub</h3>
+          <p class="meta">Targets repeat customers with the strongest recovery probability.</p>
+          <div id="winBackContent" class="insight-grid"></div>
+        </section>
+
+        <!-- Agent notes removed -->
+      </div>
+    </div>
+  </div>
+
+  <script src="ai-insights.js"></script>
+</body>
+</html>

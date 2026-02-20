@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OverAll CRM Analysis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div id="sparkleFx" aria-hidden="true"></div>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <span class="brand-title">Gclaw Command</span>
+        <span class="brand-tag">Zoho CRM HQ</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="index.html" class="sidebar-link active">🏠 Home</a>
+        <a href="ai-insights.html" class="sidebar-link">🤖 AI Insights</a>
+      </nav>
+    </aside>
+
+    <div class="main-column">
+      <nav class="top-nav card">
+        <div class="nav-title">Control Center</div>
+        <div class="nav-links">
+          <a href="index.html" class="nav-link active">Home</a>
+          <a href="ai-insights.html" class="nav-link">AI Insights</a>
+        </div>
+      </nav>
+
+      <div class="container">
+        <header class="header card">
+          <div>
+            <h1>OverAll CRM Analysis</h1>
+            <p>Read-only analytics from Zoho CRM (Today leads/deals/tasks)</p>
+          </div>
+          <div class="meta header-actions">
+            <span id="lastUpdated">Last updated: --</span>
+            <button id="manualRefreshBtn" class="refresh-btn" type="button">↻ Refresh</button>
+          </div>
+        </header>
+
+        <section class="kpis" id="kpiGrid"></section>
+
+        <section class="grid two-col">
+          <article class="card">
+            <h3>Today Retention Trend (Hourly, Real)</h3>
+            <canvas id="retentionChart"></canvas>
+          </article>
+          <article class="card">
+            <h3>Call Duration (Avg Sec) & Volume</h3>
+            <canvas id="callChart"></canvas>
+          </article>
+        </section>
+
+        <section class="card">
+          <h3 id="ncLadderTitle">NC Ladder Intelligence</h3>
+          <div class="kpis" id="ncLadderKpis"></div>
+          <div class="grid two-col">
+            <article class="card">
+              <h4>NC Funnel (Cumulative)</h4>
+              <canvas id="ncFunnelChart"></canvas>
+            </article>
+            <article class="card">
+              <h4>NC Funnel (Direct Stage Counts)</h4>
+              <canvas id="ncFunnelDirectChart"></canvas>
+            </article>
+          </div>
+          <div class="grid one-col">
+            <article class="card">
+              <h4>Ideal Callback Time by Stage</h4>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr><th>Stage</th><th>Ideal Hour</th><th>Count</th><th>Score</th></tr>
+                  </thead>
+                  <tbody id="ncIdealStageBody"></tbody>
+                </table>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="grid two-col">
+          <article class="card">
+            <h3>Latest Leads </h3>
+            <div class="table-wrap leads-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Name</th><th>Phone</th><th>Owner</th><th>Status</th><th>Sub Status</th><th>Called</th><th>Modified</th>
+                  </tr>
+                </thead>
+                <tbody id="latestLeadsBody"></tbody>
+              </table>
+            </div>
+          </article>
+          <article class="card">
+            <h3>Owner-wise Retention (Today)</h3>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Lead Owner</th><th>Today's Leads</th><th>Called Leads</th><th>Retention %</th>
+                  </tr>
+                </thead>
+                <tbody id="ownerRetentionBody"></tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <section class="grid one-col">
+          <article class="card">
+            <h3>Owner-wise Performance </h3>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Lead Owner</th>
+                    <th>Today Leads</th>
+                    <th>Today Deals</th>
+                    <th>Lead→Deal %</th>
+                    <th>Total Tasks</th>
+                    <th>Completed Tasks</th>
+                    <th>Task Completion %</th>
+                    <th>Retention %</th>
+                  </tr>
+                </thead>
+                <tbody id="ownerStatsBody"></tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "zoho-nc1-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "update": "node scripts/update-data.mjs",
+    "serve": "npx http-server . -p 8080 -c-1"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  }
+}

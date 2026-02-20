@@ -1,0 +1,476 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const root = path.resolve(__dirname, '..');
+const configPath = path.join(root, 'config.json');
+const fallbackConfigPath = path.join(root, 'config.example.json');
+
+const nowIso = () => new Date().toISOString();
+const toNum = (v, d = 0) => (Number.isFinite(Number(v)) ? Number(v) : d);
+
+async function exists(p) {
+  try { await fs.access(p); return true; } catch { return false; }
+}
+
+function pick(obj, keys = []) {
+  for (const k of keys) {
+    if (obj?.[k] !== undefined && obj?.[k] !== null && obj?.[k] !== '') return obj[k];
+  }
+  return null;
+}
+
+function normalizePhone(v) {
+  return String(v || '').replace(/\D/g, '').slice(-10);
+}
+
+function istDateKey(input = new Date()) {
+  const d = new Date(input);
+  return new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Asia/Kolkata',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit'
+  }).format(d);
+}
+
+function isTodayIST(ts) {
+  if (!ts) return false;
+  return istDateKey(ts) === istDateKey(new Date());
+}
+
+function isWithinLastDays(ts, days = 30) {
+  if (!ts) return false;
+  const ms = new Date(ts).getTime();
+  if (!Number.isFinite(ms)) return false;
+  return (Date.now() - ms) <= (days * 24 * 60 * 60 * 1000);
+}
+
+function istHour(ts) {
+  if (!ts) return null;
+  const d = new Date(ts);
+  const h = new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Asia/Kolkata',
+    hour: '2-digit',
+    hour12: false
+  }).format(d);
+  return Number(h);
+}
+
+async function readConfig() {
+  const raw = await fs.readFile((await exists(configPath)) ? configPath : fallbackConfigPath, 'utf8');
+  const cfg = JSON.parse(raw);
+  cfg.zoho.clientId = process.env.ZOHO_CLIENT_ID || cfg.zoho.clientId;
+  cfg.zoho.clientSecret = process.env.ZOHO_CLIENT_SECRET || cfg.zoho.clientSecret;
+  cfg.zoho.refreshToken = process.env.ZOHO_REFRESH_TOKEN || cfg.zoho.refreshToken;
+  cfg.zoho.region = process.env.ZOHO_REGION || cfg.zoho.region || 'in';
+  return cfg;
+}
+
+async function refreshAccessToken(cfg) {
+  const body = new URLSearchParams({
+    refresh_token: cfg.zoho.refreshToken,
+    client_id: cfg.zoho.clientId,
+    client_secret: cfg.zoho.clientSecret,
+    grant_type: 'refresh_token'
+  });
+
+  const res = await fetch(`https://accounts.zoho.${cfg.zoho.region}/oauth/v2/token`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body
+  });
+
+  const json = await res.json();
+  if (!res.ok || !json.access_token) throw new Error(`Token refresh failed: ${JSON.stringify(json)}`);
+  return json.access_token;
+}
+
+async function zohoGet(cfg, token, endpoint, params = {}) {
+  const url = new URL(`https://www.zohoapis.${cfg.zoho.region}${endpoint}`);
+  Object.entries(params).forEach(([k, v]) => url.searchParams.set(k, String(v)));
+  const res = await fetch(url, { method: 'GET', headers: { Authorization: `Zoho-oauthtoken ${token}` } });
+  const json = await res.json();
+  if (!res.ok) throw new Error(`${endpoint} failed: ${json?.code || `HTTP_${res.status}`}`);
+  return json;
+}
+
+function hasCallActivityFromLead(lead = {}) {
+  const callCount = toNum(pick(lead, ['Call_Count', 'Number_of_Calls', 'Calls']), 0);
+  const lastCall = pick(lead, ['Last_Call_Time', 'Last_Call', 'Last_Activity_Time']);
+  const duration = toNum(pick(lead, ['Call_Duration', 'Total_Call_Duration', 'Last_Call_Duration']), 0);
+  return callCount > 0 || !!lastCall || duration > 0;
+}
+
+function buildCallPhoneSet(calls = []) {
+  const set = new Set();
+  for (const c of calls) {
+    [pick(c, ['Dialled_Number', 'Caller_ID', 'Phone', 'Mobile'])]
+      .flat()
+      .filter(Boolean)
+      .map(normalizePhone)
+      .filter(Boolean)
+      .forEach(p => set.add(p));
+  }
+  return set;
+}
+
+async function fetchRecentLeadsForLookback(cfg, token, lookbackDays = 30, maxPages = 40) {
+  const all = [];
+  for (let page = 1; page <= maxPages; page++) {
+    const resp = await zohoGet(cfg, token, '/crm/v2/Leads', { page, per_page: 200, sort_by: 'Created_Time', sort_order: 'desc' });
+    const batch = resp?.data || [];
+    if (!batch.length) break;
+    all.push(...batch);
+
+    const oldestInBatch = pick(batch[batch.length - 1], ['Created_Time']);
+    if (oldestInBatch && !isWithinLastDays(oldestInBatch, lookbackDays)) break;
+    if (batch.length < 200) break;
+  }
+  return all;
+}
+
+async function fetchData(cfg, token) {
+  const lookbackDays = toNum(cfg.dashboard?.lookbackDays, 30);
+  const [leads, callsResp, dealsResp, tasksResp] = await Promise.all([
+    fetchRecentLeadsForLookback(cfg, token, lookbackDays, 40),
+    zohoGet(cfg, token, '/crm/v2/Calls', { page: 1, per_page: 200 }).catch(() => ({ data: [] })),
+    zohoGet(cfg, token, '/crm/v2/Deals', { page: 1, per_page: 200, sort_by: 'Created_Time', sort_order: 'desc' }).catch(() => ({ data: [] })),
+    zohoGet(cfg, token, '/crm/v2/Tasks', { page: 1, per_page: 200, sort_by: 'Created_Time', sort_order: 'desc' }).catch(() => ({ data: [] }))
+  ]);
+
+  return {
+    leads: leads || [],
+    calls: callsResp?.data || [],
+    deals: dealsResp?.data || [],
+    tasks: tasksResp?.data || []
+  };
+}
+
+function ownerName(record = {}) {
+  return pick(record, ['Owner'])?.name || '--';
+}
+
+function isTaskCompleted(task = {}) {
+  const status = String(pick(task, ['Status', 'Task_Status']) || '').toLowerCase();
+  return status.includes('complete') || status.includes('closed') || status.includes('done');
+}
+
+function ncStage(raw) {
+  const t = String(raw || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+  if (t === 'NC1') return 'NC1';
+  if (t === 'NC2') return 'NC2';
+  if (t === 'NC3') return 'NC3';
+  return null;
+}
+
+function analyze(leads = [], calls = [], deals = [], tasks = [], overdueMin = 30, lookbackDays = 30, ncSlaHours = { nc1ToNc2: 4, nc2ToNc3: 24 }) {
+  const todaysLeads = leads.filter(l => isTodayIST(pick(l, ['Created_Time'])));
+  const todaysDeals = deals.filter(d => isTodayIST(pick(d, ['Created_Time'])));
+  const todaysTasks = tasks.filter(t => isTodayIST(pick(t, ['Created_Time'])));
+
+  const ncLookbackLeads = leads.filter(l => isWithinLastDays(pick(l, ['Created_Time']), lookbackDays));
+
+  const nc1Count = ncLookbackLeads.filter(l => ncStage(pick(l, ['Sub_Lead_Status', 'Lead_Sub_Status'])) === 'NC1').length;
+  const nc2Count = ncLookbackLeads.filter(l => ncStage(pick(l, ['Sub_Lead_Status', 'Lead_Sub_Status'])) === 'NC2').length;
+  const nc3Count = ncLookbackLeads.filter(l => ncStage(pick(l, ['Sub_Lead_Status', 'Lead_Sub_Status'])) === 'NC3').length;
+
+  const callPhones = buildCallPhoneSet(calls);
+
+  const mapLead = (l) => {
+    const leadPhone = normalizePhone(pick(l, ['Phone', 'Mobile']));
+    const called = hasCallActivityFromLead(l) || (leadPhone && callPhones.has(leadPhone));
+    return {
+      name: `${pick(l, ['First_Name']) || ''} ${pick(l, ['Last_Name']) || pick(l, ['Full_Name']) || 'Lead'}`.trim(),
+      phone: pick(l, ['Phone', 'Mobile']),
+      owner: ownerName(l),
+      leadStatus: pick(l, ['Lead_Status', 'Status']) || '--',
+      leadSubStatus: pick(l, ['Sub_Lead_Status', 'Lead_Sub_Status']) || '--',
+      createdTime: pick(l, ['Created_Time']),
+      called: !!called,
+      modifiedTime: pick(l, ['Modified_Time'])
+    };
+  };
+
+  const latestAllLeads = leads
+    .filter(l => isWithinLastDays(pick(l, ['Created_Time']), lookbackDays))
+    .slice(0, 200)
+    .map(mapLead);
+  const todaysLeadRows = todaysLeads.map(mapLead);
+
+  const calledCount = latestAllLeads.filter(x => x.called).length;
+  const notCalledCount = Math.max(0, latestAllLeads.length - calledCount);
+  const modifiedWithoutCall = latestAllLeads.filter(x => !x.called && x.modifiedTime).length;
+  const followupComplianceRate = latestAllLeads.length ? (calledCount / latestAllLeads.length) * 100 : 0;
+
+  const now = Date.now();
+  const overdueFollowups = latestAllLeads
+    .filter(l => !l.called && l.createdTime)
+    .map(l => ({ ...l, minutesSinceCreated: Math.floor((now - new Date(l.createdTime).getTime()) / 60000) }))
+    .filter(l => l.minutesSinceCreated >= overdueMin)
+    .slice(0, 25)
+    .map(({ name, owner, phone, minutesSinceCreated }) => ({ name, owner, phone, minutesSinceCreated }));
+
+  const callDurations = calls.map(c => toNum(pick(c, ['Call_Duration_in_seconds', 'Call_Duration', 'Duration_in_seconds', 'Duration']), 0)).filter(n => n > 0);
+  const avgCallDurationSec = callDurations.length ? callDurations.reduce((a, b) => a + b, 0) / callDurations.length : 0;
+
+  const dayLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  const callCountsByDay = Array(7).fill(0);
+  const durationByDay = Array(7).fill(0);
+  calls.forEach(c => {
+    const dt = new Date(pick(c, ['Created_Time', 'Call_Start_Time', 'Modified_Time']) || Date.now());
+    const idx = (dt.getDay() + 6) % 7;
+    const dur = toNum(pick(c, ['Call_Duration_in_seconds', 'Call_Duration', 'Duration_in_seconds', 'Duration']), 0);
+    callCountsByDay[idx] += 1;
+    durationByDay[idx] += dur;
+  });
+  const avgDurationByDay = durationByDay.map((sum, i) => (callCountsByDay[i] ? Math.round(sum / callCountsByDay[i]) : 0));
+
+  const leadToDealConversion = (todaysLeads.length + todaysDeals.length)
+    ? (todaysDeals.length / (todaysLeads.length + todaysDeals.length)) * 100
+    : 0;
+  const totalTasksCount = todaysTasks.length;
+  const completedTasksCount = todaysTasks.filter(isTaskCompleted).length;
+  const taskCompletionPercent = totalTasksCount ? (completedTasksCount / totalTasksCount) * 100 : 0;
+
+  const ownerStatsMap = new Map();
+  for (const l of todaysLeadRows) {
+    const o = l.owner || '--';
+    if (!ownerStatsMap.has(o)) ownerStatsMap.set(o, { owner: o, todaysLeads: 0, calledLeads: 0, todaysDeals: 0, totalTasks: 0, completedTasks: 0 });
+    ownerStatsMap.get(o).todaysLeads += 1;
+    if (l.called) ownerStatsMap.get(o).calledLeads += 1;
+  }
+  for (const d of todaysDeals) {
+    const o = ownerName(d);
+    if (!ownerStatsMap.has(o)) ownerStatsMap.set(o, { owner: o, todaysLeads: 0, calledLeads: 0, todaysDeals: 0, totalTasks: 0, completedTasks: 0 });
+    ownerStatsMap.get(o).todaysDeals += 1;
+  }
+  for (const t of todaysTasks) {
+    const o = ownerName(t);
+    if (!ownerStatsMap.has(o)) ownerStatsMap.set(o, { owner: o, todaysLeads: 0, calledLeads: 0, todaysDeals: 0, totalTasks: 0, completedTasks: 0 });
+    ownerStatsMap.get(o).totalTasks += 1;
+    if (isTaskCompleted(t)) ownerStatsMap.get(o).completedTasks += 1;
+  }
+
+  const ownerStats = [...ownerStatsMap.values()]
+    .map(x => ({
+      ...x,
+      leadToDealConversionPercent: x.todaysLeads ? Number(((x.todaysDeals / x.todaysLeads) * 100).toFixed(1)) : 0,
+      taskCompletionPercent: x.totalTasks ? Number(((x.completedTasks / x.totalTasks) * 100).toFixed(1)) : 0,
+      retentionPercent: x.todaysLeads ? Number(((x.calledLeads / x.todaysLeads) * 100).toFixed(1)) : 0
+    }))
+    .sort((a, b) => b.todaysLeads - a.todaysLeads);
+
+  // Real retention trend (hourly): for each IST hour, retention% = called leads / leads created in that hour.
+  const currentHour = istHour(new Date());
+  const hourBuckets = Array.from({ length: (Number.isFinite(currentHour) ? currentHour + 1 : 24) }, (_, i) => i);
+  const retentionLabels = hourBuckets.map(h => `${String(h).padStart(2, '0')}:00`);
+  const retentionSeries = hourBuckets.map(h => {
+    const leadsInHour = todaysLeadRows.filter(l => istHour(l.createdTime) === h);
+    if (!leadsInHour.length) return 0;
+    const calledInHour = leadsInHour.filter(l => l.called).length;
+    return Number(((calledInHour / leadsInHour.length) * 100).toFixed(1));
+  });
+
+  // NC time intelligence (past 30 days): NC1/NC2/NC3 hourly counts across all leads in lookback window.
+  const ncHourlyMap = new Map(Array.from({ length: 24 }, (_, h) => [h, { nc1: 0, nc2: 0, nc3: 0, total: 0 }]));
+  for (const l of ncLookbackLeads) {
+    // Peak NC time should reflect when lead is currently marked as NC in CRM,
+    // so we bucket by Modified_Time (status update time), not Created_Time.
+    const h = istHour(pick(l, ['Modified_Time', 'Created_Time']));
+    if (!Number.isInteger(h) || !ncHourlyMap.has(h)) continue;
+    const s = ncStage(pick(l, ['Sub_Lead_Status', 'Lead_Sub_Status']));
+    const row = ncHourlyMap.get(h);
+    if (s === 'NC1') row.nc1 += 1;
+    if (s === 'NC2') row.nc2 += 1;
+    if (s === 'NC3') row.nc3 += 1;
+    row.total = row.nc1 + row.nc2 + row.nc3;
+  }
+
+  const allHours = Array.from({ length: 24 }, (_, i) => i);
+  const callHourStats = new Map(allHours.map(h => [h, { calls: 0, durSum: 0, connectedLike: 0 }]));
+  for (const c of calls) {
+    const h = istHour(pick(c, ['Call_Start_Time', 'Created_Time', 'Modified_Time']));
+    if (!Number.isInteger(h) || !callHourStats.has(h)) continue;
+    const stat = callHourStats.get(h);
+    const dur = toNum(pick(c, ['Call_Duration_in_seconds', 'Call_Duration', 'Duration_in_seconds', 'Duration']), 0);
+    stat.calls += 1;
+    stat.durSum += dur;
+    if (dur >= 30) stat.connectedLike += 1; // proxy for successful connection
+  }
+
+  const maxCallsInHour = Math.max(1, ...allHours.map(h => callHourStats.get(h).calls));
+  const ncTimeRows = allHours.map(h => {
+    const nc = ncHourlyMap.get(h);
+    const c = callHourStats.get(h);
+    const avgDur = c.calls ? c.durSum / c.calls : 0;
+    const connectLikeRate = c.calls ? (c.connectedLike / c.calls) : 0;
+    const volumeNorm = c.calls / maxCallsInHour;
+    // Ideal contact score is based on CALL EFFECTIVENESS (all leads/calls), not NC volume.
+    const score = (connectLikeRate * 0.55) + ((Math.min(avgDur, 180) / 180) * 0.30) + (volumeNorm * 0.15);
+    return {
+      hour: h,
+      label: `${String(h).padStart(2, '0')}:00`,
+      nc1: nc.nc1,
+      nc2: nc.nc2,
+      nc3: nc.nc3,
+      total: nc.total,
+      avgDur: Math.round(avgDur),
+      connectLikeRate: Number((connectLikeRate * 100).toFixed(1)),
+      score: Number(score.toFixed(3))
+    };
+  });
+
+  const peakNC1 = [...ncTimeRows].sort((a, b) => b.nc1 - a.nc1)[0] || { label: '--', nc1: 0 };
+  const peakNC2 = [...ncTimeRows].sort((a, b) => b.nc2 - a.nc2)[0] || { label: '--', nc2: 0 };
+  const ideal = [...ncTimeRows]
+    .filter(x => callHourStats.get(x.hour).calls >= 20)
+    .sort((a, b) => b.score - a.score)[0] || { label: '--', score: 0, total: 0 };
+
+  // NC ladder analytics (NC1 -> NC2 -> NC3)
+  const ncLookbackRows = ncLookbackLeads.map(l => {
+    const stage = ncStage(pick(l, ['Sub_Lead_Status', 'Lead_Sub_Status']));
+    const created = pick(l, ['Created_Time']);
+    const modified = pick(l, ['Modified_Time', 'Created_Time']);
+    const elapsedHours = created && modified
+      ? Math.max(0, (new Date(modified).getTime() - new Date(created).getTime()) / (1000 * 60 * 60))
+      : null;
+    return { stage, created, modified, elapsedHours, phone: normalizePhone(pick(l, ['Phone', 'Mobile'])) };
+  }).filter(x => x.stage);
+
+  const ncCounts = {
+    nc1: ncLookbackRows.filter(x => x.stage === 'NC1').length,
+    nc2: ncLookbackRows.filter(x => x.stage === 'NC2').length,
+    nc3: ncLookbackRows.filter(x => x.stage === 'NC3').length
+  };
+
+  const progression = {
+    nc1ToNc2Percent: ncCounts.nc1 ? Number(((ncCounts.nc2 / ncCounts.nc1) * 100).toFixed(1)) : 0,
+    nc2ToNc3Percent: ncCounts.nc2 ? Number(((ncCounts.nc3 / ncCounts.nc2) * 100).toFixed(1)) : 0,
+    avgHoursNc1ToNc2: (() => {
+      const arr = ncLookbackRows.filter(x => x.stage === 'NC2' && Number.isFinite(x.elapsedHours)).map(x => x.elapsedHours);
+      return arr.length ? Number((arr.reduce((a, b) => a + b, 0) / arr.length).toFixed(1)) : 0;
+    })(),
+    avgHoursNc2ToNc3: (() => {
+      const arr = ncLookbackRows.filter(x => x.stage === 'NC3' && Number.isFinite(x.elapsedHours)).map(x => x.elapsedHours);
+      return arr.length ? Number((arr.reduce((a, b) => a + b, 0) / arr.length).toFixed(1)) : 0;
+    })()
+  };
+
+  const nc1ToNc2Sla = toNum(ncSlaHours?.nc1ToNc2, 4);
+  const nc2ToNc3Sla = toNum(ncSlaHours?.nc2ToNc3, 24);
+  const overdueNc1 = ncLookbackRows.filter(x => x.stage === 'NC1' && Number.isFinite(x.elapsedHours) && x.elapsedHours > nc1ToNc2Sla).length;
+  const overdueNc2 = ncLookbackRows.filter(x => x.stage === 'NC2' && Number.isFinite(x.elapsedHours) && x.elapsedHours > nc2ToNc3Sla).length;
+
+  const stageIdeal = {
+    nc1: [...ncTimeRows].sort((a, b) => b.nc1 - a.nc1 || b.score - a.score)[0] || { label: '--', nc1: 0, score: 0 },
+    nc2: [...ncTimeRows].sort((a, b) => b.nc2 - a.nc2 || b.score - a.score)[0] || { label: '--', nc2: 0, score: 0 },
+    nc3: [...ncTimeRows].sort((a, b) => b.nc3 - a.nc3 || b.score - a.score)[0] || { label: '--', nc3: 0, score: 0 }
+  };
+
+  return {
+    generatedAt: nowIso(),
+    kpis: {
+      todaysLeadsCount: todaysLeads.length,
+      nc1Count,
+      nc2Count,
+      nc3Count,
+      leadToDealConversionPercent: Number(leadToDealConversion.toFixed(1)),
+      totalDealsCount: todaysDeals.length,
+      totalTasksCount,
+      taskCompletionPercent: Number(taskCompletionPercent.toFixed(1)),
+      retentionRate: Number((retentionSeries.length ? retentionSeries[retentionSeries.length - 1] : 0).toFixed(1)),
+      avgCallDurationSec: Math.round(avgCallDurationSec),
+      followupComplianceRate: Number(followupComplianceRate.toFixed(1))
+    },
+    retention: {
+      labels: retentionLabels,
+      values: retentionSeries
+    },
+    calls: {
+      labels: dayLabels,
+      avgDurationSec: avgDurationByDay,
+      callCounts: callCountsByDay
+    },
+    compliance: {
+      called: calledCount,
+      notCalled: notCalledCount,
+      modifiedWithoutCall
+    },
+    ncTime: {
+      lookbackDays,
+      idealHour: ideal.label,
+      idealScore: ideal.score,
+      peakNC1Hour: peakNC1.label,
+      peakNC1Count: peakNC1.nc1,
+      peakNC2Hour: peakNC2.label,
+      peakNC2Count: peakNC2.nc2,
+      labels: ncTimeRows.map(r => r.label),
+      nc1: ncTimeRows.map(r => r.nc1),
+      nc2: ncTimeRows.map(r => r.nc2)
+    },
+    ncLadder: {
+      lookbackDays,
+      // Requested cumulative funnel:
+      // NC1 bucket = NC1 + NC2 + NC3
+      // NC2 bucket = NC2 + NC3
+      // NC3 bucket = NC3
+      funnel: {
+        nc1: ncCounts.nc1 + ncCounts.nc2 + ncCounts.nc3,
+        nc2: ncCounts.nc2 + ncCounts.nc3,
+        nc3: ncCounts.nc3
+      },
+      directFunnel: {
+        nc1: ncCounts.nc1,
+        nc2: ncCounts.nc2,
+        nc3: ncCounts.nc3
+      },
+      progression,
+      sla: {
+        nc1ToNc2Hours: nc1ToNc2Sla,
+        nc2ToNc3Hours: nc2ToNc3Sla,
+        overdueNc1,
+        overdueNc2
+      },
+      idealByStage: {
+        nc1: { hour: stageIdeal.nc1.label, count: stageIdeal.nc1.nc1 ?? 0, score: stageIdeal.nc1.score ?? 0 },
+        nc2: { hour: stageIdeal.nc2.label, count: stageIdeal.nc2.nc2 ?? 0, score: stageIdeal.nc2.score ?? 0 },
+        nc3: { hour: stageIdeal.nc3.label, count: stageIdeal.nc3.nc3 ?? 0, score: stageIdeal.nc3.score ?? 0 }
+      }
+    },
+    latestLeadsToday: latestAllLeads,
+    overdueFollowups,
+    ownerStats
+  };
+}
+
+async function main() {
+  const cfg = await readConfig();
+  const token = await refreshAccessToken(cfg);
+  const { leads, calls, deals, tasks } = await fetchData(cfg, token);
+  const lookbackDays = toNum(cfg.dashboard?.lookbackDays, 30);
+  const metrics = analyze(
+    leads,
+    calls,
+    deals,
+    tasks,
+    toNum(cfg.dashboard?.overdueMinutes, 30),
+    lookbackDays,
+    cfg.dashboard?.ncSlaHours || { nc1ToNc2: 4, nc2ToNc3: 24 }
+  );
+
+  await fs.mkdir(path.join(root, 'data'), { recursive: true });
+  await fs.writeFile(path.join(root, 'data', 'metrics.json'), JSON.stringify(metrics, null, 2), 'utf8');
+  console.log(`Dashboard data updated at ${metrics.generatedAt}. Today leads: ${metrics.kpis.todaysLeadsCount}, Today deals: ${metrics.kpis.totalDealsCount}, Today tasks: ${metrics.kpis.totalTasksCount}`);
+}
+
+main().catch(err => {
+  console.error(err.message || err);
+  process.exit(1);
+});
+
