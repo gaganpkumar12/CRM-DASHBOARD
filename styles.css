@@ -152,19 +152,279 @@ body {
     position: sticky;
     top: 0;
     z-index: 20;
+    padding: 12px 16px;
+  }
+
+  .sidebar-brand {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
   }
 
   .sidebar-nav {
     flex-direction: row;
     flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .sidebar-link {
+    padding: 8px 12px;
+    font-size: .85rem;
   }
 
   .main-column {
-    padding: 16px;
+    padding: 12px;
   }
 
   .top-nav {
-    top: 8px;
+    top: 0;
+    flex-wrap: wrap;
+    padding: 10px 12px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .header-actions {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 1.15rem;
+  }
+
+  .kpis {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 8px;
+  }
+
+  .kpi .value {
+    font-size: .95rem;
+  }
+
+  .kpi .label {
+    font-size: .7rem;
+  }
+
+  .two-col {
+    grid-template-columns: 1fr;
+  }
+
+  .table-wrap {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  table {
+    min-width: 480px;
+  }
+
+  canvas {
+    max-height: 220px;
+    padding: 4px;
+  }
+
+  .insight-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .insight-list li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    font-size: .82rem;
+  }
+
+  .insight-card {
+    font-size: .75rem;
+  }
+
+  .insight-block {
+    padding: 10px;
+  }
+
+  .container {
+    padding: 0 8px 16px;
+    margin: 10px auto;
+  }
+
+  .card {
+    padding: 12px;
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    padding: 10px 12px;
+  }
+
+  .sidebar-brand {
+    gap: 6px;
+  }
+
+  .brand-title {
+    font-size: .9rem;
+  }
+
+  .brand-tag {
+    font-size: .7rem;
+  }
+
+  .sidebar-link {
+    padding: 6px 10px;
+    font-size: .78rem;
+  }
+
+  .main-column {
+    padding: 8px;
+    gap: 10px;
+  }
+
+  .top-nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 8px 10px;
+  }
+
+  .nav-title {
+    font-size: .95rem;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .nav-link {
+    padding: 5px 10px;
+    font-size: .8rem;
+  }
+
+  h1 {
+    font-size: 1rem;
+  }
+
+  h3 {
+    font-size: .92rem;
+  }
+
+  h4 {
+    font-size: .85rem;
+  }
+
+  .header-actions {
+    gap: 6px;
+  }
+
+  #lastUpdated, #aiLastUpdated {
+    font-size: .72rem;
+    word-break: break-word;
+  }
+
+  .refresh-btn {
+    padding: 5px 10px;
+    font-size: .8rem;
+  }
+
+  .kpis {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+
+  .kpi {
+    padding: 8px;
+  }
+
+  .kpi .value {
+    font-size: .88rem;
+  }
+
+  .kpi .label {
+    font-size: .65rem;
+  }
+
+  .kpi::after {
+    width: 70px;
+    height: 70px;
+    right: -25px;
+    top: -30px;
+  }
+
+  .card {
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  canvas {
+    max-height: 180px;
+    border-radius: 10px;
+  }
+
+  table {
+    min-width: 420px;
+    font-size: .78rem;
+  }
+
+  th, td {
+    padding: 6px 5px;
+    font-size: .76rem;
+  }
+
+  .leads-scroll {
+    max-height: 260px;
+  }
+
+  .insight-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .insight-block {
+    padding: 8px 10px;
+  }
+
+  .insight-block strong {
+    font-size: .72rem;
+  }
+
+  .insight-block p,
+  .insight-block ul li {
+    font-size: .78rem;
+  }
+
+  .metric-how {
+    font-size: .68rem;
+  }
+
+  .insight-list li {
+    padding: 8px 10px;
+    font-size: .78rem;
+  }
+
+  .insight-evidence {
+    font-size: .72rem;
+    padding: 6px 8px;
+  }
+
+  .container::before,
+  .container::after {
+    display: none;
+  }
+
+  body::before,
+  body::after {
+    width: 180px;
+    height: 180px;
+  }
+
+  .grid {
+    gap: 8px;
+    margin-bottom: 8px;
   }
 }
 
@@ -352,7 +612,6 @@ p, .meta { margin: 0; color: var(--muted); }
 .grid { display: grid; gap: 12px; margin-bottom: 12px; }
 .two-col { grid-template-columns: 1fr 1fr; }
 .one-col { grid-template-columns: 1fr; }
-@media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
 
 h3 {
   margin: 0 0 12px;
