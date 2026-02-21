@@ -828,3 +828,83 @@ canvas {
   60% { opacity: 0.35; }
   100% { opacity: 0; transform: scale(1.03); }
 }
+
+/* ── Fullscreen chart modal ── */
+.chart-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chart-modal[hidden] {
+  display: none;
+}
+
+.chart-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(4, 8, 20, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.chart-modal-content {
+  position: relative;
+  width: 95vw;
+  height: 85vh;
+  max-width: 1200px;
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid var(--glass-border);
+  background: linear-gradient(135deg, rgba(10, 18, 36, 0.9), rgba(8, 16, 34, 0.85));
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  background: rgba(255, 93, 115, 0.2);
+  border: 1px solid rgba(255, 93, 115, 0.5);
+  color: #ffb5c0;
+  font-size: 1.2rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: background 0.2s;
+}
+
+.chart-modal-close:hover {
+  background: rgba(255, 93, 115, 0.4);
+}
+
+.chart-modal-content canvas {
+  flex: 1;
+  max-height: none;
+  width: 100% !important;
+  height: 100% !important;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+/* Tap hint on mobile canvases */
+@media (max-width: 960px) {
+  canvas {
+    cursor: zoom-in;
+  }
+
+  canvas::after {
+    content: 'Tap to expand';
+  }
+}

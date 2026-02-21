@@ -681,3 +681,57 @@ loadAiInsights().catch(err => console.error(err));
 setInterval(() => {
   loadAiInsights().catch(err => console.error('Auto-refresh failed:', err));
 }, 6 * 60 * 60 * 1000);
+
+// ── Fullscreen chart modal ──
+(function initChartModal() {
+  const modal = document.getElementById('chartModal');
+  if (!modal) return;
+  const modalCanvas = document.getElementById('chartModalCanvas');
+  const closeBtn = modal.querySelector('.chart-modal-close');
+  const backdrop = modal.querySelector('.chart-modal-backdrop');
+  let modalChart = null;
+
+  function openModal(sourceCanvas) {
+    const srcChart = Chart.getChart(sourceCanvas);
+    if (!srcChart) return;
+    if (modalChart) { modalChart.destroy(); modalChart = null; }
+
+    const cfg = srcChart.config;
+    const clonedData = JSON.parse(JSON.stringify(cfg.data));
+    const clonedOpts = JSON.parse(JSON.stringify(cfg.options || {}));
+    clonedOpts.responsive = true;
+    clonedOpts.maintainAspectRatio = false;
+    if (clonedOpts.plugins) {
+      if (clonedOpts.plugins.legend) clonedOpts.plugins.legend.display = true;
+    }
+
+    modal.hidden = false;
+    modalChart = new Chart(modalCanvas, {
+      type: cfg.type || 'bar',
+      data: clonedData,
+      options: clonedOpts
+    });
+  }
+
+  function closeModal() {
+    modal.hidden = true;
+    if (modalChart) { modalChart.destroy(); modalChart = null; }
+  }
+
+  closeBtn.addEventListener('click', closeModal);
+  backdrop.addEventListener('click', closeModal);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  // Attach to existing canvases + observe for dynamically created ones
+  function attachListeners() {
+    document.querySelectorAll('canvas').forEach(c => {
+      if (c.id === 'chartModalCanvas' || c.dataset.modalBound) return;
+      c.dataset.modalBound = '1';
+      c.addEventListener('click', () => openModal(c));
+    });
+  }
+  attachListeners();
+  // Re-attach after data loads (charts may be recreated)
+  const observer = new MutationObserver(() => attachListeners());
+  observer.observe(document.body, { childList: true, subtree: true });
+})();
