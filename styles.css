@@ -908,3 +908,316 @@ canvas {
     content: 'Tap to expand';
   }
 }
+
+/* ── AI Insights responsive overrides ── */
+
+/* --- Tablet (≤ 960px) --- */
+@media (max-width: 960px) {
+  /* Card-layout tables should not force horizontal scroll */
+  #agentEfficiencySection table,
+  #talkLeaderboardSection table,
+  #durationOutcomeSection table {
+    min-width: 0;
+  }
+
+  #agentEfficiencySection .table-wrap,
+  #talkLeaderboardSection .table-wrap,
+  #durationOutcomeSection .table-wrap {
+    overflow: visible;
+  }
+
+  /* Key insights list */
+  #keyInsightsList li {
+    font-size: .82rem;
+    line-height: 1.5;
+    padding: 10px 12px;
+  }
+
+  /* Agent Efficiency table — force card layout per row */
+  #agentInsightsBody tr {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(129, 171, 245, 0.2);
+    border-radius: 12px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: rgba(10, 18, 36, 0.3);
+  }
+
+  #agentInsightsBody td {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 6px;
+    border: none;
+    padding: 4px 0;
+    font-size: .82rem;
+  }
+
+  #agentInsightsBody td::before {
+    font-weight: 700;
+    color: #bdd0f1;
+    font-size: .72rem;
+    text-transform: uppercase;
+    letter-spacing: .3px;
+    min-width: 120px;
+  }
+
+  #agentInsightsBody td:nth-child(1)::before { content: "Agent: "; }
+  #agentInsightsBody td:nth-child(2)::before { content: "Total Calls: "; }
+  #agentInsightsBody td:nth-child(3)::before { content: "Connected: "; }
+  #agentInsightsBody td:nth-child(4)::before { content: "Connect %: "; }
+  #agentInsightsBody td:nth-child(5)::before { content: "Avg Duration: "; }
+  #agentInsightsBody td:nth-child(6)::before { content: "Zero-dial %: "; }
+  #agentInsightsBody td:nth-child(7)::before { content: "Avg Booking: "; }
+  #agentInsightsBody td:nth-child(8)::before { content: "AI Insight: "; }
+  #agentInsightsBody td:nth-child(9)::before { content: "Evidence: "; }
+  #agentInsightsBody td:nth-child(10)::before { content: "Top Hour: "; }
+
+  /* Hide table header on mobile since we use labels */
+  .table-head-efficiency,
+  .table-head-duration,
+  .table-head-leaderboard {
+    display: none;
+  }
+
+  /* Insight card inside agent table */
+  .insight-card {
+    width: 100%;
+    gap: 8px;
+  }
+
+  .insight-detail {
+    padding: 8px;
+    border-radius: 8px;
+  }
+
+  .insight-detail strong {
+    font-size: .7rem;
+  }
+
+  .insight-detail p {
+    font-size: .78rem;
+    line-height: 1.4;
+  }
+
+  .insight-evidence {
+    width: 100%;
+    font-size: .75rem;
+    padding: 8px;
+  }
+
+  .insight-evidence p {
+    word-break: break-word;
+  }
+
+  /* Duration vs Outcome table — card layout */
+  #durationOutcomeBody tr {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(129, 171, 245, 0.2);
+    border-radius: 12px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: rgba(10, 18, 36, 0.3);
+  }
+
+  #durationOutcomeBody td {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 6px;
+    border: none;
+    padding: 4px 0;
+    font-size: .82rem;
+  }
+
+  #durationOutcomeBody td::before {
+    font-weight: 700;
+    color: #bdd0f1;
+    font-size: .72rem;
+    text-transform: uppercase;
+    letter-spacing: .3px;
+    min-width: 130px;
+  }
+
+  #durationOutcomeBody td:nth-child(1)::before { content: "Agent: "; }
+  #durationOutcomeBody td:nth-child(2)::before { content: "Sweet Spot: "; }
+  #durationOutcomeBody td:nth-child(3)::before { content: "Best Conv Bucket: "; }
+  #durationOutcomeBody td:nth-child(4)::before { content: "Conv Rate: "; }
+  #durationOutcomeBody td:nth-child(5)::before { content: "Worst Rej Bucket: "; }
+  #durationOutcomeBody td:nth-child(6)::before { content: "Rej Rate: "; }
+  #durationOutcomeBody td:nth-child(7)::before { content: "Breakdown: "; }
+
+  /* Talk leaderboard — card layout */
+  #talkLeaderboard tr {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(129, 171, 245, 0.2);
+    border-radius: 12px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: rgba(10, 18, 36, 0.3);
+  }
+
+  #talkLeaderboard td {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    border: none;
+    padding: 4px 0;
+    font-size: .82rem;
+  }
+
+  #talkLeaderboard td::before {
+    font-weight: 700;
+    color: #bdd0f1;
+    font-size: .72rem;
+    text-transform: uppercase;
+    letter-spacing: .3px;
+    min-width: 130px;
+  }
+
+  #talkLeaderboard td:nth-child(1)::before { content: "Agent: "; }
+  #talkLeaderboard td:nth-child(2)::before { content: "Total Talk (min): "; }
+  #talkLeaderboard td:nth-child(3)::before { content: "Connected Calls: "; }
+  #talkLeaderboard td:nth-child(4)::before { content: "Avg Talk/Call: "; }
+
+  /* Insight blocks — prevent overflow */
+  .insight-block ul {
+    padding-left: 14px;
+    font-size: .8rem;
+  }
+
+  .insight-block ul li {
+    word-break: break-word;
+    margin-bottom: 6px;
+    line-height: 1.45;
+  }
+
+  .insight-block p {
+    font-size: .82rem;
+    line-height: 1.5;
+    word-break: break-word;
+  }
+
+  /* Engagement & win-back phone lists */
+  .insight-grid .insight-block ul li {
+    font-size: .78rem;
+    overflow-wrap: anywhere;
+  }
+}
+
+/* --- Phone (≤ 480px) --- */
+@media (max-width: 480px) {
+  /* Key insights */
+  #keyInsightsList li {
+    font-size: .76rem;
+    padding: 8px 10px;
+  }
+
+  /* Agent efficiency cards tighten up */
+  #agentInsightsBody tr {
+    padding: 8px;
+    margin-bottom: 8px;
+  }
+
+  #agentInsightsBody td {
+    font-size: .76rem;
+  }
+
+  #agentInsightsBody td::before {
+    font-size: .68rem;
+    min-width: 100px;
+  }
+
+  .insight-detail {
+    padding: 6px;
+  }
+
+  .insight-detail strong {
+    font-size: .65rem;
+  }
+
+  .insight-detail p {
+    font-size: .72rem;
+  }
+
+  .insight-evidence {
+    font-size: .7rem;
+    padding: 6px;
+  }
+
+  /* Duration vs outcome cards */
+  #durationOutcomeBody tr {
+    padding: 8px;
+  }
+
+  #durationOutcomeBody td {
+    font-size: .76rem;
+  }
+
+  #durationOutcomeBody td::before {
+    font-size: .68rem;
+    min-width: 100px;
+  }
+
+  /* Talk leaderboard cards */
+  #talkLeaderboard tr {
+    padding: 8px;
+  }
+
+  #talkLeaderboard td {
+    font-size: .76rem;
+  }
+
+  #talkLeaderboard td::before {
+    font-size: .68rem;
+    min-width: 100px;
+  }
+
+  /* Insight grid blocks */
+  .insight-grid {
+    gap: 6px;
+  }
+
+  .insight-block {
+    padding: 8px 10px;
+  }
+
+  .insight-block strong {
+    font-size: .68rem;
+  }
+
+  .insight-block p {
+    font-size: .76rem;
+  }
+
+  .insight-block ul {
+    padding-left: 12px;
+    font-size: .74rem;
+  }
+
+  .insight-block ul li {
+    font-size: .74rem;
+  }
+
+  .metric-how {
+    font-size: .64rem;
+    padding: 4px 6px;
+  }
+
+  /* Duration outcome KPIs */
+  #durationOutcomeKpis {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+
+  /* Fullscreen modal on small screens */
+  .chart-modal-content {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    padding: 10px;
+  }
+}
