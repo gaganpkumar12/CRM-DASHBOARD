@@ -53,7 +53,16 @@ git add data/ >> %LOG_FILE% 2>&1
 git diff --cached --quiet
 if %ERRORLEVEL% NEQ 0 (
   git commit -m "data: auto-update %date% %time%" >> %LOG_FILE% 2>&1
+
+  REM Pull remote changes first to avoid rejection
+  >> %LOG_FILE% echo Pulling remote changes before push...
+  git pull origin main --rebase >> %LOG_FILE% 2>&1
+
   git push origin main >> %LOG_FILE% 2>&1
+  if %ERRORLEVEL% NEQ 0 (
+    >> %LOG_FILE% echo [WARN] Push failed, retrying with force-with-lease...
+    git push origin main --force-with-lease >> %LOG_FILE% 2>&1
+  )
   >> %LOG_FILE% echo Push completed at %date% %time%
 ) else (
   >> %LOG_FILE% echo No data changes to push.
