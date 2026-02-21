@@ -2,11 +2,13 @@
 REM ============================================================================
 REM  Dashboard Data Updater
 REM  Schedule this AFTER the CRM quiet period for fastest runs + freshest data.
-REM  Recommended: 6:30 AM IST (01:00 UTC) when overnight syncs are done.
+REM  Runs at 10:00 AM IST and 5:00 PM IST daily.
 REM
-REM  To schedule via Task Scheduler:
-REM    schtasks /create /tn "DashboardUpdate" /tr "E:\Dashboard\run-dashboard-update.bat" ^
-REM      /sc daily /st 06:30 /ru SYSTEM
+REM  To schedule via Task Scheduler (run these two commands once as Admin):
+REM    schtasks /create /tn "DashboardUpdate_10AM" /tr "E:\Dashboard\run-dashboard-update.bat" ^
+REM      /sc daily /st 10:00 /ru SYSTEM
+REM    schtasks /create /tn "DashboardUpdate_5PM" /tr "E:\Dashboard\run-dashboard-update.bat" ^
+REM      /sc daily /st 17:00 /ru SYSTEM
 REM ============================================================================
 setlocal
 cd /d E:\Dashboard
