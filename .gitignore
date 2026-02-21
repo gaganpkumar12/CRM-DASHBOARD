@@ -6,6 +6,7 @@ logs/
 
 # Sensitive config (contains API keys)
 config.json
+.token-cache.json
 
 # OS files
 Thumbs.db

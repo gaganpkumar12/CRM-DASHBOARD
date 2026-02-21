@@ -5,6 +5,10 @@
   "type": "module",
   "scripts": {
     "update": "node scripts/update-data.mjs",
+    "bulk-call": "node scripts/bulk-call-analysis.mjs minRecords=1200 lookback=7",
+    "bulk-call-7d": "node scripts/bulk-call-analysis.mjs minRecords=1200 lookback=7 output=bulk-call-analysis-7d-full.json",
+    "call-duration": "node scripts/call-duration-analysis.mjs",
+    "update-all": "node scripts/update-data.mjs && node scripts/bulk-call-analysis.mjs && node scripts/bulk-call-analysis.mjs lookback=7 output=bulk-call-analysis-7d-full.json && node scripts/call-duration-analysis.mjs",
     "serve": "npx http-server . -p 8080 -c-1"
   },
   "dependencies": {

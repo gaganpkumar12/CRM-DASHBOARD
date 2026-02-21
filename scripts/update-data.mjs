@@ -2,6 +2,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import dotenv from 'dotenv';
+import { getCachedToken } from './token-cache.mjs';
 
 dotenv.config();
 
@@ -120,7 +121,7 @@ function buildCallPhoneSet(calls = []) {
   return set;
 }
 
-async function fetchRecentLeadsForLookback(cfg, token, lookbackDays = 30, maxPages = 40) {
+async function fetchRecentLeadsForLookback(cfg, token, lookbackDays = 7, maxPages = 10) {
   const all = [];
   for (let page = 1; page <= maxPages; page++) {
     const resp = await zohoGet(cfg, token, '/crm/v2/Leads', { page, per_page: 200, sort_by: 'Created_Time', sort_order: 'desc' });
@@ -136,9 +137,10 @@ async function fetchRecentLeadsForLookback(cfg, token, lookbackDays = 30, maxPag
 }
 
 async function fetchData(cfg, token) {
-  const lookbackDays = toNum(cfg.dashboard?.lookbackDays, 30);
+  const lookbackDays = toNum(cfg.dashboard?.lookbackDays, 7);
+  const maxLeadPages = toNum(cfg.dashboard?.maxLeadPages, 10);
   const [leads, callsResp, dealsResp, tasksResp] = await Promise.all([
-    fetchRecentLeadsForLookback(cfg, token, lookbackDays, 40),
+    fetchRecentLeadsForLookback(cfg, token, lookbackDays, maxLeadPages),
     zohoGet(cfg, token, '/crm/v2/Calls', { page: 1, per_page: 200 }).catch(() => ({ data: [] })),
     zohoGet(cfg, token, '/crm/v2/Deals', { page: 1, per_page: 200, sort_by: 'Created_Time', sort_order: 'desc' }).catch(() => ({ data: [] })),
     zohoGet(cfg, token, '/crm/v2/Tasks', { page: 1, per_page: 200, sort_by: 'Created_Time', sort_order: 'desc' }).catch(() => ({ data: [] }))
@@ -451,9 +453,9 @@ function analyze(leads = [], calls = [], deals = [], tasks = [], overdueMin = 30
 
 async function main() {
   const cfg = await readConfig();
-  const token = await refreshAccessToken(cfg);
+  const token = await getCachedToken(cfg);
   const { leads, calls, deals, tasks } = await fetchData(cfg, token);
-  const lookbackDays = toNum(cfg.dashboard?.lookbackDays, 30);
+  const lookbackDays = toNum(cfg.dashboard?.lookbackDays, 7);
   const metrics = analyze(
     leads,
     calls,

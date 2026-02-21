@@ -2,6 +2,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import dotenv from 'dotenv';
+import { getCachedToken } from './token-cache.mjs';
 
 dotenv.config();
 
@@ -186,7 +187,7 @@ function phoneFromCall(call = {}) {
 
 async function main() {
   const cfg = await readConfig();
-  const token = await refreshAccessToken(cfg);
+  const token = await getCachedToken(cfg);
   const [leads, calls] = await Promise.all([
     fetchRecentLeads(cfg, token),
     fetchRecentCalls(cfg, token)

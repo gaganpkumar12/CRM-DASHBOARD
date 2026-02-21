@@ -183,7 +183,11 @@ function buildTables(data) {
 async function loadData() {
   const r = await fetch(`data/metrics.json?t=${Date.now()}`);
   const data = await r.json();
-  document.getElementById("lastUpdated").textContent = `Last updated: ${fmtDate(data.generatedAt)}`;
+  const updatedAt = data.generatedAt;
+  const ageMinutes = updatedAt ? Math.round((Date.now() - new Date(updatedAt).getTime()) / 60000) : null;
+  const freshness = ageMinutes === null ? '' : ageMinutes <= 5 ? '🟢' : ageMinutes <= 30 ? '🟡' : '🔴';
+  const ageLabel = ageMinutes === null ? '' : ageMinutes <= 1 ? ' (just now)' : ageMinutes < 60 ? ` (${ageMinutes}m ago)` : ` (${(ageMinutes / 60).toFixed(1)}h ago)`;
+  document.getElementById("lastUpdated").textContent = `${freshness} Last updated: ${fmtDate(data.generatedAt)}${ageLabel}`;
   buildKpis(data.kpis || {});
   buildCharts(data);
   buildTables(data);
@@ -206,4 +210,11 @@ if (manualRefreshBtn) {
 
 triggerSparkle();
 loadData();
-setInterval(loadData, 60000);
+
+// Auto-refresh every 6 hours so cards stay up to date
+setInterval(() => {
+  loadData().then(() => {
+    const ts = document.getElementById('lastUpdated')?.textContent || '';
+    console.log('[auto-refresh]', ts);
+  }).catch(err => console.error('Auto-refresh failed:', err));
+}, 6 * 60 * 60 * 1000);

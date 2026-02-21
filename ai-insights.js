@@ -398,6 +398,93 @@ function buildAgentTable(analysis = {}) {
   body.innerHTML = rows;
 }
 
+function buildKeyInsights(metrics = {}, callAnalysis = {}) {
+  const target = document.getElementById('keyInsightsList');
+  if (!target) return;
+
+  const insights = [];
+  const zeroBucket = (callAnalysis.bucketSummary || []).find(b => b.bucket === '0s');
+  const totalCalls = callAnalysis.totalCalls ?? callAnalysis.sampleSize ?? 0;
+
+  if (zeroBucket) {
+    const zeroCount = totalCalls ? Math.round((zeroBucket.percent / 100) * totalCalls) : 0;
+    insights.push(
+      `<strong>Dialer efficiency:</strong> ${zeroBucket.percent.toFixed(1)}% of calls (${zeroCount}) never connect. Trim stale numbers or tweak retry logic to reclaim that bandwidth.`
+    );
+  } else {
+    insights.push('<strong>Dialer efficiency:</strong> Zero-duration share pending until the next call sync.');
+  }
+
+  const compliance = metrics.compliance || {};
+  const totalTouches = (compliance.called ?? 0) + (compliance.notCalled ?? 0) + (compliance.modifiedWithoutCall ?? 0);
+  if (totalTouches) {
+    insights.push(
+      `<strong>Compliance gap:</strong> ${compliance.called ?? 0} leads called vs ${compliance.notCalled ?? 0} not called and ${compliance.modifiedWithoutCall ?? 0} edited without a call. Wrap up the remaining ${compliance.notCalled ?? 0} follow-ups this shift.`
+    );
+  }
+
+  const retentionValues = metrics.retention?.values || [];
+  const retentionLabels = metrics.retention?.labels || [];
+  if (retentionValues.length) {
+    const maxValue = Math.max(...retentionValues);
+    const minValue = Math.min(...retentionValues);
+    const minIndex = retentionValues.indexOf(minValue);
+    const minLabel = retentionLabels[minIndex] || 'Unknown';
+    const lastValue = retentionValues[retentionValues.length - 1];
+    insights.push(
+      `<strong>Retention pulse:</strong> Peaked at ${maxValue}% this morning and bottomed at ${minValue}% around ${minLabel}. The latest read is ${lastValue}%, so plan a midday re-engagement push.`
+    );
+  }
+
+  const owners = metrics.ownerStats || [];
+  if (owners.length) {
+    const sorted = [...owners].sort((a, b) => (b.leadToDealConversionPercent ?? 0) - (a.leadToDealConversionPercent ?? 0));
+    const topOwner = sorted[0];
+    const bottomOwner = sorted[sorted.length - 1];
+    if (topOwner) {
+      insights.push(
+        `<strong>Top performer:</strong> ${topOwner.owner} turned ${topOwner.todaysLeads ?? 0} leads into ${topOwner.todaysDeals ?? 0} deals (${Number(topOwner.leadToDealConversionPercent ?? 0).toFixed(1)}%) with ${topOwner.taskCompletionPercent ?? 0}% task completion and ${topOwner.retentionPercent ?? 0}% retention. Capture and share their approach.`
+      );
+    }
+    if (bottomOwner) {
+      insights.push(
+        `<strong>Support needed:</strong> ${bottomOwner.owner} has ${bottomOwner.todaysLeads ?? 0} leads but ${bottomOwner.todaysDeals ?? 0} deals (${Number(bottomOwner.leadToDealConversionPercent ?? 0).toFixed(1)}%) and ${bottomOwner.taskCompletionPercent ?? 0}% task completion. Pairing with a top performer could help close their pipeline.`
+      );
+    }
+  }
+
+  const overdue = metrics.overdueFollowups || [];
+  if (overdue.length) {
+    const primary = overdue[0];
+    const others = overdue.slice(1, 3);
+    insights.push(
+      `<strong>Overdue follow-ups:</strong> ${primary.name} (${primary.owner}) is ${primary.minutesSinceCreated}m overdue. Also monitor ${others.map(o => `${o.name} ${o.minutesSinceCreated}m`).join(' and ') || 'no additional high gaps'} before they cool.`
+    );
+  }
+
+  const latestLeads = metrics.latestLeadsToday || [];
+  const totalLeads = latestLeads.length;
+  if (totalLeads) {
+    const rejected = latestLeads.filter(lead => ((lead.leadStatus || '') + ' ' + (lead.leadSubStatus || '')).toLowerCase().includes('reject'));
+    const reasonCounts = rejected.reduce((acc, lead) => {
+      const reason = lead.leadSubStatus || lead.leadStatus || 'Unknown';
+      acc[reason] = (acc[reason] || 0) + 1;
+      return acc;
+    }, {});
+    const topReasonEntry = Object.entries(reasonCounts).sort((a, b) => b[1] - a[1])[0];
+    const topReason = topReasonEntry ? `${topReasonEntry[0]} (${topReasonEntry[1]})` : 'N/A';
+    insights.push(
+      `<strong>Lead quality:</strong> ${rejected.length}/${totalLeads} leads are rejected today; top reason is ${topReason}. Capture the context in CRM comments before you archive them.`
+    );
+  }
+
+  if (!insights.length) {
+    insights.push('<strong>Key insights pending:</strong> waiting for CRM + call data to arrive.');
+  }
+
+  target.innerHTML = insights.map(item => `<li>${item}</li>`).join('');
+}
+
 function generateAgentInsightDetails(owner, zeroShare) {
   const pros = [];
   const cons = [];
@@ -457,6 +544,7 @@ function generateAgentInsightDetails(owner, zeroShare) {
 
 const DEFAULT_CALLS_FILE = 'data/bulk-call-analysis-7d-full.json';
 const DEFAULT_METRICS_FILE = 'data/metrics.json';
+const DEFAULT_DURATION_INSIGHTS_FILE = 'data/call-duration-insights.json';
 
 function callsFilePath() {
   const params = new URLSearchParams(window.location.search);
@@ -470,10 +558,61 @@ function metricsFilePath() {
   return `${overrideFile || DEFAULT_METRICS_FILE}?t=${Date.now()}`;
 }
 
+function durationInsightsFilePath() {
+  return `${DEFAULT_DURATION_INSIGHTS_FILE}?t=${Date.now()}`;
+}
+
+function buildDurationOutcomeSection(agents = []) {
+  const kpisEl = document.getElementById('durationOutcomeKpis');
+  const bodyEl = document.getElementById('durationOutcomeBody');
+  if (!kpisEl || !bodyEl) return;
+
+  const totalAgents = agents.length;
+  const agentsWithSweetSpot = agents.filter(a => a.sweetSpot && a.sweetSpot.score > 0).length;
+  const bestAgent = [...agents].sort((a, b) => (b.sweetSpot?.score ?? 0) - (a.sweetSpot?.score ?? 0))[0];
+  const avgConvRate = agents.length
+    ? (agents.reduce((sum, a) => sum + (a.topConversion?.rate ?? 0), 0) / agents.length * 100).toFixed(1)
+    : '0.0';
+
+  kpisEl.innerHTML = [
+    ['Agents Analyzed', totalAgents],
+    ['With Sweet Spot', agentsWithSweetSpot],
+    ['Top Sweet Spot', bestAgent ? `${bestAgent.agent} (${bestAgent.sweetSpot?.bucket || '--'})` : '--'],
+    ['Avg Best Conv Rate', `${avgConvRate}%`]
+  ].map(([label, value]) => `
+    <div class="kpi">
+      <div class="label">${label}</div>
+      <div class="value">${value}</div>
+    </div>
+  `).join('');
+
+  bodyEl.innerHTML = agents.map(agent => {
+    const sweetBucket = agent.sweetSpot?.bucket || '--';
+    const convBucket = agent.topConversion?.bucket || '--';
+    const convRate = agent.topConversion?.rate != null ? `${(agent.topConversion.rate * 100).toFixed(1)}%` : '--';
+    const rejBucket = agent.topRejection?.bucket || '--';
+    const rejRate = agent.topRejection?.rate != null ? `${(agent.topRejection.rate * 100).toFixed(1)}%` : '--';
+    const breakdown = (agent.bucketDetails || []).map(b =>
+      `${b.bucket}: ${b.phones}ph, ${b.converted}conv, ${b.rejected}rej`
+    ).join(' | ');
+    return `
+      <tr>
+        <td>${agent.agent}</td>
+        <td><strong>${sweetBucket}</strong></td>
+        <td>${convBucket}</td>
+        <td>${convRate}</td>
+        <td>${rejBucket}</td>
+        <td>${rejRate}</td>
+        <td><small>${breakdown || 'No data'}</small></td>
+      </tr>`;
+  }).join('');
+}
+
 async function loadAiInsights() {
-  const [callsRes, metricsRes] = await Promise.all([
+  const [callsRes, metricsRes, durationRes] = await Promise.all([
     fetch(callsFilePath()),
-    fetch(metricsFilePath())
+    fetch(metricsFilePath()),
+    fetch(durationInsightsFilePath()).catch(() => null)
   ]);
 
   if (!callsRes.ok) throw new Error("Unable to load call analytics");
@@ -481,6 +620,7 @@ async function loadAiInsights() {
 
   const callsPayload = await callsRes.json();
   const metrics = await metricsRes.json();
+  const durationInsights = durationRes && durationRes.ok ? await durationRes.json() : [];
 
   const callAnalysis = callsPayload.analysis || {};
   const sampleSize = callsPayload.sampleSize ?? callAnalysis.totalCalls ?? 0;
@@ -488,8 +628,11 @@ async function loadAiInsights() {
     ? callAnalysis.generatedAt
     : new Date().toISOString();
 
-  document.getElementById("aiLastUpdated").textContent = `Last updated: ${fmtDate(updatedAt)}`;
-  document.getElementById("aiMeta").textContent = `Live aggregation of the most recent ${sampleSize.toLocaleString()} calls.`;
+  const ageMinutes = Math.round((Date.now() - new Date(updatedAt).getTime()) / 60000);
+  const freshness = ageMinutes <= 5 ? '🟢' : ageMinutes <= 30 ? '🟡' : '🔴';
+  const ageLabel = ageMinutes <= 1 ? 'just now' : ageMinutes < 60 ? `${ageMinutes}m ago` : `${(ageMinutes / 60).toFixed(1)}h ago`;
+  document.getElementById("aiLastUpdated").textContent = `${freshness} Last updated: ${fmtDate(updatedAt)} (${ageLabel})`;
+  document.getElementById("aiMeta").textContent = `Live aggregation of the most recent ${sampleSize.toLocaleString()} calls — auto-refreshes every 6h.`;
 
   // Call analytics (from bulk-call-analysis)
   buildKpis(callAnalysis, sampleSize);
@@ -504,11 +647,15 @@ async function loadAiInsights() {
   buildTalkTime(callAnalysis);
   buildTalkLeaderboard(callAnalysis);
   buildAgentTable(callAnalysis);
+  buildKeyInsights(metrics, callAnalysis);
 
   // CRM-derived analytics (Repeat Loss, Engagement, Win-Back) from metrics.json
   buildRepeatLossSection(metrics);
   buildEngagementSection(metrics);
   buildWinBackSection(metrics);
+
+  // Call duration vs outcome insights
+  buildDurationOutcomeSection(Array.isArray(durationInsights) ? durationInsights : []);
 }
 
 const aiRefreshBtn = document.getElementById("aiRefreshBtn");
@@ -529,3 +676,8 @@ if (aiRefreshBtn) {
 }
 
 loadAiInsights().catch(err => console.error(err));
+
+// Auto-refresh every 6 hours to keep cards up to date after data fetches
+setInterval(() => {
+  loadAiInsights().catch(err => console.error('Auto-refresh failed:', err));
+}, 6 * 60 * 60 * 1000);

@@ -45,6 +45,12 @@
           </div>
         </header>
 
+        <section id="keyInsightsSection" class="card">
+          <h3>Key AI Highlights</h3>
+          <p class="meta">Summaries pulled from CRM KPIs + call analytics so you can act fast.</p>
+          <ul class="insight-list" id="keyInsightsList"></ul>
+        </section>
+
         <section class="kpis" id="aiKpiGrid"></section>
 
         <section class="grid two-col">
@@ -115,6 +121,28 @@
           <h3>Repeat Loss Audit</h3>
           <p class="meta">Uses rejected leads + repeat identifiers to highlight repeat loss patterns.</p>
           <div id="repeatLossContent" class="insight-grid"></div>
+        </section>
+
+        <section id="durationOutcomeSection" class="card">
+          <h3>Call Duration vs Outcome Intelligence</h3>
+          <p class="meta">Maps call duration buckets to lead outcomes (converted / rejected) per agent — find each rep's sweet spot.</p>
+          <div id="durationOutcomeKpis" class="kpis"></div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Agent</th>
+                  <th>Sweet Spot</th>
+                  <th>Best Conversion Bucket</th>
+                  <th>Conv. Rate</th>
+                  <th>Worst Rejection Bucket</th>
+                  <th>Rej. Rate</th>
+                  <th>Bucket Breakdown</th>
+                </tr>
+              </thead>
+              <tbody id="durationOutcomeBody"></tbody>
+            </table>
+          </div>
         </section>
 
         <section id="engagementSection" class="card">
