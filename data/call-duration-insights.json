@@ -1,5 +1,87 @@
 [
   {
+    "agent": "Neha Aziz",
+    "topConversion": {
+      "bucket": "60-120s",
+      "rate": 1,
+      "count": 2
+    },
+    "topRejection": {
+      "bucket": "<60s",
+      "rate": 0.5,
+      "count": 1
+    },
+    "sweetSpot": {
+      "bucket": "60-120s",
+      "score": 1,
+      "conversionRate": 1,
+      "rejectionRate": 0
+    },
+    "bucketDetails": [
+      {
+        "bucket": "60-120s",
+        "phones": 2,
+        "converted": 2,
+        "rejected": 0,
+        "conversionRate": 1,
+        "rejectionRate": 0
+      },
+      {
+        "bucket": "<60s",
+        "phones": 2,
+        "converted": 0,
+        "rejected": 1,
+        "conversionRate": 0,
+        "rejectionRate": 0.5
+      }
+    ]
+  },
+  {
+    "agent": "Anuj Polladia",
+    "topConversion": {
+      "bucket": "<60s",
+      "rate": 0.5,
+      "count": 1
+    },
+    "topRejection": {
+      "bucket": "<60s",
+      "rate": 1,
+      "count": 2
+    },
+    "sweetSpot": {
+      "bucket": "<60s",
+      "score": -0.5,
+      "conversionRate": 0.5,
+      "rejectionRate": 1
+    },
+    "bucketDetails": [
+      {
+        "bucket": "<60s",
+        "phones": 2,
+        "converted": 1,
+        "rejected": 2,
+        "conversionRate": 0.5,
+        "rejectionRate": 1
+      },
+      {
+        "bucket": "180-300s",
+        "phones": 1,
+        "converted": 0,
+        "rejected": 1,
+        "conversionRate": 0,
+        "rejectionRate": 1
+      },
+      {
+        "bucket": "60-120s",
+        "phones": 1,
+        "converted": 0,
+        "rejected": 1,
+        "conversionRate": 0,
+        "rejectionRate": 1
+      }
+    ]
+  },
+  {
     "agent": "Rani KJ",
     "topConversion": {
       "bucket": "<60s",
@@ -70,43 +152,6 @@
         "rejected": 1,
         "conversionRate": 0,
         "rejectionRate": 1
-      }
-    ]
-  },
-  {
-    "agent": "Anuj Polladia",
-    "topConversion": {
-      "bucket": "<60s",
-      "rate": 0,
-      "count": 0
-    },
-    "topRejection": {
-      "bucket": "<60s",
-      "rate": 1,
-      "count": 2
-    },
-    "sweetSpot": {
-      "bucket": "60-120s",
-      "score": 0,
-      "conversionRate": 0,
-      "rejectionRate": 0
-    },
-    "bucketDetails": [
-      {
-        "bucket": "<60s",
-        "phones": 2,
-        "converted": 0,
-        "rejected": 2,
-        "conversionRate": 0,
-        "rejectionRate": 1
-      },
-      {
-        "bucket": "60-120s",
-        "phones": 1,
-        "converted": 0,
-        "rejected": 0,
-        "conversionRate": 0,
-        "rejectionRate": 0
       }
     ]
   },
