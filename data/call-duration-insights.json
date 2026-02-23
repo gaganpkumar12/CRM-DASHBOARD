@@ -2,12 +2,12 @@
   {
     "agent": "Rith Tamang",
     "topConversion": {
-      "bucket": "<60s",
+      "bucket": "60-120s",
       "rate": 0,
       "count": 0
     },
     "topRejection": {
-      "bucket": "180-300s",
+      "bucket": "60-120s",
       "rate": 1,
       "count": 1
     },
@@ -18,6 +18,14 @@
       "rejectionRate": 0.16666666666666666
     },
     "bucketDetails": [
+      {
+        "bucket": "60-120s",
+        "phones": 1,
+        "converted": 0,
+        "rejected": 1,
+        "conversionRate": 0,
+        "rejectionRate": 1
+      },
       {
         "bucket": "<60s",
         "phones": 6,
