@@ -49,9 +49,9 @@ if %ERRORLEVEL% NEQ 0 (
 set EXIT_CODE=0
 >> %LOG_FILE% echo All data updates finished at %date% %time%
 
-REM --- Auto-push updated data to GitHub Pages ---
->> %LOG_FILE% echo Pushing data to GitHub...
-git add data/ >> %LOG_FILE% 2>&1
+REM --- Auto-push ALL changes to GitHub Pages ---
+>> %LOG_FILE% echo Pushing changes to GitHub...
+git add -A >> %LOG_FILE% 2>&1
 git diff --cached --quiet
 if %ERRORLEVEL% NEQ 0 (
   git commit -m "data: auto-update %date% %time%" >> %LOG_FILE% 2>&1

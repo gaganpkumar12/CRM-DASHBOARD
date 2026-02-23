@@ -8,3 +8,8 @@
 - This README is the quick reference for the automation in case this session context isn’t available.
 - When you type `/refresh dashboard`, run `refresh-dashboard.bat` (it simply calls `run-dashboard-update.bat`, so the command is case-insensitive shorthand for kicking off the update pipeline).
 - I’m writing this so it’s preserved in the repo: if this session memory disappears, the README contains the instructions you asked to remember.
+
+## Dashboard Update Flow
+- Run `run-dashboard-update.bat` to pull the freshest CRM data and rebuild the analytics assets.
+- Perform any manual analysis and update the dashboard/AI insights so the new insights are captured in HTML/JS content.
+- After the analytic updates are complete, rerun `run-dashboard-update.bat` so the final dataset and dashboard files (including AI insights) are rebuilt and pushed.

@@ -398,6 +398,41 @@ function buildAgentTable(analysis = {}) {
   body.innerHTML = rows;
 }
 
+function buildSignalGrid(metrics = {}, callAnalysis = {}) {
+  const container = document.getElementById('aiSignalGrid');
+  if (!container) return;
+  const kpis = metrics.kpis || {};
+  const sampleCalls = callAnalysis.sampleSize ?? callAnalysis.totalCalls ?? 0;
+  const zeroBucket = (callAnalysis.bucketSummary || []).find(b => b.bucket === '0s');
+  const compliance = metrics.compliance || {};
+  const ncProgress = metrics.ncLadder?.progression || {};
+  const ncTime = metrics.ncTime || {};
+  const signalCards = [
+    {
+      title: 'Today\'s CRM throughput',
+      copy: `${kpis.todaysLeadsCount ?? 0} leads · ${kpis.totalDealsCount ?? 0} deals · ${Number(kpis.leadToDealConversionPercent ?? 0).toFixed(1)}% conversion`
+    },
+    {
+      title: 'Task & follow-up health',
+      copy: `${kpis.totalTasksCount ?? 0} tasks · ${compliance.called ?? 0} called / ${compliance.notCalled ?? 0} uncalled · ${kpis.taskCompletionPercent?.toFixed(1) ?? 0}% done`
+    },
+    {
+      title: 'Call sample snapshot',
+      copy: `${sampleCalls.toLocaleString()} recent calls · ${zeroBucket ? zeroBucket.percent.toFixed(1) : '0.0'}% zero-duration · ${percent(callAnalysis.connectionRatePercent ?? 0)} connect rate`
+    },
+    {
+      title: 'NC funnel pulse',
+      copy: `NC1→NC2 ${ncProgress.nc1ToNc2Percent?.toFixed(1) ?? '0.0'}% · NC2→NC3 ${ncProgress.nc2ToNc3Percent?.toFixed(1) ?? '0.0'}% · ideal hour ${ncTime.idealHour || 'TBD'}`
+    }
+  ];
+  container.innerHTML = signalCards.map(card => `
+    <div class="insight-block">
+      <strong>${card.title}</strong>
+      <p>${card.copy}</p>
+    </div>
+  `).join('');
+}
+
 function buildKeyInsights(metrics = {}, callAnalysis = {}) {
   const target = document.getElementById('keyInsightsList');
   if (!target) return;
@@ -634,6 +669,7 @@ async function loadAiInsights() {
   document.getElementById("aiLastUpdated").textContent = `${freshness} Last updated: ${fmtDate(updatedAt)} (${ageLabel})`;
   document.getElementById("aiMeta").textContent = `Live aggregation of the most recent ${sampleSize.toLocaleString()} calls — auto-refreshes every 6h.`;
 
+  buildSignalGrid(metrics, callAnalysis);
   // Call analytics (from bulk-call-analysis)
   buildKpis(callAnalysis, sampleSize);
   buildList("aiBucketList", (callAnalysis.bucketSummary || []).map(item => ({
