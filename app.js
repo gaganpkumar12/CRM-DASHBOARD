@@ -15,21 +15,22 @@ function fmtDate(s) {
 
 function buildKpis(kpis) {
   const map = [
-    ["Today's Leads", kpis.todaysLeadsCount ?? 0],
-    ["NC 1 Leads (30d)", kpis.nc1Count ?? 0],
-    ["NC 2 Leads (30d)", kpis.nc2Count ?? 0],
-    ["NC 3 Leads (30d)", kpis.nc3Count ?? 0],
-    ["Lead to Deal Conversion", `${Number(kpis.leadToDealConversionPercent ?? 0).toFixed(1)}%`],
-    ["Total Deals", kpis.totalDealsCount ?? 0],
-    ["Total Tasks", kpis.totalTasksCount ?? 0],
-    ["Task Completion", `${Number(kpis.taskCompletionPercent ?? 0).toFixed(1)}%`],
-    ["Avg Call Duration", `${Math.round(kpis.avgCallDurationSec ?? 0)} sec`]
+    ["Today's Leads", kpis.todaysLeadsCount ?? 0, "New leads that came in today — your raw pipeline volume."],
+    ["NC 1 Leads (7d)", kpis.nc1Count ?? 0, "Leads with 1 failed contact attempt in the last 7 days."],
+    ["NC 2 Leads (7d)", kpis.nc2Count ?? 0, "Leads with 2 failed contact attempts in the last 7 days — follow-up urgency rising."],
+    ["NC 3 Leads (30d)", kpis.nc3Count ?? 0, "Leads with 3+ failed attempts — at risk of going cold."],
+    ["Lead to Deal Conversion", `${Number(kpis.leadToDealConversionPercent ?? 0).toFixed(1)}%`, "% of leads converted to deals — measures sales effectiveness."],
+    ["Total Deals", kpis.totalDealsCount ?? 0, "Active deals created from today's lead pipeline."],
+    ["Total Tasks", kpis.totalTasksCount ?? 0, "All tasks assigned to the team today (calls, follow-ups, etc.)."],
+    ["Task Completion", `${Number(kpis.taskCompletionPercent ?? 0).toFixed(1)}%`, "% of today's tasks completed — tracks team discipline."],
+    ["Avg Call Duration", `${Math.round(kpis.avgCallDurationSec ?? 0)} sec`, "Mean call length — longer usually means deeper discovery."]
   ];
 
-  document.getElementById("kpiGrid").innerHTML = map.map(([label, value]) => `
+  document.getElementById("kpiGrid").innerHTML = map.map(([label, value, desc]) => `
     <div class="kpi">
       <div class="label">${label}</div>
       <div class="value">${value}</div>
+      <div class="kpi-desc">${desc}</div>
     </div>
   `).join("");
 }
@@ -95,12 +96,12 @@ function buildCharts(data) {
   const ladder = data.ncLadder || {};
   document.getElementById("ncLadderTitle").textContent = `NC Ladder Intelligence (Last ${Number(ladder.lookbackDays ?? 30)} Days)`;
   document.getElementById("ncLadderKpis").innerHTML = `
-    <div class="kpi"><div class="label">NC1 → NC2 Progression</div><div class="value">${Number(ladder.progression?.nc1ToNc2Percent ?? 0).toFixed(1)}%</div></div>
-    <div class="kpi"><div class="label">NC2 → NC3 Progression</div><div class="value">${Number(ladder.progression?.nc2ToNc3Percent ?? 0).toFixed(1)}%</div></div>
-    <div class="kpi"><div class="label">Avg Hrs NC1 → NC2</div><div class="value">${Number(ladder.progression?.avgHoursNc1ToNc2 ?? 0).toFixed(1)}h</div></div>
-    <div class="kpi"><div class="label">Avg Hrs NC2 → NC3</div><div class="value">${Number(ladder.progression?.avgHoursNc2ToNc3 ?? 0).toFixed(1)}h</div></div>
-    <div class="kpi"><div class="label">Overdue NC1 (SLA)</div><div class="value">${ladder.sla?.overdueNc1 ?? 0}</div></div>
-    <div class="kpi"><div class="label">Overdue NC2 (SLA)</div><div class="value">${ladder.sla?.overdueNc2 ?? 0}</div></div>
+    <div class="kpi"><div class="label">NC1 → NC2 Progression</div><div class="value">${Number(ladder.progression?.nc1ToNc2Percent ?? 0).toFixed(1)}%</div><div class="kpi-desc">% of NC1 leads that moved to NC2 — measures first retry success.</div></div>
+    <div class="kpi"><div class="label">NC2 → NC3 Progression</div><div class="value">${Number(ladder.progression?.nc2ToNc3Percent ?? 0).toFixed(1)}%</div><div class="kpi-desc">% of NC2 leads that fell to NC3 — higher = more leads slipping away.</div></div>
+    <div class="kpi"><div class="label">Avg Hrs NC1 → NC2</div><div class="value">${Number(ladder.progression?.avgHoursNc1ToNc2 ?? 0).toFixed(1)}h</div><div class="kpi-desc">Average time before a lead goes from 1st to 2nd missed contact.</div></div>
+    <div class="kpi"><div class="label">Avg Hrs NC2 → NC3</div><div class="value">${Number(ladder.progression?.avgHoursNc2ToNc3 ?? 0).toFixed(1)}h</div><div class="kpi-desc">Average time from 2nd to 3rd miss — speed here prevents cold leads.</div></div>
+    <div class="kpi"><div class="label">Overdue NC1 (SLA)</div><div class="value">${ladder.sla?.overdueNc1 ?? 0}</div><div class="kpi-desc">NC1 leads past the SLA window — need immediate callback.</div></div>
+    <div class="kpi"><div class="label">Overdue NC2 (SLA)</div><div class="value">${ladder.sla?.overdueNc2 ?? 0}</div><div class="kpi-desc">NC2 leads past SLA — last chance before they go cold.</div></div>
   `;
 
   ncFunnelChart = new Chart(document.getElementById("ncFunnelChart"), {

@@ -45,35 +45,47 @@
           </div>
         </header>
 
-        <section class="kpis" id="kpiGrid"></section>
+        <section>
+          <div class="card" style="margin-bottom:10px">
+            <h3>CRM KPIs</h3>
+            <p class="meta">Today's headline numbers from Zoho CRM — leads, deals, tasks, and call stats at a glance.</p>
+          </div>
+          <div class="kpis" id="kpiGrid"></div>
+        </section>
 
         <section class="grid two-col">
           <article class="card">
             <h3>Today Retention Trend (Hourly, Real)</h3>
+            <p class="meta">Tracks what percentage of today's leads have been contacted each hour. Spot engagement dips early so you can push mid-day call blitzes before leads go cold.</p>
             <canvas id="retentionChart"></canvas>
           </article>
           <article class="card">
             <h3>Call Duration (Avg Sec) & Volume</h3>
+            <p class="meta">Overlays call count (bars) with average call duration (line) by hour. Helps you find when reps are making lots of short calls vs. fewer but deeper conversations.</p>
             <canvas id="callChart"></canvas>
           </article>
         </section>
 
         <section class="card">
           <h3 id="ncLadderTitle">NC Ladder Intelligence</h3>
+          <p class="meta">Tracks how leads progress through Not-Connected stages (NC1 → NC2 → NC3). Use this to monitor follow-up velocity, spot SLA breaches, and find the ideal callback windows per stage.</p>
           <div class="kpis" id="ncLadderKpis"></div>
           <div class="grid two-col">
             <article class="card">
               <h4>NC Funnel (Cumulative)</h4>
+              <p class="meta">Total leads that have ever reached each NC stage. Shows overall funnel volume and where most leads stall.</p>
               <canvas id="ncFunnelChart"></canvas>
             </article>
             <article class="card">
               <h4>NC Funnel (Direct Stage Counts)</h4>
+              <p class="meta">Leads currently sitting at each NC stage right now. Reveals the real-time backlog waiting for follow-up at every step.</p>
               <canvas id="ncFunnelDirectChart"></canvas>
             </article>
           </div>
           <div class="grid one-col">
             <article class="card">
               <h4>Ideal Callback Time by Stage</h4>
+              <p class="meta">Best hour-of-day to call back leads at each NC stage, scored by historical connect rates. Schedule retry cadences around these windows.</p>
               <div class="table-wrap">
                 <table>
                   <thead>
@@ -88,7 +100,8 @@
 
         <section class="grid two-col">
           <article class="card">
-            <h3>Latest Leads </h3>
+            <h3>Latest Leads</h3>
+            <p class="meta">Live feed of today's incoming leads with call status. Quickly scan for uncalled leads, ownership gaps, or status issues that need immediate action.</p>
             <div class="table-wrap leads-scroll">
               <table>
                 <thead>
@@ -102,6 +115,7 @@
           </article>
           <article class="card">
             <h3>Owner-wise Retention (Today)</h3>
+            <p class="meta">Each rep's call-back rate on today's assigned leads. Low retention % means leads are sitting untouched — use this to hold reps accountable.</p>
             <div class="table-wrap">
               <table>
                 <thead>
@@ -117,7 +131,8 @@
 
         <section class="grid one-col">
           <article class="card">
-            <h3>Owner-wise Performance </h3>
+            <h3>Owner-wise Performance</h3>
+            <p class="meta">Full rep scorecard — lead volume, deal conversions, task completion, and retention side-by-side. Compare reps at a glance and spot who needs coaching.</p>
             <div class="table-wrap">
               <table>
                 <thead>

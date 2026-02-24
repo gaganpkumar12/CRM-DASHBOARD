@@ -15,18 +15,19 @@ function buildKpis(analysis = {}, sampleSize = 0) {
   const inboundShare = (analysis.typeSummary || []).find(t => t.type === "Inbound")?.percent ?? 0;
 
   const kpis = [
-    ["Total Calls", sampleSize],
-    ["Connected Calls", analysis.connectedCalls ?? 0],
-    ["Avg Duration", `${Number(analysis.avgDurationSec ?? 0).toFixed(1)} s`],
-    ["Median Duration", `${Number(analysis.medianDurationSec ?? 0).toFixed(0)} s`],
-    ["Zero-duration Share", percent(zeroShare)],
-    ["Outbound vs Inbound", `${percent(outboundShare)} / ${percent(inboundShare)}`]
+    ["Total Calls", sampleSize, "Total calls in the analysed sample — shows overall dialling volume."],
+    ["Connected Calls", analysis.connectedCalls ?? 0, "Calls that were actually answered — the real pipeline fuel."],
+    ["Avg Duration", `${Number(analysis.avgDurationSec ?? 0).toFixed(1)} s`, "Mean call length across all calls — higher = deeper conversations."],
+    ["Median Duration", `${Number(analysis.medianDurationSec ?? 0).toFixed(0)} s`, "Middle-point duration — less skewed by outliers than the average."],
+    ["Zero-duration Share", percent(zeroShare), "% of calls with 0 s talk time — flags dialer or list-quality issues."],
+    ["Outbound vs Inbound", `${percent(outboundShare)} / ${percent(inboundShare)}`, "Ratio of outbound to inbound calls — gauge proactive vs reactive effort."]
   ];
 
-  document.getElementById("aiKpiGrid").innerHTML = kpis.map(([label, value]) => `
+  document.getElementById("aiKpiGrid").innerHTML = kpis.map(([label, value, desc]) => `
     <div class="kpi">
       <div class="label">${label}</div>
       <div class="value">${value}</div>
+      <div class="kpi-desc">${desc}</div>
     </div>
   `).join("");
 }
@@ -610,14 +611,15 @@ function buildDurationOutcomeSection(agents = []) {
     : '0.0';
 
   kpisEl.innerHTML = [
-    ['Agents Analyzed', totalAgents],
-    ['With Sweet Spot', agentsWithSweetSpot],
-    ['Top Sweet Spot', bestAgent ? `${bestAgent.agent} (${bestAgent.sweetSpot?.bucket || '--'})` : '--'],
-    ['Avg Best Conv Rate', `${avgConvRate}%`]
-  ].map(([label, value]) => `
+    ['Agents Analyzed', totalAgents, 'Number of agents with enough call data to evaluate.'],
+    ['With Sweet Spot', agentsWithSweetSpot, 'Agents where a specific call-length bucket converts best.'],
+    ['Top Sweet Spot', bestAgent ? `${bestAgent.agent} (${bestAgent.sweetSpot?.bucket || '--'})` : '--', 'Agent + bucket combo with the highest conversion score.'],
+    ['Avg Best Conv Rate', `${avgConvRate}%`, 'Average top-bucket conversion rate across all agents.']
+  ].map(([label, value, desc]) => `
     <div class="kpi">
       <div class="label">${label}</div>
       <div class="value">${value}</div>
+      <div class="kpi-desc">${desc}</div>
     </div>
   `).join('');
 

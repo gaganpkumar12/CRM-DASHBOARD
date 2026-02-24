@@ -56,15 +56,23 @@
           <ul class="insight-list" id="keyInsightsList"></ul>
         </section>
 
-        <section class="kpis" id="aiKpiGrid"></section>
+        <section id="aiKpiSection">
+          <div class="card" style="margin-bottom:10px">
+            <h3>Call Analytics KPIs</h3>
+            <p class="meta">Core metrics from the latest call sample — use these to gauge dialer health, connection quality, and call volume at a glance.</p>
+          </div>
+          <div class="kpis" id="aiKpiGrid"></div>
+        </section>
 
         <section class="grid two-col">
           <article class="card">
             <h3>Duration Mix (All Calls)</h3>
+            <p class="meta">Breaks every call into time buckets (0 s, 1–30 s, 31–60 s, etc.). Spot how many calls never connect vs. meaningful conversations — helps tune dialer settings and rep pacing.</p>
             <ul class="insight-list" id="aiBucketList"></ul>
           </article>
           <article class="card">
             <h3>Status Distribution</h3>
+            <p class="meta">Shows how calls ended (answered, missed, voicemail, etc.). Use this to identify the share of productive calls vs. wasted attempts so you can optimise retry strategies.</p>
             <ul class="insight-list" id="aiStatusList"></ul>
           </article>
         </section>
@@ -72,10 +80,12 @@
         <section class="grid two-col">
           <article class="card">
             <h3>Overall Talk Time</h3>
+            <p class="meta">Hourly bar chart of total talk minutes across all reps. Reveals peak calling windows and dead zones — schedule shifts and campaigns around the busiest hours.</p>
             <canvas id="talkTimeChart"></canvas>
           </article>
           <article class="card">
             <h3>Talk Time Summary</h3>
+            <p class="meta">Quick roll-up of cumulative talk hours, average talk per connected call, and the single busiest hour. A fast health-check for daily call output.</p>
             <ul class="insight-list" id="talkTimeStats"></ul>
           </article>
         </section>
