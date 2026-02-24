@@ -35,6 +35,44 @@ function buildKpis(kpis) {
   `).join("");
 }
 
+function buildCategoryConversionCards(items) {
+  const grid = document.getElementById("categoryConversionGrid");
+  if (!grid) return;
+  if (!items || !items.length) {
+    grid.innerHTML = `
+      <div class="kpi">
+        <div class="label">No category data</div>
+        <div class="value">--</div>
+        <div class="kpi-desc">Add category conversion metrics to metrics.json to see these cards.</div>
+      </div>`;
+    return;
+  }
+
+  grid.innerHTML = items.map(item => {
+    const conversion = Number(item.conversionPercent ?? 0).toFixed(1);
+    const leads = item.leads ?? 0;
+    const deals = item.deals ?? 0;
+    return `
+      <div class="kpi">
+        <div class="label">${item.category ?? 'Category'}</div>
+        <div class="value">${conversion}%</div>
+        <div class="kpi-desc">${deals} deals / ${leads} leads</div>
+      </div>`;
+  }).join("");
+}
+
+  grid.innerHTML = items.map(item => {
+    const leads = item.leads ?? 0;
+    const trend = item.trend ?? 'steady';
+    return `
+      <div class="kpi">
+        <div class="label">${item.category ?? 'Category'}</div>
+        <div class="value">${leads}</div>
+        <div class="kpi-desc">Today’s leads · Trend: ${trend}</div>
+      </div>`;
+  }).join("");
+}
+
 function destroyCharts() {
   [retentionChart, callChart, complianceChart, ncTrendChart, ncFunnelChart, ncFunnelDirectChart].forEach(c => c && c.destroy());
 }
@@ -190,6 +228,8 @@ async function loadData() {
   const ageLabel = ageMinutes === null ? '' : ageMinutes <= 1 ? ' (just now)' : ageMinutes < 60 ? ` (${ageMinutes}m ago)` : ` (${(ageMinutes / 60).toFixed(1)}h ago)`;
   document.getElementById("lastUpdated").textContent = `${freshness} Last updated: ${fmtDate(data.generatedAt)}${ageLabel}`;
   buildKpis(data.kpis || {});
+  const conversions = data.categoryConversions || data.kpis?.categoryConversions || [];
+  buildCategoryConversionCards(conversions);
   buildCharts(data);
   buildTables(data);
 }
