@@ -61,17 +61,6 @@ function buildCategoryConversionCards(items) {
   }).join("");
 }
 
-  grid.innerHTML = items.map(item => {
-    const leads = item.leads ?? 0;
-    const trend = item.trend ?? 'steady';
-    return `
-      <div class="kpi">
-        <div class="label">${item.category ?? 'Category'}</div>
-        <div class="value">${leads}</div>
-        <div class="kpi-desc">Today’s leads · Trend: ${trend}</div>
-      </div>`;
-  }).join("");
-
 
 function destroyCharts() {
   [retentionChart, callChart, complianceChart, ncTrendChart, ncFunnelChart, ncFunnelDirectChart].forEach(c => c && c.destroy());
