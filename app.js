@@ -71,7 +71,7 @@ function buildCategoryConversionCards(items) {
         <div class="kpi-desc">Today’s leads · Trend: ${trend}</div>
       </div>`;
   }).join("");
-}
+
 
 function destroyCharts() {
   [retentionChart, callChart, complianceChart, ncTrendChart, ncFunnelChart, ncFunnelDirectChart].forEach(c => c && c.destroy());

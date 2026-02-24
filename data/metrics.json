@@ -2434,5 +2434,53 @@
       "taskCompletionPercent": 0,
       "retentionPercent": 100
     }
+  ],
+  "categoryConversions": [
+    {
+      "category": "Deep Cleaning",
+      "leads": 34,
+      "deals": 15,
+      "conversionPercent": 44.1
+    },
+    {
+      "category": "Painting",
+      "leads": 21,
+      "deals": 8,
+      "conversionPercent": 38.1
+    },
+    {
+      "category": "Waterproofing",
+      "leads": 12,
+      "deals": 5,
+      "conversionPercent": 41.7
+    },
+    {
+      "category": "Renovation",
+      "leads": 9,
+      "deals": 2,
+      "conversionPercent": 22.2
+    }
+  ],
+  "categoryLeads": [
+    {
+      "category": "Deep Cleaning",
+      "leads": 34,
+      "trend": "up"
+    },
+    {
+      "category": "Painting",
+      "leads": 21,
+      "trend": "steady"
+    },
+    {
+      "category": "Waterproofing",
+      "leads": 12,
+      "trend": "up"
+    },
+    {
+      "category": "Renovation",
+      "leads": 9,
+      "trend": "down"
+    }
   ]
 }
