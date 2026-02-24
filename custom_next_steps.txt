@@ -1,0 +1,227 @@
+Call 543743000060633586 (Outgoing call to Yash (+919986929238)) owner: Rani KJ
+  1) Confirm the next step with customer (call/task) and log it
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060637610 (Outgoing call to Sidhartha (+919966077667)) owner: Rani KJ
+  1) Lock in a technician visit slot and share ETA in CRM note
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060641574 (Incoming call from Rahul Gowda (+919902342637)) owner: Shahin BR
+  1) Lock in a technician visit slot and share ETA in CRM note
+  2) Schedule the promised callback and mention time in note
+
+Call 543743000060634536 (Outgoing call to Pranjal (+919971797444)) owner: Rani KJ
+  1) Confirm the next step with customer (call/task) and log it
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060655402 (Incoming call from Priyanka (+919535847270)) owner: Rith Tamang
+  1) Confirm pricing details and get written approval or SMS confirmation
+  2) Lock in a technician visit slot and share ETA in CRM note
+
+Call 543743000060697171 (Outgoing call to Sharan (+919663530396)) owner: Neha Aziz
+  1) Confirm pricing details and get written approval or SMS confirmation
+  2) Address the concern, offer a recovery step, and document satisfaction
+
+Call 543743000060621623 (Incoming call from Vinu (+919840714144)) owner: Himasri
+  1) Schedule the promised callback and mention time in note
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060628634 (Incoming call from No answer No answer (+919500109274)) owner: Rith Tamang
+  1) Confirm pricing details and get written approval or SMS confirmation
+  2) Address the concern, offer a recovery step, and document satisfaction
+
+Call 543743000060639546 (Outgoing call to Sidhartha (+919966077667)) owner: Rani KJ
+  1) Confirm the next step with customer (call/task) and log it
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060619603 (Incoming call from Sharan (+919663530396)) owner: Himasri
+  1) Schedule the promised callback and mention time in note
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060659389 (Outgoing call to Sidhartha (+919966077667)) owner: Rani KJ
+  1) Confirm the next step with customer (call/task) and log it
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060610550 (Outgoing call to Jyoti (+919380930150)) owner: Shahin BR
+  1) Schedule the promised callback and mention time in note
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060651484 (Outgoing call to Sharan (+919663530396)) owner: Neha Aziz
+  1) Address the concern, offer a recovery step, and document satisfaction
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060613643 (Outgoing call to Aritro Maity (+919330155060)) owner: Neha Aziz
+  1) Provide the requested info/service and confirm booking/outcome
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060637600 (Incoming call from Incoming Call Lead (+919995204438)) owner: Anuj Polladia
+  1) Address the concern, offer a recovery step, and document satisfaction
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060597579 (Outgoing call to Incoming Call Lead (+919853046234)) owner: Rani KJ
+  1) Confirm pricing details and get written approval or SMS confirmation
+  2) Address the concern, offer a recovery step, and document satisfaction
+
+Call 543743000060678327 (Outgoing call to Rahul Gowda (+919902342637)) owner: Himasri
+  1) Confirm the next step with customer (call/task) and log it
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060661458 (Outgoing call to Incoming Call Lead (+918722223344)) owner: Shahin BR
+  1) Confirm the next step with customer (call/task) and log it
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060701015 (Outgoing call to Incoming Call Lead (+919494413348)) owner: Neha Aziz
+  1) Clarify issue, propose fix, and voluntarily follow up with proof
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060609623 (Incoming call from Mithali Mithali (+919900095439)) owner: Himasri
+  1) Confirm pricing details and get written approval or SMS confirmation
+  2) Address the concern, offer a recovery step, and document satisfaction
+
+Call 543743000060598748 (Incoming call from No answer No answer (+919500109274)) owner: Rith Tamang
+  1) Clarify issue, propose fix, and voluntarily follow up with proof
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060610537 (Outgoing call to Hrishikesh Deshmukh (+919920938033)) owner: Neha Aziz
+  1) Provide the requested info/service and confirm booking/outcome
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060643464 (Outgoing call to ?my ?Gautam ❤️‍?❤️‍? (6398137650)) owner: Neha Aziz
+  1) Confirm the next step with customer (call/task) and log it
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060678293 (Outgoing call to SINDHU SUNIL (+919035253079)) owner: Neha Aziz
+  1) Confirm the next step with customer (call/task) and log it
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060619589 (Incoming call from Veena (+919916880032)) owner: Anuj Polladia
+  1) Clarify issue, propose fix, and voluntarily follow up with proof
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060666356 (Outgoing call to Mani Meghasri (+919611060638)) owner: Rani KJ
+  1) Confirm the next step with customer (call/task) and log it
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060612640 (Outgoing call to Arbiya (+919916728629)) owner: Neha Aziz
+  1) Confirm pricing details and get written approval or SMS confirmation
+  2) Lock in a technician visit slot and share ETA in CRM note
+
+Call 543743000060621594 (Outgoing call to ANIL KUMAR (+919742258521)) owner: Neha Aziz
+  1) Confirm the next step with customer (call/task) and log it
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060669267 (Outgoing call to Aditya Aditya (+919448762666)) owner: Anuj Polladia
+  1) Confirm the next step with customer (call/task) and log it
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060678277 (Outgoing call to Noor Ayesha (6364302127)) owner: Himasri
+  1) Confirm the next step with customer (call/task) and log it
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060669261 (Outgoing call to Halesh (+919900907292)) owner: Himasri
+  1) Clarify issue, propose fix, and voluntarily follow up with proof
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060668269 (Outgoing call to Shivashankar (+919901666307)) owner: Himasri
+  1) Confirm pricing details and get written approval or SMS confirmation
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060622455 (Outgoing call to Shivashankar (+919901666307)) owner: Himasri
+  1) Confirm the next step with customer (call/task) and log it
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060648573 (Outgoing call to LakshmanaReddy (+917676765951)) owner: Rith Tamang
+  1) Confirm the next step with customer (call/task) and log it
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060598714 (Outgoing call to Mani Meghasri (+919611060638)) owner: Rani KJ
+  1) Confirm the next step with customer (call/task) and log it
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060622441 (Outgoing call to Sankar Kailash (+917506651090)) owner: Anuj Polladia
+  1) Address the concern, offer a recovery step, and document satisfaction
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060607590 (Outgoing call to Aparna (+917795615387)) owner: Rani KJ
+  1) Confirm the next step with customer (call/task) and log it
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060697090 (Outgoing call to Shihab CP (+919387114003)) owner: Neha Aziz
+  1) Clarify issue, propose fix, and voluntarily follow up with proof
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060558952 (Outgoing call to Ramanan T (+919741351513)) owner: Neha Aziz
+  1) Confirm the next step with customer (call/task) and log it
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060627377 (Incoming call from Dhruv Jouhari (+919844081144)) owner: Rith Tamang
+  1) Clarify issue, propose fix, and voluntarily follow up with proof
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060605768 (Outgoing call to Krishnakumar (+919620931000)) owner: Rani KJ
+  1) Address the concern, offer a recovery step, and document satisfaction
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060605762 (Outgoing call to Tarun Chugh (+919650493432)) owner: Neha Aziz
+  1) Schedule the promised callback and mention time in note
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060628583 (Incoming call from Incoming Call Lead (+919742508024)) owner: Rith Tamang
+  1) Schedule the promised callback and mention time in note
+  2) Address the concern, offer a recovery step, and document satisfaction
+
+Call 543743000060632315 (Outgoing call to Incoming Call Lead (+918861716467)) owner: Neha Aziz
+  1) Lock in a technician visit slot and share ETA in CRM note
+  2) Address the concern, offer a recovery step, and document satisfaction
+
+Call 543743000060665332 (Outgoing call to Incoming Call Lead (+919742508024)) owner: Rani KJ
+  1) Confirm the next step with customer (call/task) and log it
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060628570 (Outgoing call to Incoming Call Lead (+919742508024)) owner: Rani KJ
+  1) Address the concern, offer a recovery step, and document satisfaction
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060595614 (Outgoing call to Anil (+919886970933)) owner: Rani KJ
+  1) Lock in a technician visit slot and share ETA in CRM note
+  2) Address the concern, offer a recovery step, and document satisfaction
+
+Call 543743000060648520 (Incoming call from Incoming Call Lead (+918861716467)) owner: Rith Tamang
+  1) Clarify issue, propose fix, and voluntarily follow up with proof
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060611536 (Outgoing call to Incoming Call Lead (+919742508024)) owner: Rani KJ
+  1) Confirm pricing details and get written approval or SMS confirmation
+  2) Lock in a technician visit slot and share ETA in CRM note
+
+Call 543743000060660205 (Outgoing call to Bharath Kumar (+918744044418)) owner: Rith Tamang
+  1) Clarify issue, propose fix, and voluntarily follow up with proof
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060607578 (Outgoing call to Srinivasa sridhar (+919884540792)) owner: Rani KJ
+  1) Address the concern, offer a recovery step, and document satisfaction
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060602633 (Outgoing call to Meghana (+919481987738)) owner: Rith Tamang
+  1) Provide the requested info/service and confirm booking/outcome
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060697070 (Incoming call from Suresh babu (+919900631123)) owner: Rith Tamang
+  1) Clarify issue, propose fix, and voluntarily follow up with proof
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060659299 (Outgoing call to Srinivasa sridhar (+919884540792)) owner: Rani KJ
+  1) Lock in a technician visit slot and share ETA in CRM note
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060675165 (Incoming call from Suraj (+919769690918)) owner: Neha Aziz
+  1) Lock in a technician visit slot and share ETA in CRM note
+  2) Address the concern, offer a recovery step, and document satisfaction
+
+Call 543743000060662347 (Incoming call from Srinivasa sridhar (+919884540792)) owner: Rith Tamang
+  1) Schedule the promised callback and mention time in note
+  2) Double-check CRM note captures clear next steps + owner reminder
+
+Call 543743000060599662 (Incoming call from Prashanth (+917338178263)) owner: Rith Tamang
+  1) Clarify issue, propose fix, and voluntarily follow up with proof
+  2) Double-check CRM note captures clear next steps + owner reminder
