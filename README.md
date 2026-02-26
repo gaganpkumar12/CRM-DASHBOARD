@@ -60,6 +60,8 @@ Fetches from Zoho CRM API and computes:
 3. **Conversion %:** `convertedLeads / leads7d × 100` — this ensures every converted lead is counted, even if it has left the Leads module, and every deal is only counted if its original lead was created in the same 7-day window.
 4. This approach gives the most accurate, apples-to-apples owner conversion rate for the selected window.
 
+**Note:** Owner-wise stats and tables exclude the following owners: Pardeep Kumar, Vineeth Wankhade, Kedar dharmarajan.
+
 ### Step [2/4] — Bulk Call Analysis (All History)
 **Script:** `npm run bulk-call` → `node scripts/bulk-call-analysis.mjs minRecords=1200 lookback=7`
 **Output:** `data/bulk-call-analysis.json`
