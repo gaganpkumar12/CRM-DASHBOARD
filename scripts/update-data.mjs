@@ -171,7 +171,79 @@ function ncStage(raw) {
   return null;
 }
 
-function analyze(leads = [], calls = [], deals = [], tasks = [], overdueMin = 30, lookbackDays = 30, ncSlaHours = { nc1ToNc2: 4, nc2ToNc3: 24 }) {
+function extractFieldValue(lead, field) {
+  const v = lead?.[field];
+  if (v === undefined || v === null) return '';
+  // Handle array fields like I_am_looking_for: ["Cleaning Services"]
+  if (Array.isArray(v)) return v.filter(Boolean).join(', ').trim();
+  return String(v).trim();
+}
+
+function buildCategoryConversions(leads = [], deals = [], categoryFields = ['I_am_looking_for', 'Service_Category_n', 'Lead_Source', 'Whatsapp_Category_Service', 'sub_service_category', 'Category', 'Lead_Type', 'Product', 'Service'], lookbackDays = 7) {
+  // Filter leads & deals to the lookback window (last N days including today)
+  const lookbackLeads = leads.filter(l => isWithinLastDays(pick(l, ['Created_Time']), lookbackDays));
+  const lookbackDeals = deals.filter(d => isWithinLastDays(pick(d, ['Created_Time']), lookbackDays));
+
+  // Determine which category field is actually populated in the lead data
+  let chosenField = null;
+  for (const field of categoryFields) {
+    const hasData = lookbackLeads.some(l => extractFieldValue(l, field) !== '');
+    if (hasData) { chosenField = field; break; }
+  }
+  if (!chosenField) {
+    console.log('[categoryConversions] No category field found on leads. Checked:', categoryFields.join(', '));
+    return [];
+  }
+  console.log(`[categoryConversions] Using field: "${chosenField}" (last ${lookbackDays} days incl. today)`);
+
+  // Build a set of deal phones/names for matching leads → deals
+  const dealPhones = new Set();
+  const dealNames = new Set();
+  for (const d of lookbackDeals) {
+    const phone = normalizePhone(pick(d, ['Phone', 'Mobile', 'Contact_Phone']));
+    if (phone) dealPhones.add(phone);
+    const rawName = pick(d, ['Contact_Name', 'Deal_Name', 'Account_Name']);
+    const name = (typeof rawName === 'object' && rawName !== null ? rawName.name : String(rawName || '')).toLowerCase().trim();
+    if (name) dealNames.add(name);
+  }
+
+  // Group leads by category and count conversions
+  const catMap = new Map();
+
+  for (const l of lookbackLeads) {
+    const rawCat = extractFieldValue(l, chosenField);
+    const cat = rawCat || 'Uncategorized';
+    if (!catMap.has(cat)) catMap.set(cat, { leads: 0, deals: 0 });
+    catMap.get(cat).leads += 1;
+
+    // Check if this lead converted to a deal
+    const leadPhone = normalizePhone(pick(l, ['Phone', 'Mobile']));
+    const leadName = (`${pick(l, ['First_Name']) || ''} ${pick(l, ['Last_Name']) || ''}`.trim()).toLowerCase();
+    const status = String(pick(l, ['Lead_Status', 'Status']) || '').toLowerCase();
+    const isConverted = status.includes('converted') || status.includes('won') || status.includes('deal');
+    const phoneMatch = leadPhone && dealPhones.has(leadPhone);
+    const nameMatch = leadName && dealNames.has(leadName);
+
+    if (isConverted || phoneMatch || nameMatch) {
+      catMap.get(cat).deals += 1;
+    }
+  }
+
+  // Build sorted result array
+  const result = [...catMap.entries()]
+    .map(([category, { leads: leadCount, deals: dealCount }]) => ({
+      category,
+      leads: leadCount,
+      deals: dealCount,
+      conversionPercent: leadCount > 0 ? Number(((dealCount / leadCount) * 100).toFixed(1)) : 0
+    }))
+    .sort((a, b) => b.leads - a.leads);
+
+  console.log(`[categoryConversions] ${result.length} categories found (${lookbackDays}d): ${result.map(r => `${r.category}(${r.leads})`).join(', ')}`);
+  return result;
+}
+
+function analyze(leads = [], calls = [], deals = [], tasks = [], overdueMin = 30, lookbackDays = 30, ncSlaHours = { nc1ToNc2: 4, nc2ToNc3: 24 }, categoryFields = undefined) {
   const todaysLeads = leads.filter(l => isTodayIST(pick(l, ['Created_Time'])));
   const todaysDeals = deals.filter(d => isTodayIST(pick(d, ['Created_Time'])));
   const todaysTasks = tasks.filter(t => isTodayIST(pick(t, ['Created_Time'])));
@@ -445,6 +517,7 @@ function analyze(leads = [], calls = [], deals = [], tasks = [], overdueMin = 30
         nc3: { hour: stageIdeal.nc3.label, count: stageIdeal.nc3.nc3 ?? 0, score: stageIdeal.nc3.score ?? 0 }
       }
     },
+    categoryConversions: buildCategoryConversions(leads, deals, categoryFields, lookbackDays),
     latestLeadsToday: latestAllLeads,
     overdueFollowups,
     ownerStats
@@ -456,6 +529,9 @@ async function main() {
   const token = await getCachedToken(cfg);
   const { leads, calls, deals, tasks } = await fetchData(cfg, token);
   const lookbackDays = toNum(cfg.dashboard?.lookbackDays, 7);
+  // Category fields: user can override with cfg.dashboard.categoryFields
+  // Default order prefers service-type fields (I_am_looking_for, Service_Category_n) over generic Lead_Source
+  const categoryFields = cfg.dashboard?.categoryFields || ['I_am_looking_for', 'Service_Category_n', 'Lead_Source', 'Whatsapp_Category_Service', 'sub_service_category', 'Category', 'Lead_Type', 'Product', 'Service'];
   const metrics = analyze(
     leads,
     calls,
@@ -463,12 +539,14 @@ async function main() {
     tasks,
     toNum(cfg.dashboard?.overdueMinutes, 30),
     lookbackDays,
-    cfg.dashboard?.ncSlaHours || { nc1ToNc2: 4, nc2ToNc3: 24 }
+    cfg.dashboard?.ncSlaHours || { nc1ToNc2: 4, nc2ToNc3: 24 },
+    categoryFields
   );
 
   await fs.mkdir(path.join(root, 'data'), { recursive: true });
   await fs.writeFile(path.join(root, 'data', 'metrics.json'), JSON.stringify(metrics, null, 2), 'utf8');
-  console.log(`Dashboard data updated at ${metrics.generatedAt}. Today leads: ${metrics.kpis.todaysLeadsCount}, Today deals: ${metrics.kpis.totalDealsCount}, Today tasks: ${metrics.kpis.totalTasksCount}`);
+  const catCount = (metrics.categoryConversions || []).length;
+  console.log(`Dashboard data updated at ${metrics.generatedAt}. Today leads: ${metrics.kpis.todaysLeadsCount}, Today deals: ${metrics.kpis.totalDealsCount}, Today tasks: ${metrics.kpis.totalTasksCount}, Categories: ${catCount}`);
 }
 
 main().catch(err => {

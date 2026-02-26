@@ -1,4 +1,4 @@
-let retentionChart, callChart, complianceChart, ncTrendChart, ncFunnelChart, ncFunnelDirectChart;
+let retentionChart, callChart, complianceChart, ncTrendChart, ncFunnelChart, ncFunnelDirectChart, categoryConvChart, categoryVolumeChart;
 
 function triggerSparkle() {
   const fx = document.getElementById('sparkleFx');
@@ -43,12 +43,33 @@ function buildCategoryConversionCards(items) {
       <div class="kpi">
         <div class="label">No category data</div>
         <div class="value">--</div>
-        <div class="kpi-desc">Add category conversion metrics to metrics.json to see these cards.</div>
+        <div class="kpi-desc">Category conversion data will appear once metrics.json is refreshed with lead source data.</div>
       </div>`;
+    // Clear charts if no data
+    if (categoryConvChart) { categoryConvChart.destroy(); categoryConvChart = null; }
+    if (categoryVolumeChart) { categoryVolumeChart.destroy(); categoryVolumeChart = null; }
     return;
   }
 
-  grid.innerHTML = items.map(item => {
+  // --- KPI cards ---
+  const totalLeads = items.reduce((s, i) => s + (i.leads ?? 0), 0);
+  const totalDeals = items.reduce((s, i) => s + (i.deals ?? 0), 0);
+  const overallConv = totalLeads > 0 ? ((totalDeals / totalLeads) * 100).toFixed(1) : '0.0';
+  const topCategory = [...items].sort((a, b) => (b.conversionPercent ?? 0) - (a.conversionPercent ?? 0))[0];
+
+  const summaryCards = [
+    { label: 'Overall Category Conv.', value: `${overallConv}%`, desc: `${totalDeals} deals from ${totalLeads} leads (last 7 days)` },
+    { label: 'Top Converting', value: topCategory?.category ?? '--', desc: `${Number(topCategory?.conversionPercent ?? 0).toFixed(1)}% — ${topCategory?.deals ?? 0} deals / ${topCategory?.leads ?? 0} leads` },
+    { label: 'Categories Tracked', value: items.length, desc: 'Distinct categories with lead activity in the last 7 days' }
+  ];
+
+  grid.innerHTML = summaryCards.map(c => `
+    <div class="kpi">
+      <div class="label">${c.label}</div>
+      <div class="value">${c.value}</div>
+      <div class="kpi-desc">${c.desc}</div>
+    </div>
+  `).join('') + items.map((item, idx) => {
     const conversion = Number(item.conversionPercent ?? 0).toFixed(1);
     const leads = item.leads ?? 0;
     const deals = item.deals ?? 0;
@@ -58,12 +79,97 @@ function buildCategoryConversionCards(items) {
         <div class="value">${conversion}%</div>
         <div class="kpi-desc">${deals} deals / ${leads} leads</div>
       </div>`;
-  }).join("");
+  }).join('');
+
+  // --- Charts ---
+  buildCategoryCharts(items);
+}
+
+function buildCategoryCharts(items) {
+  if (categoryConvChart) { categoryConvChart.destroy(); categoryConvChart = null; }
+  if (categoryVolumeChart) { categoryVolumeChart.destroy(); categoryVolumeChart = null; }
+
+  // Filter out Uncategorized for cleaner charts; only show named categories
+  const chartItems = items.filter(i => (i.category ?? '').toLowerCase() !== 'uncategorized');
+  if (!chartItems.length) return;
+
+  const labels = chartItems.map(i => i.category ?? 'N/A');
+  const convData = chartItems.map(i => Number(i.conversionPercent ?? 0));
+  const leadData = chartItems.map(i => i.leads ?? 0);
+  const dealData = chartItems.map(i => i.deals ?? 0);
+
+  const convCanvas = document.getElementById('categoryConvChart');
+  if (convCanvas) {
+    const maxConv = Math.max(...convData, 10); // at least 10% ceiling so bars are visible
+    categoryConvChart = new Chart(convCanvas, {
+      type: 'bar',
+      data: {
+        labels,
+        datasets: [{
+          label: 'Conversion %',
+          data: convData,
+          backgroundColor: 'rgba(78,161,255,0.6)',
+          borderColor: 'rgba(78,161,255,1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        indexAxis: 'y',
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: { label: ctx => `${ctx.parsed.x}%` }
+          }
+        },
+        scales: {
+          x: {
+            beginAtZero: true,
+            max: Math.ceil(maxConv / 10) * 10,
+            ticks: { callback: v => v + '%' }
+          }
+        }
+      }
+    });
+  }
+
+  const volCanvas = document.getElementById('categoryVolumeChart');
+  if (volCanvas) {
+    categoryVolumeChart = new Chart(volCanvas, {
+      type: 'bar',
+      data: {
+        labels,
+        datasets: [
+          {
+            label: 'Leads',
+            data: leadData,
+            backgroundColor: 'rgba(78,161,255,0.6)',
+            borderColor: 'rgba(78,161,255,1)',
+            borderWidth: 1
+          },
+          {
+            label: 'Deals',
+            data: dealData,
+            backgroundColor: 'rgba(38,194,129,0.6)',
+            borderColor: 'rgba(38,194,129,1)',
+            borderWidth: 1
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        indexAxis: 'y',
+        scales: { x: { beginAtZero: true } }
+      }
+    });
+  }
 }
 
 
 function destroyCharts() {
-  [retentionChart, callChart, complianceChart, ncTrendChart, ncFunnelChart, ncFunnelDirectChart].forEach(c => c && c.destroy());
+  [retentionChart, callChart, complianceChart, ncTrendChart, ncFunnelChart, ncFunnelDirectChart, categoryConvChart, categoryVolumeChart].forEach(c => c && c.destroy());
+  categoryConvChart = null;
+  categoryVolumeChart = null;
 }
 
 function buildCharts(data) {
