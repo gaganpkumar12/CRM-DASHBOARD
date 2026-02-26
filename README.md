@@ -83,9 +83,7 @@ When `index.html` loads (or the ↻ Refresh button is clicked):
 2. Computes data freshness indicator (🟢 ≤5m, 🟡 ≤30m, 🔴 stale)
 3. Calls in order:
    - `buildKpis()` → CRM KPI cards
-   - `buildCategoryConversionCards()` → summary cards (overall conv%, top category, count) + per-category cards + two charts:
-     - **Category Conversion Rate (%)** — horizontal bar chart
-     - **Category Lead & Deal Volume** — grouped horizontal bar chart (leads vs deals)
+   - `buildCategoryConversionCards()` → summary cards (overall conv%, top category, count) + per-category cards
    - `buildCharts()` → retention line chart, call duration/volume chart, NC trend, NC funnels
    - `buildTables()` → latest leads table, owner retention table, owner performance table, NC ideal time table
 4. Auto-refresh runs every 6 hours via `setInterval`
@@ -99,8 +97,6 @@ When `index.html` loads (or the ↻ Refresh button is clicked):
 |--------|-----------|
 | CRM KPIs (9 cards) | `metrics.json → kpis` |
 | Category Lead → Deal Conversion (7 Days) | `metrics.json → categoryConversions` |
-| Category Conversion Rate chart | `metrics.json → categoryConversions` |
-| Category Lead & Deal Volume chart | `metrics.json → categoryConversions` |
 | Today Retention Trend (Hourly) | `metrics.json → retention` |
 | Call Duration & Volume | `metrics.json → calls` |
 | NC Ladder Intelligence (KPIs + funnels) | `metrics.json → ncLadder` |

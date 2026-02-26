@@ -136,20 +136,32 @@ async function fetchRecentLeadsForLookback(cfg, token, lookbackDays = 7, maxPage
   return all;
 }
 
+async function fetchAllDeals(cfg, token, maxPages = 10) {
+  const all = [];
+  for (let page = 1; page <= maxPages; page++) {
+    const resp = await zohoGet(cfg, token, '/crm/v2/Deals', { page, per_page: 200, sort_by: 'Created_Time', sort_order: 'desc' });
+    const batch = resp?.data || [];
+    if (!batch.length) break;
+    all.push(...batch);
+    if (batch.length < 200) break;
+  }
+  return all;
+}
+
 async function fetchData(cfg, token) {
   const lookbackDays = toNum(cfg.dashboard?.lookbackDays, 7);
   const maxLeadPages = toNum(cfg.dashboard?.maxLeadPages, 10);
   const [leads, callsResp, dealsResp, tasksResp] = await Promise.all([
     fetchRecentLeadsForLookback(cfg, token, lookbackDays, maxLeadPages),
     zohoGet(cfg, token, '/crm/v2/Calls', { page: 1, per_page: 200 }).catch(() => ({ data: [] })),
-    zohoGet(cfg, token, '/crm/v2/Deals', { page: 1, per_page: 200, sort_by: 'Created_Time', sort_order: 'desc' }).catch(() => ({ data: [] })),
+    fetchAllDeals(cfg, token, 10),
     zohoGet(cfg, token, '/crm/v2/Tasks', { page: 1, per_page: 200, sort_by: 'Created_Time', sort_order: 'desc' }).catch(() => ({ data: [] }))
   ]);
 
   return {
     leads: leads || [],
     calls: callsResp?.data || [],
-    deals: dealsResp?.data || [],
+    deals: dealsResp || [],
     tasks: tasksResp?.data || []
   };
 }
@@ -241,6 +253,61 @@ function buildCategoryConversions(leads = [], deals = [], categoryFields = ['I_a
 
   console.log(`[categoryConversions] ${result.length} categories found (${lookbackDays}d): ${result.map(r => `${r.category}(${r.leads})`).join(', ')}`);
   return result;
+}
+
+/* ---------- Top Booking Areas (from Deal address field) ---------- */
+const KNOWN_AREAS = [
+  // Sort longest-first so "Sarjapur Road" beats "Sarjapur", etc.
+  'Ramagondanahalli','Basaveshwaranagar','Somasundarapalya','CV Raman Nagar',
+  'Ramamurthy Nagar','Kumaraswamy Layout','Rajarajeshwari Nagar',
+  'Kadubeesanahalli','Vidyaranyapura','Old Airport Road','Outer Ring Road',
+  'Kanakapura Road','Sarjapura Road','Sarjapur Road','Old Madras Road',
+  'Electronic City','Sahakara Nagar','Kasavanahalli','Doddanekundi',
+  'Bommanahalli','Bannerghatta','Banashankari','Basavanagudi','Murugeshpalya',
+  'Kaggadasapura','Dommasandra','Kundalahalli','Thanisandra','Devanahalli',
+  'Brookefield','Bellary Road','Magadi Road','Tumkur Road','Mysore Road',
+  'Hosur Road','Hosa Road','Haralur Road','Kudlu Gate','Silk Board',
+  'Marathahalli','Mahadevapura','Whitefield','HSR Layout','BTM Layout',
+  'Indiranagar','Koramangala','Bellandur','Yelahanka','Jayanagar',
+  'JP Nagar','RT Nagar','RR Nagar','Rajajinagar','Malleshwaram',
+  'Vijayanagar','Yeshwanthpur','Uttarahalli','Nagarbhavi',
+  'Puttenahalli','Kanakapura','Chandapura','Bommasandra',
+  'Carmelaram','Choodasandra','Immadihalli','Seegehalli',
+  'HAL Layout','Horamavu','Sarjapur','Haralur','Kadugodi',
+  'Panathur','Hebbal','Varthur','Hennur','Bagalur',
+  'Hoskote','Attibele','Anekal','Mandur','Medahalli','Virgonagar',
+  'Budigere','Nagavara','Manyata','Gunjur','Peenya',
+  'Kengeri','Dasarahalli','Madiwala','Gottigere','Hulimavu',
+  'Arekere','Ambalipura','Kogilu','Jakkur','Iblur','Agara',
+  'Domlur','KR Puram','Hoodi','Kudlu','Begur','ITPL'
+].sort((a, b) => b.length - a.length);
+
+function extractArea(street) {
+  if (!street) return null;
+  const addr = street.toLowerCase();
+  for (const area of KNOWN_AREAS) {
+    const escaped = area.replace(/[.*+?^()|[\]\\]/g, '\\$&');
+    if (new RegExp('\\b' + escaped + '\\b', 'i').test(addr)) return area;
+  }
+  return null;
+}
+
+function buildTopBookingAreas(deals = [], top = 5) {
+  const areaCounts = new Map();
+  let matched = 0;
+  for (const d of deals) {
+    const area = extractArea(d.Street);
+    if (area) {
+      areaCounts.set(area, (areaCounts.get(area) || 0) + 1);
+      matched++;
+    }
+  }
+  const sorted = [...areaCounts.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, top)
+    .map(([area, bookings], idx) => ({ rank: idx + 1, area, bookings }));
+  console.log(`[topBookingAreas] ${matched}/${deals.length} deals matched to an area. Top ${top}: ${sorted.map(r => `${r.area}(${r.bookings})`).join(', ')}`);
+  return sorted;
 }
 
 function analyze(leads = [], calls = [], deals = [], tasks = [], overdueMin = 30, lookbackDays = 30, ncSlaHours = { nc1ToNc2: 4, nc2ToNc3: 24 }, categoryFields = undefined) {
@@ -518,6 +585,7 @@ function analyze(leads = [], calls = [], deals = [], tasks = [], overdueMin = 30
       }
     },
     categoryConversions: buildCategoryConversions(leads, deals, categoryFields, lookbackDays),
+    topBookingAreas: buildTopBookingAreas(deals, 5),
     latestLeadsToday: latestAllLeads,
     overdueFollowups,
     ownerStats
@@ -546,7 +614,8 @@ async function main() {
   await fs.mkdir(path.join(root, 'data'), { recursive: true });
   await fs.writeFile(path.join(root, 'data', 'metrics.json'), JSON.stringify(metrics, null, 2), 'utf8');
   const catCount = (metrics.categoryConversions || []).length;
-  console.log(`Dashboard data updated at ${metrics.generatedAt}. Today leads: ${metrics.kpis.todaysLeadsCount}, Today deals: ${metrics.kpis.totalDealsCount}, Today tasks: ${metrics.kpis.totalTasksCount}, Categories: ${catCount}`);
+  const areaCount = (metrics.topBookingAreas || []).length;
+  console.log(`Dashboard data updated at ${metrics.generatedAt}. Today leads: ${metrics.kpis.todaysLeadsCount}, Today deals: ${metrics.kpis.totalDealsCount}, Today tasks: ${metrics.kpis.totalTasksCount}, Categories: ${catCount}, Top areas: ${areaCount}`);
 }
 
 main().catch(err => {

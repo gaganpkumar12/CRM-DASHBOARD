@@ -1,4 +1,4 @@
-let retentionChart, callChart, complianceChart, ncTrendChart, ncFunnelChart, ncFunnelDirectChart, categoryConvChart, categoryVolumeChart;
+let retentionChart, callChart, complianceChart, ncTrendChart, ncFunnelChart, ncFunnelDirectChart;
 
 function triggerSparkle() {
   const fx = document.getElementById('sparkleFx');
@@ -46,8 +46,6 @@ function buildCategoryConversionCards(items) {
         <div class="kpi-desc">Category conversion data will appear once metrics.json is refreshed with lead source data.</div>
       </div>`;
     // Clear charts if no data
-    if (categoryConvChart) { categoryConvChart.destroy(); categoryConvChart = null; }
-    if (categoryVolumeChart) { categoryVolumeChart.destroy(); categoryVolumeChart = null; }
     return;
   }
 
@@ -80,96 +78,36 @@ function buildCategoryConversionCards(items) {
         <div class="kpi-desc">${deals} deals / ${leads} leads</div>
       </div>`;
   }).join('');
-
-  // --- Charts ---
-  buildCategoryCharts(items);
 }
 
-function buildCategoryCharts(items) {
-  if (categoryConvChart) { categoryConvChart.destroy(); categoryConvChart = null; }
-  if (categoryVolumeChart) { categoryVolumeChart.destroy(); categoryVolumeChart = null; }
-
-  // Filter out Uncategorized for cleaner charts; only show named categories
-  const chartItems = items.filter(i => (i.category ?? '').toLowerCase() !== 'uncategorized');
-  if (!chartItems.length) return;
-
-  const labels = chartItems.map(i => i.category ?? 'N/A');
-  const convData = chartItems.map(i => Number(i.conversionPercent ?? 0));
-  const leadData = chartItems.map(i => i.leads ?? 0);
-  const dealData = chartItems.map(i => i.deals ?? 0);
-
-  const convCanvas = document.getElementById('categoryConvChart');
-  if (convCanvas) {
-    const maxConv = Math.max(...convData, 10); // at least 10% ceiling so bars are visible
-    categoryConvChart = new Chart(convCanvas, {
-      type: 'bar',
-      data: {
-        labels,
-        datasets: [{
-          label: 'Conversion %',
-          data: convData,
-          backgroundColor: 'rgba(78,161,255,0.6)',
-          borderColor: 'rgba(78,161,255,1)',
-          borderWidth: 1
-        }]
-      },
-      options: {
-        responsive: true,
-        indexAxis: 'y',
-        plugins: {
-          legend: { display: false },
-          tooltip: {
-            callbacks: { label: ctx => `${ctx.parsed.x}%` }
-          }
-        },
-        scales: {
-          x: {
-            beginAtZero: true,
-            max: Math.ceil(maxConv / 10) * 10,
-            ticks: { callback: v => v + '%' }
-          }
-        }
-      }
-    });
+function buildTopBookingAreasCards(items) {
+  const grid = document.getElementById('topBookingAreasGrid');
+  if (!grid) return;
+  if (!items || !items.length) {
+    grid.innerHTML = `
+      <div class="kpi">
+        <div class="label">No area data</div>
+        <div class="value">--</div>
+        <div class="kpi-desc">Booking area data will appear once deals have address information.</div>
+      </div>`;
+    return;
   }
-
-  const volCanvas = document.getElementById('categoryVolumeChart');
-  if (volCanvas) {
-    categoryVolumeChart = new Chart(volCanvas, {
-      type: 'bar',
-      data: {
-        labels,
-        datasets: [
-          {
-            label: 'Leads',
-            data: leadData,
-            backgroundColor: 'rgba(78,161,255,0.6)',
-            borderColor: 'rgba(78,161,255,1)',
-            borderWidth: 1
-          },
-          {
-            label: 'Deals',
-            data: dealData,
-            backgroundColor: 'rgba(38,194,129,0.6)',
-            borderColor: 'rgba(38,194,129,1)',
-            borderWidth: 1
-          }
-        ]
-      },
-      options: {
-        responsive: true,
-        indexAxis: 'y',
-        scales: { x: { beginAtZero: true } }
-      }
-    });
-  }
+  const total = items.reduce((s, i) => s + (i.bookings ?? 0), 0);
+  grid.innerHTML = items.map((item, idx) => {
+    const pct = total > 0 ? ((item.bookings / total) * 100).toFixed(1) : '0.0';
+    const medal = idx === 0 ? '🥇 ' : idx === 1 ? '🥈 ' : idx === 2 ? '🥉 ' : '';
+    return `
+      <div class="kpi">
+        <div class="label">${medal}#${item.rank} ${item.area}</div>
+        <div class="value">${item.bookings}</div>
+        <div class="kpi-desc">${pct}% of top-5 bookings</div>
+      </div>`;
+  }).join('');
 }
 
 
 function destroyCharts() {
-  [retentionChart, callChart, complianceChart, ncTrendChart, ncFunnelChart, ncFunnelDirectChart, categoryConvChart, categoryVolumeChart].forEach(c => c && c.destroy());
-  categoryConvChart = null;
-  categoryVolumeChart = null;
+  [retentionChart, callChart, complianceChart, ncTrendChart, ncFunnelChart, ncFunnelDirectChart].forEach(c => c && c.destroy());
 }
 
 function buildCharts(data) {
@@ -325,6 +263,7 @@ async function loadData() {
   buildKpis(data.kpis || {});
   const conversions = data.categoryConversions || data.kpis?.categoryConversions || [];
   buildCategoryConversionCards(conversions);
+  buildTopBookingAreasCards(data.topBookingAreas || []);
   buildCharts(data);
   buildTables(data);
 }

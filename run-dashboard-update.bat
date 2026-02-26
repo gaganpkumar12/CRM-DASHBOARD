@@ -19,12 +19,12 @@ if not exist %LOG_DIR% mkdir %LOG_DIR%
 >> %LOG_FILE% echo Started at %date% %time%
 
 REM --- 1. Core metrics + 7-day category-wise lead conversion => data/metrics.json ---
->> %LOG_FILE% echo [1/4] Updating core metrics (KPIs, retention, NC ladder, 7-day category lead conversion)...
+>> %LOG_FILE% echo [1/4] Updating core metrics (KPIs, retention, NC ladder, 7-day category lead conversion, top booking areas)...
 CALL "C:\Program Files\nodejs\npm.cmd" run update >> %LOG_FILE% 2>&1
 if %ERRORLEVEL% NEQ 0 (
   >> %LOG_FILE% echo [WARN] Core metrics update failed with exit code %ERRORLEVEL%
 ) else (
-  >> %LOG_FILE% echo [OK] Core metrics + 7-day category conversions written to data/metrics.json
+  >> %LOG_FILE% echo [OK] Core metrics + 7-day category conversions + top booking areas written to data/metrics.json
 )
 
 REM --- 2. Bulk call analysis (all history) => data/bulk-call-analysis.json ---
