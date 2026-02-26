@@ -54,11 +54,11 @@ Fetches from Zoho CRM API and computes:
 2. Matches each deal's `Street` address against 90+ known Bangalore localities using word-boundary regex (longest-match-first to prefer "Sarjapur Road" over "Sarjapur").
 3. Returns top 5 areas ranked by deal count.
 
-**Owner-wise Lead→Deal % logic:**
-1. Counts each owner's leads from the 7-day lookback window (`leads7d`).
-2. For today's deals, checks the Zoho `Original_Created_Time_1` field — this is the timestamp of the original lead the deal was converted from.
-3. If `Original_Created_Time_1` falls within the lookback window, the deal counts as a `convertedLead` for that owner.
-4. Conversion % = `convertedLeads / leads7d × 100` — no artificial cap needed since it measures real lead-to-deal conversion.
+**Owner-wise Lead→Deal % logic (most accurate):**
+1. **Denominator:** All leads created in the last 7 days (including those already converted and no longer in the Leads module), grouped by owner.
+2. **Numerator:** All deals created in the last 7 days whose `Original_Created_Time_1` (the timestamp of the original lead) is also within the last 7 days, grouped by owner.
+3. **Conversion %:** `convertedLeads / leads7d × 100` — this ensures every converted lead is counted, even if it has left the Leads module, and every deal is only counted if its original lead was created in the same 7-day window.
+4. This approach gives the most accurate, apples-to-apples owner conversion rate for the selected window.
 
 ### Step [2/4] — Bulk Call Analysis (All History)
 **Script:** `npm run bulk-call` → `node scripts/bulk-call-analysis.mjs minRecords=1200 lookback=7`

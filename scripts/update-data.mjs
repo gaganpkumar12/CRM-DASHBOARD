@@ -379,46 +379,71 @@ function analyze(leads = [], calls = [], deals = [], tasks = [], overdueMin = 30
   const completedTasksCount = todaysTasks.filter(isTaskCompleted).length;
   const taskCompletionPercent = totalTasksCount ? (completedTasksCount / totalTasksCount) * 100 : 0;
 
-  const ownerStatsMap = new Map();
-  // Count each owner's leads in the 7-day lookback window
-  const ownerLeadCount7d = new Map();
-  const allLeadRows = leads.filter(l => isWithinLastDays(pick(l, ['Created_Time']), lookbackDays));
-  for (const l of allLeadRows) {
+
+  // --- Most accurate owner-wise conversion logic ---
+  // 1. All leads created in last 7 days (including those already converted)
+  // 2. All deals created in last 7 days whose Original_Created_Time_1 is within the same window
+  // 3. Group both by owner
+  const leads7d = leads.filter(l => isWithinLastDays(pick(l, ['Created_Time']), lookbackDays));
+  const deals7d = deals.filter(d => isWithinLastDays(pick(d, ['Created_Time']), lookbackDays));
+
+  // Map: owner → all leads created in last 7 days
+  const ownerLeadMap = new Map();
+  for (const l of leads7d) {
     const o = ownerName(l);
-    ownerLeadCount7d.set(o, (ownerLeadCount7d.get(o) || 0) + 1);
-  }
-  for (const l of todaysLeadRows) {
-    const o = l.owner || '--';
-    if (!ownerStatsMap.has(o)) ownerStatsMap.set(o, { owner: o, todaysLeads: 0, calledLeads: 0, todaysDeals: 0, convertedLeads: 0, totalTasks: 0, completedTasks: 0 });
-    ownerStatsMap.get(o).todaysLeads += 1;
-    if (l.called) ownerStatsMap.get(o).calledLeads += 1;
-  }
-  for (const d of todaysDeals) {
-    const o = ownerName(d);
-    if (!ownerStatsMap.has(o)) ownerStatsMap.set(o, { owner: o, todaysLeads: 0, calledLeads: 0, todaysDeals: 0, convertedLeads: 0, totalTasks: 0, completedTasks: 0 });
-    ownerStatsMap.get(o).todaysDeals += 1;
-    // A deal whose original lead was created within the lookback window counts as a conversion
-    const origTime = pick(d, ['Original_Created_Time_1', 'Original_Created_Time']);
-    if (origTime && isWithinLastDays(origTime, lookbackDays)) {
-      ownerStatsMap.get(o).convertedLeads += 1;
-    }
-  }
-  for (const t of todaysTasks) {
-    const o = ownerName(t);
-    if (!ownerStatsMap.has(o)) ownerStatsMap.set(o, { owner: o, todaysLeads: 0, calledLeads: 0, todaysDeals: 0, convertedLeads: 0, totalTasks: 0, completedTasks: 0 });
-    ownerStatsMap.get(o).totalTasks += 1;
-    if (isTaskCompleted(t)) ownerStatsMap.get(o).completedTasks += 1;
+    if (!ownerLeadMap.has(o)) ownerLeadMap.set(o, []);
+    ownerLeadMap.get(o).push(l);
   }
 
-  const ownerStats = [...ownerStatsMap.values()]
-    .map(x => {
-      const leads7d = ownerLeadCount7d.get(x.owner) || 0;
+  // Map: owner → all deals created in last 7 days whose Original_Created_Time_1 is within last 7 days
+  const ownerConvertedMap = new Map();
+  for (const d of deals7d) {
+    const o = ownerName(d);
+    const origTime = pick(d, ['Original_Created_Time_1', 'Original_Created_Time']);
+    if (origTime && isWithinLastDays(origTime, lookbackDays)) {
+      if (!ownerConvertedMap.has(o)) ownerConvertedMap.set(o, []);
+      ownerConvertedMap.get(o).push(d);
+    }
+  }
+
+  // Owners to ignore (case-insensitive, trimmed)
+  const IGNORED_OWNERS = [
+    'Pardeep Kumar',
+    'Vineeth Wankhade',
+    'Kedar dharmarajan'
+  ].map(x => x.trim().toLowerCase());
+
+  // Build owner stats, excluding ignored owners
+  const allOwners = new Set([
+    ...Array.from(ownerLeadMap.keys()),
+    ...Array.from(ownerConvertedMap.keys()),
+    ...todaysLeadRows.map(l => l.owner || '--'),
+    ...todaysDeals.map(d => ownerName(d)),
+    ...todaysTasks.map(t => ownerName(t))
+  ]);
+
+  const ownerStats = Array.from(allOwners)
+    .filter(o => !IGNORED_OWNERS.includes(String(o || '').trim().toLowerCase()))
+    .map(o => {
+      const leads7dArr = ownerLeadMap.get(o) || [];
+      const convertedArr = ownerConvertedMap.get(o) || [];
+      const todaysLeadsCount = todaysLeadRows.filter(l => (l.owner || '--') === o).length;
+      const calledLeads = todaysLeadRows.filter(l => (l.owner || '--') === o && l.called).length;
+      const todaysDealsCount = todaysDeals.filter(d => ownerName(d) === o).length;
+      const totalTasksCount = todaysTasks.filter(t => ownerName(t) === o).length;
+      const completedTasksCount = todaysTasks.filter(t => ownerName(t) === o && isTaskCompleted(t)).length;
       return {
-        ...x,
-        leads7d,
-        leadToDealConversionPercent: leads7d ? Number(((x.convertedLeads / leads7d) * 100).toFixed(1)) : 0,
-        taskCompletionPercent: x.totalTasks ? Number(((x.completedTasks / x.totalTasks) * 100).toFixed(1)) : 0,
-        retentionPercent: x.todaysLeads ? Number(((x.calledLeads / x.todaysLeads) * 100).toFixed(1)) : 0
+        owner: o,
+        todaysLeads: todaysLeadsCount,
+        calledLeads,
+        leads7d: leads7dArr.length,
+        todaysDeals: todaysDealsCount,
+        convertedLeads: convertedArr.length,
+        leadToDealConversionPercent: leads7dArr.length ? Number(((convertedArr.length / leads7dArr.length) * 100).toFixed(1)) : 0,
+        totalTasks: totalTasksCount,
+        completedTasks: completedTasksCount,
+        taskCompletionPercent: totalTasksCount ? Number(((completedTasksCount / totalTasksCount) * 100).toFixed(1)) : 0,
+        retentionPercent: todaysLeadsCount ? Number(((calledLeads / todaysLeadsCount) * 100).toFixed(1)) : 0
       };
     })
     .sort((a, b) => b.todaysLeads - a.todaysLeads);
