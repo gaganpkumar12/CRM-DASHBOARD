@@ -154,7 +154,7 @@ async function fetchData(cfg, token) {
   const [leads, callsResp, dealsResp, tasksResp] = await Promise.all([
     fetchRecentLeadsForLookback(cfg, token, lookbackDays, maxLeadPages),
     zohoGet(cfg, token, '/crm/v2/Calls', { page: 1, per_page: 200 }).catch(() => ({ data: [] })),
-    fetchAllDeals(cfg, token, 10),
+    fetchAllDeals(cfg, token, 50),
     zohoGet(cfg, token, '/crm/v2/Tasks', { page: 1, per_page: 200, sort_by: 'Created_Time', sort_order: 'desc' }).catch(() => ({ data: [] }))
   ]);
 
@@ -380,31 +380,47 @@ function analyze(leads = [], calls = [], deals = [], tasks = [], overdueMin = 30
   const taskCompletionPercent = totalTasksCount ? (completedTasksCount / totalTasksCount) * 100 : 0;
 
   const ownerStatsMap = new Map();
+  // Count each owner's leads in the 7-day lookback window
+  const ownerLeadCount7d = new Map();
+  const allLeadRows = leads.filter(l => isWithinLastDays(pick(l, ['Created_Time']), lookbackDays));
+  for (const l of allLeadRows) {
+    const o = ownerName(l);
+    ownerLeadCount7d.set(o, (ownerLeadCount7d.get(o) || 0) + 1);
+  }
   for (const l of todaysLeadRows) {
     const o = l.owner || '--';
-    if (!ownerStatsMap.has(o)) ownerStatsMap.set(o, { owner: o, todaysLeads: 0, calledLeads: 0, todaysDeals: 0, totalTasks: 0, completedTasks: 0 });
+    if (!ownerStatsMap.has(o)) ownerStatsMap.set(o, { owner: o, todaysLeads: 0, calledLeads: 0, todaysDeals: 0, convertedLeads: 0, totalTasks: 0, completedTasks: 0 });
     ownerStatsMap.get(o).todaysLeads += 1;
     if (l.called) ownerStatsMap.get(o).calledLeads += 1;
   }
   for (const d of todaysDeals) {
     const o = ownerName(d);
-    if (!ownerStatsMap.has(o)) ownerStatsMap.set(o, { owner: o, todaysLeads: 0, calledLeads: 0, todaysDeals: 0, totalTasks: 0, completedTasks: 0 });
+    if (!ownerStatsMap.has(o)) ownerStatsMap.set(o, { owner: o, todaysLeads: 0, calledLeads: 0, todaysDeals: 0, convertedLeads: 0, totalTasks: 0, completedTasks: 0 });
     ownerStatsMap.get(o).todaysDeals += 1;
+    // A deal whose original lead was created within the lookback window counts as a conversion
+    const origTime = pick(d, ['Original_Created_Time_1', 'Original_Created_Time']);
+    if (origTime && isWithinLastDays(origTime, lookbackDays)) {
+      ownerStatsMap.get(o).convertedLeads += 1;
+    }
   }
   for (const t of todaysTasks) {
     const o = ownerName(t);
-    if (!ownerStatsMap.has(o)) ownerStatsMap.set(o, { owner: o, todaysLeads: 0, calledLeads: 0, todaysDeals: 0, totalTasks: 0, completedTasks: 0 });
+    if (!ownerStatsMap.has(o)) ownerStatsMap.set(o, { owner: o, todaysLeads: 0, calledLeads: 0, todaysDeals: 0, convertedLeads: 0, totalTasks: 0, completedTasks: 0 });
     ownerStatsMap.get(o).totalTasks += 1;
     if (isTaskCompleted(t)) ownerStatsMap.get(o).completedTasks += 1;
   }
 
   const ownerStats = [...ownerStatsMap.values()]
-    .map(x => ({
-      ...x,
-      leadToDealConversionPercent: x.todaysLeads ? Number(((x.todaysDeals / x.todaysLeads) * 100).toFixed(1)) : 0,
-      taskCompletionPercent: x.totalTasks ? Number(((x.completedTasks / x.totalTasks) * 100).toFixed(1)) : 0,
-      retentionPercent: x.todaysLeads ? Number(((x.calledLeads / x.todaysLeads) * 100).toFixed(1)) : 0
-    }))
+    .map(x => {
+      const leads7d = ownerLeadCount7d.get(x.owner) || 0;
+      return {
+        ...x,
+        leads7d,
+        leadToDealConversionPercent: leads7d ? Number(((x.convertedLeads / leads7d) * 100).toFixed(1)) : 0,
+        taskCompletionPercent: x.totalTasks ? Number(((x.completedTasks / x.totalTasks) * 100).toFixed(1)) : 0,
+        retentionPercent: x.todaysLeads ? Number(((x.calledLeads / x.todaysLeads) * 100).toFixed(1)) : 0
+      };
+    })
     .sort((a, b) => b.todaysLeads - a.todaysLeads);
 
   // Real retention trend (hourly): for each IST hour, retention% = called leads / leads created in that hour.

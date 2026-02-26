@@ -242,7 +242,9 @@ function buildTables(data) {
     <tr>
       <td>${r.owner ?? "--"}</td>
       <td>${r.todaysLeads ?? 0}</td>
+      <td>${r.leads7d ?? 0}</td>
       <td>${r.todaysDeals ?? 0}</td>
+      <td>${r.convertedLeads ?? 0}</td>
       <td>${Number(r.leadToDealConversionPercent ?? 0).toFixed(1)}%</td>
       <td>${r.totalTasks ?? 0}</td>
       <td>${r.completedTasks ?? 0}</td>

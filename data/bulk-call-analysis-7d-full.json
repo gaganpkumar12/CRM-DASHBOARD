@@ -1,57 +1,57 @@
 {
   "analysis": {
-    "generatedAt": "2026-02-26T04:30:12.855Z",
+    "generatedAt": "2026-02-26T05:06:22.540Z",
     "totalCalls": 1200,
-    "connectedCalls": 662,
-    "avgDurationSec": 103.2,
+    "connectedCalls": 655,
+    "avgDurationSec": 104.6,
     "medianDurationSec": 69,
     "bucketSummary": [
       {
         "bucket": "0s",
-        "count": 538,
-        "percent": 44.8
+        "count": 545,
+        "percent": 45.4
       },
       {
         "bucket": "<30s",
-        "count": 172,
-        "percent": 14.3
+        "count": 162,
+        "percent": 13.5
       },
       {
         "bucket": "60-120s",
-        "count": 159,
-        "percent": 13.3
+        "count": 154,
+        "percent": 12.8
       },
       {
         "bucket": "30-60s",
-        "count": 137,
-        "percent": 11.4
+        "count": 143,
+        "percent": 11.9
       },
       {
         "bucket": "180-300s",
-        "count": 80,
-        "percent": 6.7
+        "count": 78,
+        "percent": 6.5
       },
       {
         "bucket": "120-180s",
-        "count": 76,
-        "percent": 6.3
+        "count": 77,
+        "percent": 6.4
       },
       {
         "bucket": "300s+",
-        "count": 38,
-        "percent": 3.2
+        "count": 41,
+        "percent": 3.4
       }
     ],
     "statusSummary": [
       {
         "status": "Unattended Dialled",
-        "count": 453,
-        "percent": 37.8
+        "count": 459,
+        "percent": 38.3
       },
       {
         "status": "Attended Dialled",
-        "count": 341,
-        "percent": 28.4
+        "count": 334,
+        "percent": 27.8
       },
       {
         "status": "Received",
@@ -60,15 +60,15 @@
       },
       {
         "status": "Missed",
-        "count": 85,
-        "percent": 7.1
+        "count": 86,
+        "percent": 7.2
       }
     ],
     "typeSummary": [
       {
         "type": "Outbound",
-        "count": 794,
-        "percent": 66.2
+        "count": 793,
+        "percent": 66.1
       },
       {
         "type": "Inbound",
@@ -77,11 +77,11 @@
       },
       {
         "type": "Missed",
-        "count": 85,
-        "percent": 7.1
+        "count": 86,
+        "percent": 7.2
       }
     ],
-    "totalTalkSeconds": 68314,
+    "totalTalkSeconds": 68543,
     "hourlyTalkSeconds": [
       0,
       0,
@@ -93,9 +93,9 @@
       0,
       5259,
       9678,
-      4540,
-      5258,
-      6975,
+      7772,
+      5180,
+      4050,
       7394,
       5771,
       6134,
@@ -111,64 +111,64 @@
     "ownerSummary": [
       {
         "owner": "Neha Aziz",
-        "totalCalls": 202,
-        "connectedCalls": 113,
-        "avgDurationSec": 111.5,
-        "connectionRatePercent": 55.9,
-        "avgBookingSeconds": 111.5,
+        "totalCalls": 205,
+        "connectedCalls": 116,
+        "avgDurationSec": 110.4,
+        "connectionRatePercent": 56.6,
+        "avgBookingSeconds": 110.4,
         "peakHour": "20:00",
         "bucketBreakdown": [
           {
             "bucket": "0s",
             "count": 89,
-            "percent": 44.1
+            "percent": 43.4
           },
           {
             "bucket": "60-120s",
             "count": 27,
-            "percent": 13.4
+            "percent": 13.2
           },
           {
             "bucket": "<30s",
             "count": 25,
-            "percent": 12.4
+            "percent": 12.2
           },
           {
             "bucket": "30-60s",
-            "count": 21,
-            "percent": 10.4
+            "count": 23,
+            "percent": 11.2
           },
           {
             "bucket": "180-300s",
             "count": 20,
-            "percent": 9.9
+            "percent": 9.8
           },
           {
             "bucket": "120-180s",
-            "count": 14,
-            "percent": 6.9
+            "count": 15,
+            "percent": 7.3
           },
           {
             "bucket": "300s+",
             "count": 6,
-            "percent": 3
+            "percent": 2.9
           }
         ],
         "statusBreakdown": [
           {
             "status": "Unattended Dialled",
             "count": 87,
-            "percent": 43.1
+            "percent": 42.4
           },
           {
             "status": "Attended Dialled",
             "count": 70,
-            "percent": 34.7
+            "percent": 34.1
           },
           {
             "status": "Received",
-            "count": 43,
-            "percent": 21.3
+            "count": 46,
+            "percent": 22.4
           },
           {
             "status": "Missed",
@@ -179,64 +179,64 @@
       },
       {
         "owner": "Rani KJ",
-        "totalCalls": 187,
-        "connectedCalls": 108,
-        "avgDurationSec": 118.4,
-        "connectionRatePercent": 57.8,
-        "avgBookingSeconds": 118.4,
+        "totalCalls": 183,
+        "connectedCalls": 105,
+        "avgDurationSec": 124.3,
+        "connectionRatePercent": 57.4,
+        "avgBookingSeconds": 124.3,
         "peakHour": "09:00",
         "bucketBreakdown": [
           {
             "bucket": "0s",
-            "count": 79,
-            "percent": 42.2
+            "count": 78,
+            "percent": 42.6
           },
           {
             "bucket": "30-60s",
-            "count": 31,
-            "percent": 16.6
+            "count": 30,
+            "percent": 16.4
           },
           {
             "bucket": "60-120s",
             "count": 24,
-            "percent": 12.8
+            "percent": 13.1
           },
           {
             "bucket": "180-300s",
             "count": 17,
-            "percent": 9.1
+            "percent": 9.3
           },
           {
             "bucket": "120-180s",
             "count": 15,
-            "percent": 8
+            "percent": 8.2
           },
           {
             "bucket": "<30s",
-            "count": 15,
-            "percent": 8
+            "count": 12,
+            "percent": 6.6
           },
           {
             "bucket": "300s+",
-            "count": 6,
-            "percent": 3.2
+            "count": 7,
+            "percent": 3.8
           }
         ],
         "statusBreakdown": [
           {
             "status": "Unattended Dialled",
-            "count": 78,
-            "percent": 41.7
+            "count": 77,
+            "percent": 42.1
           },
           {
             "status": "Attended Dialled",
-            "count": 66,
-            "percent": 35.3
+            "count": 60,
+            "percent": 32.8
           },
           {
             "status": "Received",
-            "count": 42,
-            "percent": 22.5
+            "count": 45,
+            "percent": 24.6
           },
           {
             "status": "Missed",
@@ -246,133 +246,65 @@
         ]
       },
       {
-        "owner": "Reshma Reddy",
-        "totalCalls": 174,
-        "connectedCalls": 89,
-        "avgDurationSec": 80.1,
-        "connectionRatePercent": 51.1,
-        "avgBookingSeconds": 80.1,
-        "peakHour": "18:00",
-        "bucketBreakdown": [
-          {
-            "bucket": "0s",
-            "count": 85,
-            "percent": 48.9
-          },
-          {
-            "bucket": "<30s",
-            "count": 40,
-            "percent": 23
-          },
-          {
-            "bucket": "60-120s",
-            "count": 17,
-            "percent": 9.8
-          },
-          {
-            "bucket": "30-60s",
-            "count": 12,
-            "percent": 6.9
-          },
-          {
-            "bucket": "120-180s",
-            "count": 8,
-            "percent": 4.6
-          },
-          {
-            "bucket": "180-300s",
-            "count": 7,
-            "percent": 4
-          },
-          {
-            "bucket": "300s+",
-            "count": 5,
-            "percent": 2.9
-          }
-        ],
-        "statusBreakdown": [
-          {
-            "status": "Unattended Dialled",
-            "count": 74,
-            "percent": 42.5
-          },
-          {
-            "status": "Attended Dialled",
-            "count": 56,
-            "percent": 32.2
-          },
-          {
-            "status": "Received",
-            "count": 33,
-            "percent": 19
-          },
-          {
-            "status": "Missed",
-            "count": 11,
-            "percent": 6.3
-          }
-        ]
-      },
-      {
         "owner": "Shahin BR",
-        "totalCalls": 166,
+        "totalCalls": 172,
         "connectedCalls": 103,
-        "avgDurationSec": 82,
-        "connectionRatePercent": 62,
-        "avgBookingSeconds": 82,
-        "peakHour": "14:00",
+        "avgDurationSec": 80.4,
+        "connectionRatePercent": 59.9,
+        "avgBookingSeconds": 80.4,
+        "peakHour": "10:00",
         "bucketBreakdown": [
           {
             "bucket": "0s",
-            "count": 63,
-            "percent": 38
+            "count": 69,
+            "percent": 40.1
           },
           {
             "bucket": "<30s",
-            "count": 35,
-            "percent": 21.1
+            "count": 34,
+            "percent": 19.8
           },
           {
             "bucket": "60-120s",
-            "count": 25,
-            "percent": 15.1
+            "count": 24,
+            "percent": 14
           },
           {
             "bucket": "30-60s",
-            "count": 21,
-            "percent": 12.7
-          },
-          {
-            "bucket": "180-300s",
-            "count": 9,
-            "percent": 5.4
+            "count": 23,
+            "percent": 13.4
           },
           {
             "bucket": "120-180s",
-            "count": 9,
-            "percent": 5.4
+            "count": 10,
+            "percent": 5.8
+          },
+          {
+            "bucket": "180-300s",
+            "count": 8,
+            "percent": 4.7
           },
           {
             "bucket": "300s+",
             "count": 4,
-            "percent": 2.4
+            "percent": 2.3
           }
         ],
         "statusBreakdown": [
           {
             "status": "Unattended Dialled",
-            "count": 62,
-            "percent": 37.3
+            "count": 68,
+            "percent": 39.5
           },
           {
             "status": "Received",
             "count": 59,
-            "percent": 35.5
+            "percent": 34.3
           },
           {
             "status": "Attended Dialled",
             "count": 44,
-            "percent": 26.5
+            "percent": 25.6
           },
           {
             "status": "Missed",
@@ -382,65 +314,133 @@
         ]
       },
       {
-        "owner": "Himasri",
-        "totalCalls": 137,
-        "connectedCalls": 83,
-        "avgDurationSec": 135.3,
-        "connectionRatePercent": 60.6,
-        "avgBookingSeconds": 135.3,
-        "peakHour": "09:00",
+        "owner": "Reshma Reddy",
+        "totalCalls": 158,
+        "connectedCalls": 80,
+        "avgDurationSec": 82.3,
+        "connectionRatePercent": 50.6,
+        "avgBookingSeconds": 82.3,
+        "peakHour": "18:00",
         "bucketBreakdown": [
           {
             "bucket": "0s",
-            "count": 54,
-            "percent": 39.4
-          },
-          {
-            "bucket": "60-120s",
-            "count": 21,
-            "percent": 15.3
+            "count": 78,
+            "percent": 49.4
           },
           {
             "bucket": "<30s",
-            "count": 21,
-            "percent": 15.3
+            "count": 34,
+            "percent": 21.5
           },
           {
-            "bucket": "30-60s",
-            "count": 13,
+            "bucket": "60-120s",
+            "count": 15,
             "percent": 9.5
           },
           {
-            "bucket": "300s+",
-            "count": 11,
-            "percent": 8
-          },
-          {
-            "bucket": "180-300s",
-            "count": 11,
-            "percent": 8
+            "bucket": "30-60s",
+            "count": 12,
+            "percent": 7.6
           },
           {
             "bucket": "120-180s",
+            "count": 8,
+            "percent": 5.1
+          },
+          {
+            "bucket": "180-300s",
             "count": 6,
-            "percent": 4.4
+            "percent": 3.8
+          },
+          {
+            "bucket": "300s+",
+            "count": 5,
+            "percent": 3.2
           }
         ],
         "statusBreakdown": [
           {
-            "status": "Received",
-            "count": 48,
-            "percent": 35
+            "status": "Unattended Dialled",
+            "count": 67,
+            "percent": 42.4
           },
           {
+            "status": "Attended Dialled",
+            "count": 50,
+            "percent": 31.6
+          },
+          {
+            "status": "Received",
+            "count": 30,
+            "percent": 19
+          },
+          {
+            "status": "Missed",
+            "count": 11,
+            "percent": 7
+          }
+        ]
+      },
+      {
+        "owner": "Himasri",
+        "totalCalls": 139,
+        "connectedCalls": 82,
+        "avgDurationSec": 138.4,
+        "connectionRatePercent": 59,
+        "avgBookingSeconds": 138.4,
+        "peakHour": "09:00",
+        "bucketBreakdown": [
+          {
+            "bucket": "0s",
+            "count": 57,
+            "percent": 41
+          },
+          {
+            "bucket": "60-120s",
+            "count": 20,
+            "percent": 14.4
+          },
+          {
+            "bucket": "<30s",
+            "count": 20,
+            "percent": 14.4
+          },
+          {
+            "bucket": "30-60s",
+            "count": 13,
+            "percent": 9.4
+          },
+          {
+            "bucket": "300s+",
+            "count": 12,
+            "percent": 8.6
+          },
+          {
+            "bucket": "180-300s",
+            "count": 10,
+            "percent": 7.2
+          },
+          {
+            "bucket": "120-180s",
+            "count": 7,
+            "percent": 5
+          }
+        ],
+        "statusBreakdown": [
+          {
             "status": "Unattended Dialled",
-            "count": 46,
-            "percent": 33.6
+            "count": 49,
+            "percent": 35.3
+          },
+          {
+            "status": "Received",
+            "count": 47,
+            "percent": 33.8
           },
           {
             "status": "Attended Dialled",
             "count": 35,
-            "percent": 25.5
+            "percent": 25.2
           },
           {
             "status": "Missed",
@@ -451,158 +451,158 @@
       },
       {
         "owner": "Rajeswari R",
-        "totalCalls": 112,
-        "connectedCalls": 58,
-        "avgDurationSec": 77.2,
-        "connectionRatePercent": 51.8,
-        "avgBookingSeconds": 77.2,
+        "totalCalls": 123,
+        "connectedCalls": 63,
+        "avgDurationSec": 75.8,
+        "connectionRatePercent": 51.2,
+        "avgBookingSeconds": 75.8,
         "peakHour": "09:00",
         "bucketBreakdown": [
           {
             "bucket": "0s",
-            "count": 54,
-            "percent": 48.2
+            "count": 60,
+            "percent": 48.8
           },
           {
             "bucket": "30-60s",
-            "count": 17,
-            "percent": 15.2
+            "count": 20,
+            "percent": 16.3
+          },
+          {
+            "bucket": "60-120s",
+            "count": 15,
+            "percent": 12.2
           },
           {
             "bucket": "<30s",
             "count": 15,
-            "percent": 13.4
-          },
-          {
-            "bucket": "60-120s",
-            "count": 13,
-            "percent": 11.6
+            "percent": 12.2
           },
           {
             "bucket": "120-180s",
             "count": 8,
-            "percent": 7.1
+            "percent": 6.5
           },
           {
             "bucket": "180-300s",
             "count": 5,
-            "percent": 4.5
+            "percent": 4.1
           }
         ],
         "statusBreakdown": [
           {
             "status": "Unattended Dialled",
-            "count": 51,
+            "count": 56,
             "percent": 45.5
           },
           {
             "status": "Attended Dialled",
-            "count": 33,
-            "percent": 29.5
+            "count": 36,
+            "percent": 29.3
           },
           {
             "status": "Received",
-            "count": 25,
-            "percent": 22.3
+            "count": 27,
+            "percent": 22
           },
           {
             "status": "Missed",
-            "count": 3,
-            "percent": 2.7
+            "count": 4,
+            "percent": 3.3
           }
         ]
       },
       {
         "owner": "Anuj Polladia",
-        "totalCalls": 103,
-        "connectedCalls": 60,
-        "avgDurationSec": 130.8,
-        "connectionRatePercent": 58.3,
-        "avgBookingSeconds": 130.8,
+        "totalCalls": 101,
+        "connectedCalls": 59,
+        "avgDurationSec": 131,
+        "connectionRatePercent": 58.4,
+        "avgBookingSeconds": 131,
         "peakHour": "19:00",
         "bucketBreakdown": [
           {
             "bucket": "0s",
-            "count": 43,
-            "percent": 41.7
+            "count": 42,
+            "percent": 41.6
           },
           {
             "bucket": "60-120s",
             "count": 18,
-            "percent": 17.5
+            "percent": 17.8
           },
           {
             "bucket": "30-60s",
             "count": 14,
-            "percent": 13.6
+            "percent": 13.9
           },
           {
             "bucket": "180-300s",
             "count": 9,
-            "percent": 8.7
+            "percent": 8.9
           },
           {
             "bucket": "120-180s",
-            "count": 8,
-            "percent": 7.8
+            "count": 7,
+            "percent": 6.9
           },
           {
             "bucket": "<30s",
             "count": 6,
-            "percent": 5.8
+            "percent": 5.9
           },
           {
             "bucket": "300s+",
             "count": 5,
-            "percent": 4.9
+            "percent": 5
           }
         ],
         "statusBreakdown": [
           {
             "status": "Received",
-            "count": 46,
-            "percent": 44.7
+            "count": 45,
+            "percent": 44.6
           },
           {
             "status": "Unattended Dialled",
-            "count": 32,
-            "percent": 31.1
+            "count": 31,
+            "percent": 30.7
           },
           {
             "status": "Attended Dialled",
             "count": 14,
-            "percent": 13.6
+            "percent": 13.9
           },
           {
             "status": "Missed",
             "count": 11,
-            "percent": 10.7
+            "percent": 10.9
           }
         ]
       },
       {
         "owner": "Rith Tamang",
         "totalCalls": 73,
-        "connectedCalls": 48,
-        "avgDurationSec": 79.3,
-        "connectionRatePercent": 65.8,
-        "avgBookingSeconds": 79.3,
+        "connectedCalls": 47,
+        "avgDurationSec": 84.3,
+        "connectionRatePercent": 64.4,
+        "avgBookingSeconds": 84.3,
         "peakHour": "09:00",
         "bucketBreakdown": [
           {
             "bucket": "0s",
-            "count": 25,
-            "percent": 34.2
+            "count": 26,
+            "percent": 35.6
           },
           {
             "bucket": "<30s",
-            "count": 15,
-            "percent": 20.5
+            "count": 16,
+            "percent": 21.9
           },
           {
             "bucket": "60-120s",
-            "count": 14,
-            "percent": 19.2
+            "count": 11,
+            "percent": 15.1
           },
           {
             "bucket": "30-60s",
@@ -611,35 +611,35 @@
           },
           {
             "bucket": "120-180s",
-            "count": 8,
-            "percent": 11
+            "count": 7,
+            "percent": 9.6
           },
           {
             "bucket": "180-300s",
-            "count": 2,
-            "percent": 2.7
+            "count": 3,
+            "percent": 4.1
           },
           {
             "bucket": "300s+",
-            "count": 1,
-            "percent": 1.4
+            "count": 2,
+            "percent": 2.7
           }
         ],
         "statusBreakdown": [
           {
-            "status": "Received",
+            "status": "Attended Dialled",
             "count": 25,
             "percent": 34.2
           },
           {
-            "status": "Attended Dialled",
-            "count": 23,
-            "percent": 31.5
+            "status": "Unattended Dialled",
+            "count": 24,
+            "percent": 32.9
           },
           {
-            "status": "Unattended Dialled",
-            "count": 23,
-            "percent": 31.5
+            "status": "Received",
+            "count": 22,
+            "percent": 30.1
           },
           {
             "status": "Missed",
@@ -683,9 +683,9 @@
       6,
       74,
       179,
-      83,
-      77,
-      126,
+      138,
+      76,
+      72,
       118,
       99,
       84,

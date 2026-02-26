@@ -23,7 +23,7 @@ Logs are written to `logs/scheduled-run.log`.
 
 ## Pipeline Steps (run-dashboard-update.bat)
 
-### Step [1/4] — Core Metrics + Category Lead Conversion
+### Step [1/4] — Core Metrics + Category Lead Conversion + Top Booking Areas
 **Script:** `npm run update` → `node scripts/update-data.mjs`
 **Output:** `data/metrics.json`
 
@@ -33,13 +33,14 @@ Fetches from Zoho CRM API and computes:
 |---------|-----------------|-------|
 | **CRM KPIs** | todaysLeadsCount, NC1/NC2/NC3 counts, leadToDealConversion%, totalDeals, totalTasks, taskCompletion%, avgCallDuration | Today + 7d lookback for NC |
 | **Category Lead → Deal Conversion** | Per-category leads, deals, conversion% using `I_am_looking_for` field (auto-detected) | **Last 7 days** incl. today |
+| **Top Booking Areas** | Top 5 areas by deal volume, extracted from deal `Street` field via keyword matching against 90+ known Bangalore localities | **All deals** (up to 10,000) |
 | **Retention Trend** | Hourly retention% (called leads / created leads per IST hour) | Today |
 | **Call Duration & Volume** | Call count + avg duration by day of week | All fetched calls (200) |
 | **NC Ladder Intelligence** | NC1→NC2→NC3 progression%, avg hours between stages, SLA overdue counts, cumulative & direct funnels | 7d lookback |
 | **NC Best Time Insights** | Ideal callback hour, peak NC1/NC2 hours, per-stage ideal time | 7d lookback |
 | **Latest Leads** | Name, phone, owner, status, sub-status, called flag, modified time | 7d lookback (max 200) |
 | **Owner-wise Retention** | Per-rep today's leads, called leads, retention% | Today |
-| **Owner-wise Performance** | Per-rep leads, deals, lead→deal%, tasks, task completion%, retention% | Today |
+| **Owner-wise Performance** | Per-rep todayLeads, leads7d, todayDeals, convertedLeads, lead→deal%, tasks, taskCompletion%, retention% | Today leads + 7d lead pool + all deals |
 | **Overdue Follow-ups** | Leads not called beyond configured SLA minutes | 7d lookback |
 
 **Category conversion logic:**
@@ -47,6 +48,17 @@ Fetches from Zoho CRM API and computes:
 2. Filters leads & deals to the last 7 days (uses `dashboard.lookbackDays` from config).
 3. Matches leads to deals by phone number, contact name, or converted/won lead status.
 4. Handles array fields (e.g. `I_am_looking_for: ["Cleaning Services"]`) and object fields (e.g. `Contact_Name: { name: "..." }`).
+
+**Top booking areas logic:**
+1. Fetches all deals (paginated, up to 10,000) from Zoho CRM.
+2. Matches each deal's `Street` address against 90+ known Bangalore localities using word-boundary regex (longest-match-first to prefer "Sarjapur Road" over "Sarjapur").
+3. Returns top 5 areas ranked by deal count.
+
+**Owner-wise Lead→Deal % logic:**
+1. Counts each owner's leads from the 7-day lookback window (`leads7d`).
+2. For today's deals, checks the Zoho `Original_Created_Time_1` field — this is the timestamp of the original lead the deal was converted from.
+3. If `Original_Created_Time_1` falls within the lookback window, the deal counts as a `convertedLead` for that owner.
+4. Conversion % = `convertedLeads / leads7d × 100` — no artificial cap needed since it measures real lead-to-deal conversion.
 
 ### Step [2/4] — Bulk Call Analysis (All History)
 **Script:** `npm run bulk-call` → `node scripts/bulk-call-analysis.mjs minRecords=1200 lookback=7`
@@ -84,8 +96,9 @@ When `index.html` loads (or the ↻ Refresh button is clicked):
 3. Calls in order:
    - `buildKpis()` → CRM KPI cards
    - `buildCategoryConversionCards()` → summary cards (overall conv%, top category, count) + per-category cards
+   - `buildTopBookingAreasCards()` → top 5 areas by deal volume with rank medals
    - `buildCharts()` → retention line chart, call duration/volume chart, NC trend, NC funnels
-   - `buildTables()` → latest leads table, owner retention table, owner performance table, NC ideal time table
+   - `buildTables()` → latest leads table, owner retention table, owner performance table (with leads7d, converted, lead→deal%), NC ideal time table
 4. Auto-refresh runs every 6 hours via `setInterval`
 
 ---
@@ -97,13 +110,14 @@ When `index.html` loads (or the ↻ Refresh button is clicked):
 |--------|-----------|
 | CRM KPIs (9 cards) | `metrics.json → kpis` |
 | Category Lead → Deal Conversion (7 Days) | `metrics.json → categoryConversions` |
+| Top Booking Areas (5 cards) | `metrics.json → topBookingAreas` |
 | Today Retention Trend (Hourly) | `metrics.json → retention` |
 | Call Duration & Volume | `metrics.json → calls` |
 | NC Ladder Intelligence (KPIs + funnels) | `metrics.json → ncLadder` |
 | Ideal Callback Time by Stage | `metrics.json → ncLadder.idealByStage` |
 | Latest Leads table | `metrics.json → latestLeadsToday` |
 | Owner-wise Retention table | `metrics.json → ownerStats` |
-| Owner-wise Performance table | `metrics.json → ownerStats` |
+| Owner-wise Performance table | `metrics.json → ownerStats` (includes leads7d, convertedLeads, lead→deal%) |
 
 ### AI Insights Page (ai-insights.html)
 | Widget | Data Source |
