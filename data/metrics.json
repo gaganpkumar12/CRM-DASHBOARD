@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-03-03T06:04:43.360Z",
+  "generatedAt": "2026-03-03T06:06:33.794Z",
   "kpis": {
     "todaysLeadsCount": 62,
-    "nc1Count": 56,
+    "nc1Count": 58,
     "nc2Count": 42,
     "nc3Count": 3,
     "leadToDealConversionPercent": 34.7,
     "totalDealsCount": 33,
     "totalTasksCount": 66,
     "taskCompletionPercent": 10.6,
-    "retentionRate": 92.3,
-    "avgCallDurationSec": 105,
-    "followupComplianceRate": 94.5
+    "retentionRate": 100,
+    "avgCallDurationSec": 103,
+    "followupComplianceRate": 95
   },
   "retention": {
     "labels": [
@@ -40,7 +40,7 @@
       100,
       100,
       90.5,
-      92.3
+      100
     ]
   },
   "calls": {
@@ -54,8 +54,8 @@
       "Sun"
     ],
     "avgDurationSec": [
-      59,
-      72,
+      58,
+      71,
       0,
       0,
       0,
@@ -63,8 +63,8 @@
       0
     ],
     "callCounts": [
-      23,
-      177,
+      22,
+      178,
       0,
       0,
       0,
@@ -73,9 +73,9 @@
     ]
   },
   "compliance": {
-    "called": 189,
-    "notCalled": 11,
-    "modifiedWithoutCall": 11
+    "called": 190,
+    "notCalled": 10,
+    "modifiedWithoutCall": 10
   },
   "ncTime": {
     "lookbackDays": 7,
@@ -123,7 +123,7 @@
       6,
       9,
       5,
-      3,
+      5,
       5,
       2,
       4,
@@ -167,17 +167,17 @@
   "ncLadder": {
     "lookbackDays": 7,
     "funnel": {
-      "nc1": 101,
+      "nc1": 103,
       "nc2": 45,
       "nc3": 3
     },
     "directFunnel": {
-      "nc1": 56,
+      "nc1": 58,
       "nc2": 42,
       "nc3": 3
     },
     "progression": {
-      "nc1ToNc2Percent": 75,
+      "nc1ToNc2Percent": 72.4,
       "nc2ToNc3Percent": 7.1,
       "avgHoursNc1ToNc2": 30.1,
       "avgHoursNc2ToNc3": 80.7
@@ -209,7 +209,7 @@
   "categoryConversions": [
     {
       "category": "Uncategorized",
-      "leads": 563,
+      "leads": 562,
       "deals": 9,
       "conversionPercent": 1.6
     },
@@ -256,16 +256,16 @@
       "conversionPercent": 30
     },
     {
+      "category": "Other Services",
+      "leads": 11,
+      "deals": 0,
+      "conversionPercent": 0
+    },
+    {
       "category": "Marble Polishing",
       "leads": 11,
       "deals": 2,
       "conversionPercent": 18.2
-    },
-    {
-      "category": "Other Services",
-      "leads": 10,
-      "deals": 0,
-      "conversionPercent": 0
     },
     {
       "category": "Pest Control",
@@ -344,7 +344,7 @@
       "leadSubStatus": "--",
       "createdTime": "2026-03-03T11:33:46+05:30",
       "called": true,
-      "modifiedTime": "2026-03-03T11:33:47+05:30"
+      "modifiedTime": "2026-03-03T11:35:07+05:30"
     },
     {
       "name": "Incoming Call Lead",
@@ -380,11 +380,11 @@
       "name": "Tapan Kishore Panda",
       "phone": "9902960807",
       "owner": "Rani KJ",
-      "leadStatus": "Open Leads",
-      "leadSubStatus": "Not Contacted",
+      "leadStatus": "Contacted",
+      "leadSubStatus": "Call Back Later",
       "createdTime": "2026-03-03T11:24:49+05:30",
       "called": true,
-      "modifiedTime": "2026-03-03T11:28:21+05:30"
+      "modifiedTime": "2026-03-03T11:34:56+05:30"
     },
     {
       "name": "Incoming Call Lead",
@@ -420,11 +420,11 @@
       "name": "Lakshmj",
       "phone": "9606450904",
       "owner": "Neha Aziz",
-      "leadStatus": "Open Leads",
-      "leadSubStatus": "Not Contacted",
+      "leadStatus": "Attempted Contact",
+      "leadSubStatus": "NC 1",
       "createdTime": "2026-03-03T11:05:49+05:30",
-      "called": false,
-      "modifiedTime": "2026-03-03T11:05:49+05:30"
+      "called": true,
+      "modifiedTime": "2026-03-03T11:34:33+05:30"
     },
     {
       "name": "Incoming Call Lead",
@@ -700,11 +700,11 @@
       "name": "Madan",
       "phone": "8971502876",
       "owner": "Neha Aziz",
-      "leadStatus": "Open Leads",
-      "leadSubStatus": "Not Contacted",
+      "leadStatus": "Attempted Contact",
+      "leadSubStatus": "NC 1",
       "createdTime": "2026-03-03T09:42:18+05:30",
       "called": true,
-      "modifiedTime": "2026-03-03T11:00:27+05:30"
+      "modifiedTime": "2026-03-03T11:35:02+05:30"
     },
     {
       "name": "Incoming Call Lead",
@@ -859,12 +859,12 @@
     {
       "name": "Vani Vidyashram High School",
       "phone": "+916301399230",
-      "owner": "Neha Aziz",
+      "owner": "Rani KJ",
       "leadStatus": "Open Leads",
       "leadSubStatus": "Not Contacted",
       "createdTime": "2026-03-03T08:00:22+05:30",
       "called": true,
-      "modifiedTime": "2026-03-03T11:00:25+05:30"
+      "modifiedTime": "2026-03-03T11:36:12+05:30"
     },
     {
       "name": "samrat deb",
@@ -2332,88 +2332,88 @@
       "name": "Madhu V",
       "owner": "Rajeswari R",
       "phone": "08919645431",
-      "minutesSinceCreated": 54
+      "minutesSinceCreated": 56
     },
     {
       "name": "Parth Toley",
       "owner": "Rith Tamang",
       "phone": "8105768768",
-      "minutesSinceCreated": 57
+      "minutesSinceCreated": 59
     },
     {
       "name": "Soorya",
       "owner": "Kedar dharmarajan",
       "phone": "9489464753",
-      "minutesSinceCreated": 263
+      "minutesSinceCreated": 265
     },
     {
       "name": "Nitish kumar",
       "owner": "Rajeswari R",
       "phone": "8210758435",
-      "minutesSinceCreated": 751
+      "minutesSinceCreated": 753
     },
     {
       "name": "Raja",
       "owner": "Rajeswari R",
       "phone": "9986760131",
-      "minutesSinceCreated": 1017
+      "minutesSinceCreated": 1018
     },
     {
       "name": "shivani vijay",
       "owner": "Shahin BR",
       "phone": "8431068927",
-      "minutesSinceCreated": 1107
+      "minutesSinceCreated": 1109
     },
     {
       "name": "test 7",
       "owner": "Shahin BR",
       "phone": "98765435678",
-      "minutesSinceCreated": 1312
+      "minutesSinceCreated": 1314
     },
     {
       "name": "test 5",
       "owner": "Shahin BR",
       "phone": "9876545789",
-      "minutesSinceCreated": 1314
+      "minutesSinceCreated": 1315
     },
     {
       "name": "test 4",
       "owner": "Rajeswari R",
       "phone": "9876655487",
-      "minutesSinceCreated": 1314
+      "minutesSinceCreated": 1316
     },
     {
       "name": "KIRAN",
       "owner": "Rajeswari R",
       "phone": "9901444498",
-      "minutesSinceCreated": 1403
+      "minutesSinceCreated": 1404
     }
   ],
   "ownerStats": [
     {
-      "owner": "Neha Aziz",
-      "todaysLeads": 14,
-      "calledLeads": 13,
-      "leads7d": 170,
-      "todaysDeals": 8,
-      "convertedLeads": 56,
-      "leadToDealConversionPercent": 32.9,
-      "totalTasks": 24,
-      "completedTasks": 0,
-      "taskCompletionPercent": 0,
-      "retentionPercent": 92.9
-    },
-    {
       "owner": "Rani KJ",
-      "todaysLeads": 12,
-      "calledLeads": 12,
-      "leads7d": 145,
+      "todaysLeads": 13,
+      "calledLeads": 13,
+      "leads7d": 146,
       "todaysDeals": 9,
       "convertedLeads": 66,
-      "leadToDealConversionPercent": 45.5,
+      "leadToDealConversionPercent": 45.2,
       "totalTasks": 5,
       "completedTasks": 3,
       "taskCompletionPercent": 60,
+      "retentionPercent": 100
+    },
+    {
+      "owner": "Neha Aziz",
+      "todaysLeads": 13,
+      "calledLeads": 13,
+      "leads7d": 169,
+      "todaysDeals": 8,
+      "convertedLeads": 56,
+      "leadToDealConversionPercent": 33.1,
+      "totalTasks": 24,
+      "completedTasks": 0,
+      "taskCompletionPercent": 0,
       "retentionPercent": 100
     },
     {

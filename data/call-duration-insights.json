@@ -1,50 +1,5 @@
 [
   {
-    "agent": "Anuj Polladia",
-    "topConversion": {
-      "bucket": "60-120s",
-      "rate": 1,
-      "count": 1
-    },
-    "topRejection": {
-      "bucket": "60-120s",
-      "rate": 1,
-      "count": 1
-    },
-    "sweetSpot": {
-      "bucket": "180-300s",
-      "score": 0,
-      "conversionRate": 0,
-      "rejectionRate": 0
-    },
-    "bucketDetails": [
-      {
-        "bucket": "180-300s",
-        "phones": 1,
-        "converted": 0,
-        "rejected": 0,
-        "conversionRate": 0,
-        "rejectionRate": 0
-      },
-      {
-        "bucket": "60-120s",
-        "phones": 1,
-        "converted": 1,
-        "rejected": 1,
-        "conversionRate": 1,
-        "rejectionRate": 1
-      },
-      {
-        "bucket": "<60s",
-        "phones": 1,
-        "converted": 0,
-        "rejected": 1,
-        "conversionRate": 0,
-        "rejectionRate": 1
-      }
-    ]
-  },
-  {
     "agent": "Neha Aziz",
     "topConversion": {
       "bucket": "180-300s",
@@ -53,7 +8,7 @@
     },
     "topRejection": {
       "bucket": "<60s",
-      "rate": 0.3333333333333333,
+      "rate": 0.25,
       "count": 1
     },
     "sweetSpot": {
@@ -65,11 +20,11 @@
     "bucketDetails": [
       {
         "bucket": "<60s",
-        "phones": 3,
+        "phones": 4,
         "converted": 1,
         "rejected": 1,
-        "conversionRate": 0.3333333333333333,
-        "rejectionRate": 0.3333333333333333
+        "conversionRate": 0.25,
+        "rejectionRate": 0.25
       },
       {
         "bucket": "180-300s",
@@ -94,6 +49,51 @@
         "rejected": 0,
         "conversionRate": 1,
         "rejectionRate": 0
+      }
+    ]
+  },
+  {
+    "agent": "Anuj Polladia",
+    "topConversion": {
+      "bucket": "180-300s",
+      "rate": 1,
+      "count": 1
+    },
+    "topRejection": {
+      "bucket": "60-120s",
+      "rate": 1,
+      "count": 1
+    },
+    "sweetSpot": {
+      "bucket": "180-300s",
+      "score": 1,
+      "conversionRate": 1,
+      "rejectionRate": 0
+    },
+    "bucketDetails": [
+      {
+        "bucket": "180-300s",
+        "phones": 1,
+        "converted": 1,
+        "rejected": 0,
+        "conversionRate": 1,
+        "rejectionRate": 0
+      },
+      {
+        "bucket": "60-120s",
+        "phones": 1,
+        "converted": 1,
+        "rejected": 1,
+        "conversionRate": 1,
+        "rejectionRate": 1
+      },
+      {
+        "bucket": "<60s",
+        "phones": 1,
+        "converted": 0,
+        "rejected": 1,
+        "conversionRate": 0,
+        "rejectionRate": 1
       }
     ]
   },
