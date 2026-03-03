@@ -1,15 +1,15 @@
 {
-  "generatedAt": "2026-03-03T06:03:40.986Z",
+  "generatedAt": "2026-03-03T06:04:43.360Z",
   "kpis": {
-    "todaysLeadsCount": 59,
+    "todaysLeadsCount": 62,
     "nc1Count": 56,
     "nc2Count": 42,
     "nc3Count": 3,
-    "leadToDealConversionPercent": 35.9,
+    "leadToDealConversionPercent": 34.7,
     "totalDealsCount": 33,
     "totalTasksCount": 66,
     "taskCompletionPercent": 10.6,
-    "retentionRate": 90,
+    "retentionRate": 92.3,
     "avgCallDurationSec": 105,
     "followupComplianceRate": 94.5
   },
@@ -40,7 +40,7 @@
       100,
       100,
       90.5,
-      90
+      92.3
     ]
   },
   "calls": {
@@ -55,7 +55,7 @@
     ],
     "avgDurationSec": [
       59,
-      71,
+      72,
       0,
       0,
       0,
@@ -209,13 +209,13 @@
   "categoryConversions": [
     {
       "category": "Uncategorized",
-      "leads": 561,
+      "leads": 563,
       "deals": 9,
       "conversionPercent": 1.6
     },
     {
       "category": "Cleaning Services",
-      "leads": 305,
+      "leads": 306,
       "deals": 33,
       "conversionPercent": 10.8
     },
@@ -328,13 +328,43 @@
   "latestLeadsToday": [
     {
       "name": "Incoming Call Lead",
-      "phone": "9606399952",
+      "phone": "9986037762",
+      "owner": "Rani KJ",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-03-03T11:33:48+05:30",
+      "called": true,
+      "modifiedTime": "2026-03-03T11:34:27+05:30"
+    },
+    {
+      "name": "Incoming Call Lead",
+      "phone": "6361303935",
       "owner": "Shahin BR",
       "leadStatus": "Open Leads",
       "leadSubStatus": "--",
+      "createdTime": "2026-03-03T11:33:46+05:30",
+      "called": true,
+      "modifiedTime": "2026-03-03T11:33:47+05:30"
+    },
+    {
+      "name": "Incoming Call Lead",
+      "phone": "9945689964",
+      "owner": "Neha Aziz",
+      "leadStatus": "Open Leads",
+      "leadSubStatus": "--",
+      "createdTime": "2026-03-03T11:33:41+05:30",
+      "called": true,
+      "modifiedTime": "2026-03-03T11:33:42+05:30"
+    },
+    {
+      "name": "Incoming Call Lead",
+      "phone": "9606399952",
+      "owner": "Shahin BR",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
       "createdTime": "2026-03-03T11:29:32+05:30",
       "called": true,
-      "modifiedTime": "2026-03-03T11:29:33+05:30"
+      "modifiedTime": "2026-03-03T11:33:56+05:30"
     },
     {
       "name": "Incoming Call Lead",
@@ -2295,36 +2325,6 @@
       "createdTime": "2026-03-02T10:16:28+05:30",
       "called": true,
       "modifiedTime": "2026-03-02T12:10:19+05:30"
-    },
-    {
-      "name": "Kamath",
-      "phone": "9886762692",
-      "owner": "Rajeswari R",
-      "leadStatus": "Attempted Contact",
-      "leadSubStatus": "NC 2",
-      "createdTime": "2026-03-02T10:15:34+05:30",
-      "called": true,
-      "modifiedTime": "2026-03-02T16:39:14+05:30"
-    },
-    {
-      "name": "Sridevi Santhanam",
-      "phone": "8105928282",
-      "owner": "Rani KJ",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Service Not Available",
-      "createdTime": "2026-03-02T10:07:04+05:30",
-      "called": true,
-      "modifiedTime": "2026-03-02T11:10:35+05:30"
-    },
-    {
-      "name": "Incoming Call Lead",
-      "phone": "7760615194",
-      "owner": "Anuj Polladia",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Service Not Available",
-      "createdTime": "2026-03-02T09:57:16+05:30",
-      "called": true,
-      "modifiedTime": "2026-03-02T09:58:40+05:30"
     }
   ],
   "overdueFollowups": [
@@ -2332,85 +2332,85 @@
       "name": "Madhu V",
       "owner": "Rajeswari R",
       "phone": "08919645431",
-      "minutesSinceCreated": 53
+      "minutesSinceCreated": 54
     },
     {
       "name": "Parth Toley",
       "owner": "Rith Tamang",
       "phone": "8105768768",
-      "minutesSinceCreated": 56
+      "minutesSinceCreated": 57
     },
     {
       "name": "Soorya",
       "owner": "Kedar dharmarajan",
       "phone": "9489464753",
-      "minutesSinceCreated": 262
+      "minutesSinceCreated": 263
     },
     {
       "name": "Nitish kumar",
       "owner": "Rajeswari R",
       "phone": "8210758435",
-      "minutesSinceCreated": 750
+      "minutesSinceCreated": 751
     },
     {
       "name": "Raja",
       "owner": "Rajeswari R",
       "phone": "9986760131",
-      "minutesSinceCreated": 1015
+      "minutesSinceCreated": 1017
     },
     {
       "name": "shivani vijay",
       "owner": "Shahin BR",
       "phone": "8431068927",
-      "minutesSinceCreated": 1106
+      "minutesSinceCreated": 1107
     },
     {
       "name": "test 7",
       "owner": "Shahin BR",
       "phone": "98765435678",
-      "minutesSinceCreated": 1311
+      "minutesSinceCreated": 1312
     },
     {
       "name": "test 5",
       "owner": "Shahin BR",
       "phone": "9876545789",
-      "minutesSinceCreated": 1313
+      "minutesSinceCreated": 1314
     },
     {
       "name": "test 4",
       "owner": "Rajeswari R",
       "phone": "9876655487",
-      "minutesSinceCreated": 1313
+      "minutesSinceCreated": 1314
     },
     {
       "name": "KIRAN",
       "owner": "Rajeswari R",
       "phone": "9901444498",
-      "minutesSinceCreated": 1402
+      "minutesSinceCreated": 1403
     }
   ],
   "ownerStats": [
     {
       "owner": "Neha Aziz",
-      "todaysLeads": 13,
-      "calledLeads": 12,
-      "leads7d": 169,
+      "todaysLeads": 14,
+      "calledLeads": 13,
+      "leads7d": 170,
       "todaysDeals": 8,
       "convertedLeads": 56,
-      "leadToDealConversionPercent": 33.1,
+      "leadToDealConversionPercent": 32.9,
       "totalTasks": 24,
       "completedTasks": 0,
       "taskCompletionPercent": 0,
-      "retentionPercent": 92.3
+      "retentionPercent": 92.9
     },
     {
       "owner": "Rani KJ",
-      "todaysLeads": 11,
-      "calledLeads": 11,
-      "leads7d": 144,
+      "todaysLeads": 12,
+      "calledLeads": 12,
+      "leads7d": 145,
       "todaysDeals": 9,
       "convertedLeads": 66,
-      "leadToDealConversionPercent": 45.8,
+      "leadToDealConversionPercent": 45.5,
       "totalTasks": 5,
       "completedTasks": 3,
       "taskCompletionPercent": 60,
@@ -2418,12 +2418,12 @@
     },
     {
       "owner": "Shahin BR",
-      "todaysLeads": 9,
-      "calledLeads": 9,
-      "leads7d": 134,
+      "todaysLeads": 10,
+      "calledLeads": 10,
+      "leads7d": 135,
       "todaysDeals": 3,
       "convertedLeads": 29,
-      "leadToDealConversionPercent": 21.6,
+      "leadToDealConversionPercent": 21.5,
       "totalTasks": 1,
       "completedTasks": 0,
       "taskCompletionPercent": 0,
