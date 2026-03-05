@@ -1,49 +1,49 @@
 [
   {
-    "agent": "Rani KJ",
+    "agent": "Himasri",
     "topConversion": {
-      "bucket": "120-180s",
-      "rate": 1,
-      "count": 1
+      "bucket": "<60s",
+      "rate": 0.6,
+      "count": 3
     },
     "topRejection": {
-      "bucket": "180-300s",
+      "bucket": "300s+",
       "rate": 1,
       "count": 1
     },
     "sweetSpot": {
-      "bucket": "120-180s",
-      "score": 1,
-      "conversionRate": 1,
-      "rejectionRate": 0
+      "bucket": "<60s",
+      "score": 0.19999999999999996,
+      "conversionRate": 0.6,
+      "rejectionRate": 0.4
     },
     "bucketDetails": [
       {
-        "bucket": "<60s",
-        "phones": 8,
-        "converted": 1,
-        "rejected": 5,
-        "conversionRate": 0.125,
-        "rejectionRate": 0.625
-      },
-      {
-        "bucket": "120-180s",
+        "bucket": "300s+",
         "phones": 1,
-        "converted": 1,
-        "rejected": 0,
-        "conversionRate": 1,
-        "rejectionRate": 0
-      },
-      {
-        "bucket": "60-120s",
-        "phones": 3,
-        "converted": 1,
-        "rejected": 2,
-        "conversionRate": 0.3333333333333333,
-        "rejectionRate": 0.6666666666666666
+        "converted": 0,
+        "rejected": 1,
+        "conversionRate": 0,
+        "rejectionRate": 1
       },
       {
         "bucket": "180-300s",
+        "phones": 2,
+        "converted": 1,
+        "rejected": 1,
+        "conversionRate": 0.5,
+        "rejectionRate": 0.5
+      },
+      {
+        "bucket": "<60s",
+        "phones": 5,
+        "converted": 3,
+        "rejected": 2,
+        "conversionRate": 0.6,
+        "rejectionRate": 0.4
+      },
+      {
+        "bucket": "60-120s",
         "phones": 1,
         "converted": 0,
         "rejected": 1,
@@ -53,47 +53,47 @@
     ]
   },
   {
-    "agent": "Neha Aziz",
+    "agent": "Reshma Reddy",
     "topConversion": {
-      "bucket": "<60s",
-      "rate": 1,
-      "count": 2
+      "bucket": "60-120s",
+      "rate": 0,
+      "count": 0
     },
     "topRejection": {
       "bucket": "60-120s",
-      "rate": 0.6666666666666666,
-      "count": 2
+      "rate": 1,
+      "count": 3
     },
     "sweetSpot": {
-      "bucket": "<60s",
-      "score": 1,
-      "conversionRate": 1,
-      "rejectionRate": 0
+      "bucket": "60-120s",
+      "score": -1,
+      "conversionRate": 0,
+      "rejectionRate": 1
     },
     "bucketDetails": [
       {
         "bucket": "60-120s",
         "phones": 3,
-        "converted": 1,
-        "rejected": 2,
-        "conversionRate": 0.3333333333333333,
-        "rejectionRate": 0.6666666666666666
+        "converted": 0,
+        "rejected": 3,
+        "conversionRate": 0,
+        "rejectionRate": 1
       },
       {
-        "bucket": "300s+",
-        "phones": 2,
-        "converted": 1,
+        "bucket": "120-180s",
+        "phones": 1,
+        "converted": 0,
         "rejected": 1,
-        "conversionRate": 0.5,
-        "rejectionRate": 0.5
+        "conversionRate": 0,
+        "rejectionRate": 1
       },
       {
         "bucket": "<60s",
-        "phones": 2,
-        "converted": 2,
-        "rejected": 0,
-        "conversionRate": 1,
-        "rejectionRate": 0
+        "phones": 1,
+        "converted": 0,
+        "rejected": 1,
+        "conversionRate": 0,
+        "rejectionRate": 1
       }
     ]
   },
@@ -105,9 +105,9 @@
       "count": 1
     },
     "topRejection": {
-      "bucket": "60-120s",
-      "rate": 0,
-      "count": 0
+      "bucket": "300s+",
+      "rate": 1,
+      "count": 1
     },
     "sweetSpot": {
       "bucket": "120-180s",
@@ -117,12 +117,28 @@
     },
     "bucketDetails": [
       {
+        "bucket": "300s+",
+        "phones": 1,
+        "converted": 0,
+        "rejected": 1,
+        "conversionRate": 0,
+        "rejectionRate": 1
+      },
+      {
+        "bucket": "<60s",
+        "phones": 15,
+        "converted": 3,
+        "rejected": 1,
+        "conversionRate": 0.2,
+        "rejectionRate": 0.06666666666666667
+      },
+      {
         "bucket": "60-120s",
-        "phones": 2,
-        "converted": 1,
-        "rejected": 0,
-        "conversionRate": 0.5,
-        "rejectionRate": 0
+        "phones": 7,
+        "converted": 2,
+        "rejected": 1,
+        "conversionRate": 0.2857142857142857,
+        "rejectionRate": 0.14285714285714285
       },
       {
         "bucket": "120-180s",
@@ -135,29 +151,90 @@
     ]
   },
   {
-    "agent": "Rith Tamang",
+    "agent": "Rani KJ",
     "topConversion": {
-      "bucket": "60-120s",
-      "rate": 0,
-      "count": 0
+      "bucket": "<60s",
+      "rate": 0.15384615384615385,
+      "count": 2
     },
     "topRejection": {
       "bucket": "60-120s",
       "rate": 1,
-      "count": 2
+      "count": 5
     },
     "sweetSpot": {
       "bucket": "<60s",
-      "score": 0,
-      "conversionRate": 0,
-      "rejectionRate": 0
+      "score": -0.6153846153846154,
+      "conversionRate": 0.15384615384615385,
+      "rejectionRate": 0.7692307692307693
+    },
+    "bucketDetails": [
+      {
+        "bucket": "<60s",
+        "phones": 13,
+        "converted": 2,
+        "rejected": 10,
+        "conversionRate": 0.15384615384615385,
+        "rejectionRate": 0.7692307692307693
+      },
+      {
+        "bucket": "60-120s",
+        "phones": 5,
+        "converted": 0,
+        "rejected": 5,
+        "conversionRate": 0,
+        "rejectionRate": 1
+      },
+      {
+        "bucket": "180-300s",
+        "phones": 2,
+        "converted": 0,
+        "rejected": 2,
+        "conversionRate": 0,
+        "rejectionRate": 1
+      }
+    ]
+  },
+  {
+    "agent": "Rith Tamang",
+    "topConversion": {
+      "bucket": "<60s",
+      "rate": 0.2,
+      "count": 1
+    },
+    "topRejection": {
+      "bucket": "60-120s",
+      "rate": 1,
+      "count": 5
+    },
+    "sweetSpot": {
+      "bucket": "<60s",
+      "score": -0.8,
+      "conversionRate": 0.2,
+      "rejectionRate": 1
     },
     "bucketDetails": [
       {
         "bucket": "60-120s",
-        "phones": 2,
+        "phones": 5,
         "converted": 0,
-        "rejected": 2,
+        "rejected": 5,
+        "conversionRate": 0,
+        "rejectionRate": 1
+      },
+      {
+        "bucket": "<60s",
+        "phones": 5,
+        "converted": 1,
+        "rejected": 5,
+        "conversionRate": 0.2,
+        "rejectionRate": 1
+      },
+      {
+        "bucket": "120-180s",
+        "phones": 1,
+        "converted": 0,
+        "rejected": 1,
         "conversionRate": 0,
         "rejectionRate": 1
       },
@@ -168,51 +245,6 @@
         "rejected": 1,
         "conversionRate": 0,
         "rejectionRate": 1
-      },
-      {
-        "bucket": "<60s",
-        "phones": 1,
-        "converted": 0,
-        "rejected": 0,
-        "conversionRate": 0,
-        "rejectionRate": 0
-      }
-    ]
-  },
-  {
-    "agent": "Himasri",
-    "topConversion": {
-      "bucket": "<60s",
-      "rate": 0.6666666666666666,
-      "count": 2
-    },
-    "topRejection": {
-      "bucket": "300s+",
-      "rate": 0,
-      "count": 0
-    },
-    "sweetSpot": {
-      "bucket": "<60s",
-      "score": 0.6666666666666666,
-      "conversionRate": 0.6666666666666666,
-      "rejectionRate": 0
-    },
-    "bucketDetails": [
-      {
-        "bucket": "300s+",
-        "phones": 2,
-        "converted": 1,
-        "rejected": 0,
-        "conversionRate": 0.5,
-        "rejectionRate": 0
-      },
-      {
-        "bucket": "<60s",
-        "phones": 3,
-        "converted": 2,
-        "rejected": 0,
-        "conversionRate": 0.6666666666666666,
-        "rejectionRate": 0
       }
     ]
   },
@@ -225,23 +257,68 @@
     },
     "topRejection": {
       "bucket": "<60s",
-      "rate": 0,
-      "count": 0
+      "rate": 0.6,
+      "count": 3
     },
     "sweetSpot": {
       "bucket": "<60s",
-      "score": 0,
+      "score": -0.6,
       "conversionRate": 0,
-      "rejectionRate": 0
+      "rejectionRate": 0.6
     },
     "bucketDetails": [
       {
         "bucket": "<60s",
-        "phones": 3,
+        "phones": 5,
         "converted": 0,
-        "rejected": 0,
+        "rejected": 3,
         "conversionRate": 0,
+        "rejectionRate": 0.6
+      }
+    ]
+  },
+  {
+    "agent": "Neha Aziz",
+    "topConversion": {
+      "bucket": "<60s",
+      "rate": 1,
+      "count": 4
+    },
+    "topRejection": {
+      "bucket": "300s+",
+      "rate": 0.5,
+      "count": 1
+    },
+    "sweetSpot": {
+      "bucket": "<60s",
+      "score": 1,
+      "conversionRate": 1,
+      "rejectionRate": 0
+    },
+    "bucketDetails": [
+      {
+        "bucket": "60-120s",
+        "phones": 5,
+        "converted": 3,
+        "rejected": 2,
+        "conversionRate": 0.6,
+        "rejectionRate": 0.4
+      },
+      {
+        "bucket": "<60s",
+        "phones": 4,
+        "converted": 4,
+        "rejected": 0,
+        "conversionRate": 1,
         "rejectionRate": 0
+      },
+      {
+        "bucket": "300s+",
+        "phones": 2,
+        "converted": 1,
+        "rejected": 1,
+        "conversionRate": 0.5,
+        "rejectionRate": 0.5
       }
     ]
   },
