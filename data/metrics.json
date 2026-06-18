@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-06-15T11:30:28.869Z",
+  "generatedAt": "2026-06-18T05:57:39.835Z",
   "kpis": {
-    "todaysLeadsCount": 127,
-    "nc1Count": 42,
+    "todaysLeadsCount": 38,
+    "nc1Count": 31,
     "nc2Count": 15,
-    "nc3Count": 2,
-    "leadToDealConversionPercent": 34.5,
-    "totalDealsCount": 67,
-    "totalTasksCount": 200,
-    "taskCompletionPercent": 34.5,
-    "retentionRate": 0,
-    "avgCallDurationSec": 101,
-    "followupComplianceRate": 98.5
+    "nc3Count": 3,
+    "leadToDealConversionPercent": 43.3,
+    "totalDealsCount": 29,
+    "totalTasksCount": 68,
+    "taskCompletionPercent": 33.8,
+    "retentionRate": 50,
+    "avgCallDurationSec": 100,
+    "followupComplianceRate": 98
   },
   "retention": {
     "labels": [
@@ -26,33 +26,21 @@
       "08:00",
       "09:00",
       "10:00",
-      "11:00",
-      "12:00",
-      "13:00",
-      "14:00",
-      "15:00",
-      "16:00",
-      "17:00"
+      "11:00"
     ],
     "values": [
+      100,
+      100,
+      100,
+      100,
       0,
       0,
-      100,
-      0,
-      0,
-      0,
       0,
       100,
       100,
       100,
-      100,
-      100,
-      100,
-      100,
-      100,
-      90,
-      75,
-      0
+      80,
+      50
     ]
   },
   "calls": {
@@ -66,37 +54,37 @@
       "Sun"
     ],
     "avgDurationSec": [
-      55,
       0,
       0,
+      52,
+      68,
       0,
       0,
-      66,
-      63
+      0
     ],
     "callCounts": [
-      155,
       0,
       0,
+      131,
+      69,
       0,
       0,
-      14,
-      31
+      0
     ]
   },
   "compliance": {
-    "called": 197,
-    "notCalled": 3,
-    "modifiedWithoutCall": 3
+    "called": 196,
+    "notCalled": 4,
+    "modifiedWithoutCall": 4
   },
   "ncTime": {
     "lookbackDays": 7,
-    "idealHour": "15:00",
-    "idealScore": 0.523,
-    "peakNC1Hour": "10:00",
-    "peakNC1Count": 10,
-    "peakNC2Hour": "17:00",
-    "peakNC2Count": 4,
+    "idealHour": "10:00",
+    "idealScore": 0.575,
+    "peakNC1Hour": "09:00",
+    "peakNC1Count": 11,
+    "peakNC2Hour": "09:00",
+    "peakNC2Count": 9,
     "labels": [
       "00:00",
       "01:00",
@@ -132,19 +120,19 @@
       0,
       0,
       0,
-      0,
-      6,
-      10,
-      3,
       7,
+      11,
+      0,
+      4,
+      3,
+      1,
+      0,
+      0,
       0,
       3,
-      0,
-      1,
-      1,
-      1,
-      8,
       2,
+      0,
+      0,
       0,
       0,
       0
@@ -159,18 +147,18 @@
       0,
       0,
       0,
+      9,
       0,
       0,
-      0,
-      3,
-      0,
-      0,
-      3,
-      0,
-      4,
-      0,
-      3,
       2,
+      0,
+      2,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
       0,
       0,
       0
@@ -179,117 +167,123 @@
   "ncLadder": {
     "lookbackDays": 7,
     "funnel": {
-      "nc1": 59,
-      "nc2": 17,
-      "nc3": 2
+      "nc1": 49,
+      "nc2": 18,
+      "nc3": 3
     },
     "directFunnel": {
-      "nc1": 42,
+      "nc1": 31,
       "nc2": 15,
-      "nc3": 2
+      "nc3": 3
     },
     "progression": {
-      "nc1ToNc2Percent": 35.7,
-      "nc2ToNc3Percent": 13.3,
-      "avgHoursNc1ToNc2": 39.5,
-      "avgHoursNc2ToNc3": 76.5
+      "nc1ToNc2Percent": 48.4,
+      "nc2ToNc3Percent": 20,
+      "avgHoursNc1ToNc2": 20.3,
+      "avgHoursNc2ToNc3": 17.4
     },
     "sla": {
       "nc1ToNc2Hours": 4,
       "nc2ToNc3Hours": 24,
       "overdueNc1": 18,
-      "overdueNc2": 6
+      "overdueNc2": 4
     },
     "idealByStage": {
       "nc1": {
-        "hour": "10:00",
-        "count": 10,
-        "score": 0.466
+        "hour": "09:00",
+        "count": 11,
+        "score": 0.514
       },
       "nc2": {
-        "hour": "17:00",
-        "count": 4,
-        "score": 0.329
+        "hour": "09:00",
+        "count": 9,
+        "score": 0.514
       },
       "nc3": {
-        "hour": "15:00",
+        "hour": "09:00",
         "count": 1,
-        "score": 0.523
+        "score": 0.514
       }
     }
   },
   "categoryConversions": [
     {
       "category": "Uncategorized",
-      "leads": 494,
-      "deals": 98,
-      "conversionPercent": 19.8
+      "leads": 513,
+      "deals": 95,
+      "conversionPercent": 18.5
     },
     {
       "category": "Cleaning Services",
-      "leads": 222,
-      "deals": 22,
-      "conversionPercent": 9.9
+      "leads": 226,
+      "deals": 23,
+      "conversionPercent": 10.2
     },
     {
       "category": "Cleaning",
-      "leads": 159,
-      "deals": 16,
-      "conversionPercent": 10.1
+      "leads": 179,
+      "deals": 20,
+      "conversionPercent": 11.2
     },
     {
       "category": "Painting",
-      "leads": 59,
-      "deals": 3,
-      "conversionPercent": 5.1
-    },
-    {
-      "category": "Civil Works",
-      "leads": 47,
+      "leads": 55,
       "deals": 2,
-      "conversionPercent": 4.3
-    },
-    {
-      "category": "Grouting",
-      "leads": 30,
-      "deals": 3,
-      "conversionPercent": 10
+      "conversionPercent": 3.6
     },
     {
       "category": "Waterproofing",
-      "leads": 29,
+      "leads": 33,
       "deals": 4,
-      "conversionPercent": 13.8
+      "conversionPercent": 12.1
     },
     {
-      "category": "Marble Polishing",
-      "leads": 22,
+      "category": "Grouting",
+      "leads": 32,
+      "deals": 3,
+      "conversionPercent": 9.4
+    },
+    {
+      "category": "Civil Works",
+      "leads": 30,
       "deals": 2,
-      "conversionPercent": 9.1
+      "conversionPercent": 6.7
     },
     {
       "category": "Other Services",
-      "leads": 17,
-      "deals": 1,
-      "conversionPercent": 5.9
+      "leads": 19,
+      "deals": 3,
+      "conversionPercent": 15.8
     },
     {
-      "category": "Painting Services",
-      "leads": 11,
+      "category": "Marble Polishing",
+      "leads": 17,
       "deals": 2,
-      "conversionPercent": 18.2
+      "conversionPercent": 11.8
     },
     {
       "category": "Pest Control Services",
       "leads": 10,
-      "deals": 1,
-      "conversionPercent": 10
+      "deals": 2,
+      "conversionPercent": 20
+    },
+    {
+      "category": "Painting Services",
+      "leads": 8,
+      "deals": 0,
+      "conversionPercent": 0
     },
     {
       "category": "Pest Control",
-      "leads": 9,
-      "deals": 2,
-      "conversionPercent": 22.2
+      "leads": 8,
+      "deals": 0,
+      "conversionPercent": 0
+    },
+    {
+      "category": "Cleaning Services, Pest Control",
+      "leads": 1,
+      "deals": 0,
+      "conversionPercent": 0
     },
     {
       "category": "Cleaning Services, Marble Polishing",
@@ -302,2165 +296,2159 @@
     {
       "rank": 1,
       "area": "Whitefield",
-      "bookings": 102
+      "bookings": 94
     },
     {
       "rank": 2,
       "area": "Bellandur",
-      "bookings": 61
+      "bookings": 60
     },
     {
       "rank": 3,
       "area": "Sarjapur",
-      "bookings": 54
+      "bookings": 52
     },
     {
       "rank": 4,
-      "area": "Koramangala",
-      "bookings": 49
+      "area": "JP Nagar",
+      "bookings": 46
     },
     {
       "rank": 5,
-      "area": "JP Nagar",
-      "bookings": 48
+      "area": "Koramangala",
+      "bookings": 45
     }
   ],
   "latestLeadsToday": [
     {
-      "name": "Inbound Call Lead",
-      "phone": "9845251216",
-      "owner": "Banda Sandhya",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Duplicate",
-      "createdTime": "2026-06-15T16:56:20+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T16:56:55+05:30"
-    },
-    {
-      "name": "Kavithaa",
-      "phone": "9611821820",
+      "name": "Jemi",
+      "phone": "9740443959",
       "owner": "Rith Tamang",
       "leadStatus": "Open Leads",
       "leadSubStatus": "Not Contacted",
-      "createdTime": "2026-06-15T16:55:34+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T16:57:03+05:30"
+      "createdTime": "2026-06-18T11:21:51+05:30",
+      "called": false,
+      "modifiedTime": "2026-06-18T11:21:51+05:30"
     },
     {
-      "name": "Inbound Call Lead",
-      "phone": "7406150905",
-      "owner": "Rith Tamang",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T16:47:51+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T16:49:16+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "8971570989",
-      "owner": "Banda Sandhya",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Duplicate",
-      "createdTime": "2026-06-15T16:35:06+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T16:46:44+05:30"
-    },
-    {
-      "name": "Sushant",
-      "phone": "9050177622",
-      "owner": "Banda Sandhya",
-      "leadStatus": "Contacted",
-      "leadSubStatus": "Call Back Later",
-      "createdTime": "2026-06-15T16:34:33+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T16:57:48+05:30"
-    },
-    {
-      "name": "Manju M R",
-      "phone": "9769737807",
-      "owner": "Rith Tamang",
+      "name": "Suma",
+      "phone": "9108064520",
+      "owner": "Neha Aziz",
       "leadStatus": "Open Leads",
       "leadSubStatus": "Not Contacted",
-      "createdTime": "2026-06-15T16:20:04+05:30",
+      "createdTime": "2026-06-18T11:09:50+05:30",
       "called": false,
-      "modifiedTime": "2026-06-15T16:20:04+05:30"
+      "modifiedTime": "2026-06-18T11:09:50+05:30"
     },
     {
       "name": "Inbound Call Lead",
-      "phone": "9619487205",
-      "owner": "Rani K J",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Duplicate",
-      "createdTime": "2026-06-15T16:10:22+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T16:20:00+05:30"
-    },
-    {
-      "name": "Prashant meena",
-      "phone": "9887348161",
-      "owner": "Reshma Reddy",
-      "leadStatus": "Open Leads",
-      "leadSubStatus": "Not Contacted",
-      "createdTime": "2026-06-15T16:10:03+05:30",
-      "called": false,
-      "modifiedTime": "2026-06-15T16:10:03+05:30"
-    },
-    {
-      "name": "Manjesh",
-      "phone": "8151096025",
-      "owner": "Rajeswari S",
-      "leadStatus": "Attempted Contact",
-      "leadSubStatus": "NC 1",
-      "createdTime": "2026-06-15T15:56:33+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T16:16:16+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9845674141",
-      "owner": "Rajeswari S",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Duplicate",
-      "createdTime": "2026-06-15T15:45:03+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T15:45:34+05:30"
-    },
-    {
-      "name": "Neegal Noronha",
-      "phone": "9886192481",
-      "owner": "Banda Sandhya",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Duplicate",
-      "createdTime": "2026-06-15T15:42:03+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T15:50:01+05:30"
-    },
-    {
-      "name": "Inbound Call Lead - 9606713711",
-      "phone": "9606713711",
-      "owner": "Reshma Reddy",
-      "leadStatus": "Open Leads",
-      "leadSubStatus": "--",
-      "createdTime": "2026-06-15T15:29:10+05:30",
-      "called": false,
-      "modifiedTime": "2026-06-15T15:29:10+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9845326971",
-      "owner": "Rani K J",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T15:23:26+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T15:30:47+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9840278593",
-      "owner": "Reshma Reddy",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Cancelled by Customer",
-      "createdTime": "2026-06-15T15:16:19+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T15:23:45+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9900170510",
-      "owner": "Banda Sandhya",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Duplicate",
-      "createdTime": "2026-06-15T15:14:48+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T15:19:39+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9731577663",
+      "phone": "9972042455",
       "owner": "Anuj Poladia",
-      "leadStatus": "Contacted",
-      "leadSubStatus": "Call Back Later",
-      "createdTime": "2026-06-15T15:11:39+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T15:24:56+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9125238149",
-      "owner": "Rith Tamang",
       "leadStatus": "Rejected",
       "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T15:08:09+05:30",
+      "createdTime": "2026-06-18T11:05:47+05:30",
       "called": true,
-      "modifiedTime": "2026-06-15T15:08:31+05:30"
-    },
-    {
-      "name": "Inbound Call lead",
-      "phone": "9886080595",
-      "owner": "Rani K J",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T15:01:14+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T15:02:04+05:30"
+      "modifiedTime": "2026-06-18T11:07:03+05:30"
     },
     {
       "name": "Inbound Call Lead",
-      "phone": "7044747098",
-      "owner": "Banda Sandhya",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Duplicate",
-      "createdTime": "2026-06-15T14:56:36+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T15:15:21+05:30"
-    },
-    {
-      "name": "Noufan",
-      "phone": "9986973839",
-      "owner": "Banda Sandhya",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T14:53:46+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T15:03:06+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9365995237",
-      "owner": "Rith Tamang",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T14:52:38+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T15:31:04+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9845670701",
-      "owner": "Rani K J",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T14:48:06+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T14:50:56+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9130639172",
-      "owner": "Reshma Reddy",
-      "leadStatus": "Contacted",
-      "leadSubStatus": "Call Back Later",
-      "createdTime": "2026-06-15T14:36:43+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T15:13:45+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9900999779",
-      "owner": "Reshma Reddy",
-      "leadStatus": "Contacted",
-      "leadSubStatus": "Call Back Later",
-      "createdTime": "2026-06-15T14:30:35+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T16:24:37+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "8884459842",
-      "owner": "Rajeswari S",
-      "leadStatus": "Contacted",
-      "leadSubStatus": "Call Back Later",
-      "createdTime": "2026-06-15T14:23:47+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T14:28:18+05:30"
-    },
-    {
-      "name": "Ekaterina",
-      "phone": "9108378363",
-      "owner": "Banda Sandhya",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T14:22:32+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T14:35:56+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "8867149490",
-      "owner": "Rani K J",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Not Answering",
-      "createdTime": "2026-06-15T14:21:30+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T14:28:22+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "8759765989",
-      "owner": "Rani K J",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T14:05:54+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T14:30:44+05:30"
-    },
-    {
-      "name": "Geetha",
-      "phone": "9880616445",
-      "owner": "Reshma Reddy",
-      "leadStatus": "Attempted Contact",
-      "leadSubStatus": "NC 1",
-      "createdTime": "2026-06-15T14:00:32+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T14:18:56+05:30"
-    },
-    {
-      "name": "Amritha shenoy",
-      "phone": "9164588665",
-      "owner": "Banda Sandhya",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Price is high",
-      "createdTime": "2026-06-15T13:52:32+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T14:18:01+05:30"
-    },
-    {
-      "name": "Shwetha",
-      "phone": "8022180264",
-      "owner": "Banda Sandhya",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "False Lead",
-      "createdTime": "2026-06-15T13:45:26+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T16:30:17+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9379702048",
-      "owner": "Reshma Reddy",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T13:45:16+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T13:57:10+05:30"
-    },
-    {
-      "name": "Rahul",
-      "phone": "8080055056",
-      "owner": "Rajeswari S",
-      "leadStatus": "Attempted Contact",
-      "leadSubStatus": "NC 1",
-      "createdTime": "2026-06-15T13:43:01+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T14:08:12+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9686301764",
-      "owner": "Rajeswari S",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Duplicate",
-      "createdTime": "2026-06-15T13:37:17+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T13:43:46+05:30"
-    },
-    {
-      "name": "Pallavi Sudhir",
-      "phone": "9945005117",
-      "owner": "Rajeswari S",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Price is high",
-      "createdTime": "2026-06-15T13:35:32+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T16:04:15+05:30"
-    },
-    {
-      "name": "C Umapathi",
-      "phone": "9590751108",
-      "owner": "Rajeswari S",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Service Not Available",
-      "createdTime": "2026-06-15T13:34:31+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T14:30:01+05:30"
-    },
-    {
-      "name": "Megha",
-      "phone": "9880177204",
-      "owner": "Rajeswari S",
-      "leadStatus": "Contacted",
-      "leadSubStatus": "Call Back Later",
-      "createdTime": "2026-06-15T13:34:31+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T16:03:09+05:30"
-    },
-    {
-      "name": "CubicFEET Architects",
-      "phone": "9945491199",
+      "phone": "9727711248",
       "owner": "Shahin BR",
-      "leadStatus": "Open Leads",
-      "leadSubStatus": "Not Contacted",
-      "createdTime": "2026-06-15T13:33:02+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T15:00:26+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9944781066",
-      "owner": "Reshma Reddy",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Slot Not Available",
-      "createdTime": "2026-06-15T13:22:00+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T13:25:52+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "8988884666",
-      "owner": "Reshma Reddy",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Service Not Available",
-      "createdTime": "2026-06-15T13:17:07+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T13:17:33+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9742539675",
-      "owner": "Anuj Poladia",
-      "leadStatus": "Contacted",
-      "leadSubStatus": "Call Back Later",
-      "createdTime": "2026-06-15T13:01:42+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T14:01:25+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9341214839",
-      "owner": "Rith Tamang",
       "leadStatus": "Rejected",
       "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T12:54:08+05:30",
+      "createdTime": "2026-06-18T11:02:13+05:30",
       "called": true,
-      "modifiedTime": "2026-06-15T12:55:27+05:30"
+      "modifiedTime": "2026-06-18T11:13:29+05:30"
     },
     {
       "name": "Inbound Call Lead",
-      "phone": "8269883829",
-      "owner": "Anuj Poladia",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T12:50:49+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T13:00:20+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "8700066132",
-      "owner": "Reshma Reddy",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T12:47:06+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T12:50:17+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9727947449",
-      "owner": "Rani K J",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T12:42:55+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T12:44:19+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "7829639809",
-      "owner": "Banda Sandhya",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T12:42:36+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T12:45:33+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "6206965684",
-      "owner": "Reshma Reddy",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T12:37:31+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T13:00:37+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "7760894733",
-      "owner": "Rith Tamang",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T12:36:10+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T12:37:00+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "7259759858",
-      "owner": "Anuj Poladia",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T12:29:55+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T12:31:50+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9845171425",
-      "owner": "Reshma Reddy",
-      "leadStatus": "Attempted Contact",
-      "leadSubStatus": "NC 1",
-      "createdTime": "2026-06-15T12:16:04+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T12:25:41+05:30"
-    },
-    {
-      "name": "Geenia Garg",
-      "phone": "8585957409",
-      "owner": "Reshma Reddy",
-      "leadStatus": "Attempted Contact",
-      "leadSubStatus": "NC 1",
-      "createdTime": "2026-06-15T12:15:31+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T12:26:29+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9845020382",
-      "owner": "Neha Aziz",
-      "leadStatus": "Contacted",
-      "leadSubStatus": "Call Back Later",
-      "createdTime": "2026-06-15T12:13:47+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T13:01:45+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9008905323",
-      "owner": "Rith Tamang",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T12:07:53+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T12:11:46+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9148385808",
-      "owner": "Anuj Poladia",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T12:03:25+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T12:32:06+05:30"
-    },
-    {
-      "name": "Sathish Kumar",
-      "phone": "9344621798",
-      "owner": "Neha Aziz",
+      "phone": "9535101369",
+      "owner": "Rajeswari S",
       "leadStatus": "Rejected",
       "leadSubStatus": "Duplicate",
-      "createdTime": "2026-06-15T12:02:30+05:30",
+      "createdTime": "2026-06-18T10:37:07+05:30",
       "called": true,
-      "modifiedTime": "2026-06-15T12:44:49+05:30"
-    },
-    {
-      "name": "G Ravi Shankar Shinde",
-      "phone": "9449597136",
-      "owner": "Rani K J",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Wrong Number",
-      "createdTime": "2026-06-15T12:00:31+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T12:20:00+05:30"
+      "modifiedTime": "2026-06-18T10:37:39+05:30"
     },
     {
       "name": "Inbound Call Lead",
-      "phone": "9731761872",
-      "owner": "Rani K J",
+      "phone": "9176382271",
+      "owner": "Rith Tamang",
       "leadStatus": "Rejected",
       "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T11:59:44+05:30",
+      "createdTime": "2026-06-18T10:36:40+05:30",
       "called": true,
-      "modifiedTime": "2026-06-15T12:19:08+05:30"
+      "modifiedTime": "2026-06-18T11:06:35+05:30"
     },
     {
-      "name": "Inbound Call Lead",
-      "phone": "8297290303",
-      "owner": "Rajeswari S",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T11:57:32+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T11:58:30+05:30"
-    },
-    {
-      "name": "Saikrishna Bavireddy",
-      "phone": "9705663377",
-      "owner": "Rajeswari S",
+      "name": "Gangadhar",
+      "phone": "9972355005",
+      "owner": "Rith Tamang",
       "leadStatus": "Attempted Contact",
       "leadSubStatus": "NC 1",
-      "createdTime": "2026-06-15T11:57:00+05:30",
+      "createdTime": "2026-06-18T10:34:50+05:30",
       "called": true,
-      "modifiedTime": "2026-06-15T11:59:57+05:30"
+      "modifiedTime": "2026-06-18T11:27:11+05:30"
     },
     {
-      "name": "Sridevi Nagarjun",
-      "phone": "7019946189",
-      "owner": "Rajeswari S",
+      "name": "Inbound Call Lead",
+      "phone": "9739185445",
+      "owner": "Catherine Lovisa",
       "leadStatus": "Rejected",
       "leadSubStatus": "Out Of Service Area",
-      "createdTime": "2026-06-15T11:57:00+05:30",
+      "createdTime": "2026-06-18T10:30:32+05:30",
       "called": true,
-      "modifiedTime": "2026-06-15T12:10:22+05:30"
+      "modifiedTime": "2026-06-18T11:10:46+05:30"
     },
     {
       "name": "Inbound Call Lead",
-      "phone": "6302145365",
+      "phone": "9448022397",
       "owner": "Neha Aziz",
       "leadStatus": "Contacted",
       "leadSubStatus": "Call Back Later",
-      "createdTime": "2026-06-15T11:56:06+05:30",
+      "createdTime": "2026-06-18T10:29:11+05:30",
       "called": true,
-      "modifiedTime": "2026-06-15T14:03:55+05:30"
+      "modifiedTime": "2026-06-18T10:30:27+05:30"
     },
     {
       "name": "Inbound Call Lead",
-      "phone": "7037523819",
+      "phone": "9108228690",
+      "owner": "Rajeswari S",
+      "leadStatus": "Contacted",
+      "leadSubStatus": "Call Back Later",
+      "createdTime": "2026-06-18T10:27:42+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T10:28:00+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9943899293",
       "owner": "Rani K J",
       "leadStatus": "Rejected",
       "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T11:53:00+05:30",
+      "createdTime": "2026-06-18T10:21:22+05:30",
       "called": true,
-      "modifiedTime": "2026-06-15T12:23:40+05:30"
+      "modifiedTime": "2026-06-18T10:22:05+05:30"
+    },
+    {
+      "name": "Inbound Call Lead - 9945092747",
+      "phone": "9945092747",
+      "owner": "Neha Aziz",
+      "leadStatus": "Open Leads",
+      "leadSubStatus": "--",
+      "createdTime": "2026-06-18T10:15:48+05:30",
+      "called": false,
+      "modifiedTime": "2026-06-18T10:15:48+05:30"
     },
     {
       "name": "Inbound Call Lead",
-      "phone": "9640191310",
-      "owner": "Neha Aziz",
+      "phone": "8584090528",
+      "owner": "Rajeswari S",
       "leadStatus": "Rejected",
       "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T11:51:05+05:30",
+      "createdTime": "2026-06-18T10:11:26+05:30",
       "called": true,
-      "modifiedTime": "2026-06-15T11:52:03+05:30"
+      "modifiedTime": "2026-06-18T10:12:57+05:30"
+    },
+    {
+      "name": "Inbound Call Lead - 9743395522",
+      "phone": "9743395522",
+      "owner": "Neha Aziz",
+      "leadStatus": "Open Leads",
+      "leadSubStatus": "--",
+      "createdTime": "2026-06-18T10:10:38+05:30",
+      "called": false,
+      "modifiedTime": "2026-06-18T10:10:38+05:30"
     },
     {
       "name": "Inbound Call Lead",
-      "phone": "9742227207",
+      "phone": "9841831579",
       "owner": "Rith Tamang",
       "leadStatus": "Rejected",
       "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T11:46:44+05:30",
+      "createdTime": "2026-06-18T09:36:52+05:30",
       "called": true,
-      "modifiedTime": "2026-06-15T11:48:46+05:30"
+      "modifiedTime": "2026-06-18T09:51:14+05:30"
     },
     {
       "name": "Inbound Call Lead",
-      "phone": "9886994579",
-      "owner": "Banda Sandhya",
+      "phone": "8884059980",
+      "owner": "Neha Aziz",
       "leadStatus": "Rejected",
       "leadSubStatus": "Duplicate",
-      "createdTime": "2026-06-15T11:44:08+05:30",
+      "createdTime": "2026-06-18T09:29:58+05:30",
       "called": true,
-      "modifiedTime": "2026-06-15T11:44:42+05:30"
-    },
-    {
-      "name": "Saravanan",
-      "phone": "9620407630",
-      "owner": "Rajeswari S",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Slot Not Available",
-      "createdTime": "2026-06-15T11:40:36+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T14:47:40+05:30"
+      "modifiedTime": "2026-06-18T09:52:03+05:30"
     },
     {
       "name": "Inbound Call Lead",
-      "phone": "9845093485",
+      "phone": "9730474232",
+      "owner": "Rith Tamang",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-18T09:19:14+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T09:50:56+05:30"
+    },
+    {
+      "name": "Puja",
+      "phone": "9035445890",
+      "owner": "Rani K J",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "False Lead",
+      "createdTime": "2026-06-18T09:12:19+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T10:03:47+05:30"
+    },
+    {
+      "name": "Kartik",
+      "phone": "7892001551",
+      "owner": "Rith Tamang",
+      "leadStatus": "Attempted Contact",
+      "leadSubStatus": "NC 1",
+      "createdTime": "2026-06-18T09:01:20+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T09:52:32+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "7090561515",
+      "owner": "Rani K J",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Duplicate",
+      "createdTime": "2026-06-18T08:56:41+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T09:00:53+05:30"
+    },
+    {
+      "name": "Ankita",
+      "phone": "7065555575",
+      "owner": "Catherine Lovisa",
+      "leadStatus": "Attempted Contact",
+      "leadSubStatus": "NC 1",
+      "createdTime": "2026-06-18T08:56:19+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T09:09:46+05:30"
+    },
+    {
+      "name": "Neeraj",
+      "phone": "9886615577",
+      "owner": "Rith Tamang",
+      "leadStatus": "Attempted Contact",
+      "leadSubStatus": "NC 1",
+      "createdTime": "2026-06-18T08:53:19+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T08:55:47+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9988999710",
+      "owner": "Rith Tamang",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-18T08:50:55+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T08:52:25+05:30"
+    },
+    {
+      "name": "Madhuri",
+      "phone": "9676667061",
+      "owner": "Neha Aziz",
+      "leadStatus": "Attempted Contact",
+      "leadSubStatus": "NC 1",
+      "createdTime": "2026-06-18T08:50:19+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T09:39:52+05:30"
+    },
+    {
+      "name": "Shanmugam Sibbala",
+      "phone": "9740066583",
+      "owner": "Neha Aziz",
+      "leadStatus": "Contacted",
+      "leadSubStatus": "Call Back Later",
+      "createdTime": "2026-06-18T08:37:49+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T08:44:19+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "8310387038",
+      "owner": "Rani K J",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Service Not Available",
+      "createdTime": "2026-06-18T08:23:04+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T08:24:55+05:30"
+    },
+    {
+      "name": "Aman kartha",
+      "phone": "6364280679",
+      "owner": "Rith Tamang",
+      "leadStatus": "Attempted Contact",
+      "leadSubStatus": "NC 1",
+      "createdTime": "2026-06-18T08:08:48+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T08:54:52+05:30"
+    },
+    {
+      "name": "Venu",
+      "phone": "9845484124",
+      "owner": "Rani K J",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-18T08:06:19+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T09:00:23+05:30"
+    },
+    {
+      "name": "Sreedevi",
+      "phone": "8150815205",
+      "owner": "Shahin BR",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Service Not Available",
+      "createdTime": "2026-06-18T08:02:48+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T09:06:43+05:30"
+    },
+    {
+      "name": "Jayaprakash CV Mellekatte",
+      "phone": "9880330535",
+      "owner": "Rani K J",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Out Of Service Area",
+      "createdTime": "2026-06-18T07:59:19+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T10:43:33+05:30"
+    },
+    {
+      "name": "Ankita Singhal",
+      "phone": "8433726799",
+      "owner": "Shahin BR",
+      "leadStatus": "Attempted Contact",
+      "leadSubStatus": "NC 2",
+      "createdTime": "2026-06-18T07:09:18+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T09:31:39+05:30"
+    },
+    {
+      "name": "Radhika sinha",
+      "phone": "9591457253",
+      "owner": "Rith Tamang",
+      "leadStatus": "Attempted Contact",
+      "leadSubStatus": "NC 1",
+      "createdTime": "2026-06-18T03:03:16+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T08:57:09+05:30"
+    },
+    {
+      "name": "ANISHA NIGAR FAROOQ",
+      "phone": "6363369139",
+      "owner": "Rani K J",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-18T02:36:15+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T10:11:17+05:30"
+    },
+    {
+      "name": "Gomathi",
+      "phone": "9900226456",
+      "owner": "Shahin BR",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Service Not Available",
+      "createdTime": "2026-06-18T02:34:15+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T09:15:51+05:30"
+    },
+    {
+      "name": "Saumya saurav Rout",
+      "phone": "8884317949",
+      "owner": "Rith Tamang",
+      "leadStatus": "Attempted Contact",
+      "leadSubStatus": "NC 1",
+      "createdTime": "2026-06-18T02:06:45+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T08:08:30+05:30"
+    },
+    {
+      "name": "Vv",
+      "phone": "9898909898",
+      "owner": "Catherine Lovisa",
+      "leadStatus": "Attempted Contact",
+      "leadSubStatus": "NC 1",
+      "createdTime": "2026-06-18T01:47:45+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T09:34:50+05:30"
+    },
+    {
+      "name": "Sarah",
+      "phone": "9980018491",
+      "owner": "Neha Aziz",
+      "leadStatus": "Contacted",
+      "leadSubStatus": "Call Back Later",
+      "createdTime": "2026-06-18T01:27:45+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T09:49:52+05:30"
+    },
+    {
+      "name": "Shahtaj Arifa",
+      "phone": "9986707153",
+      "owner": "Rith Tamang",
+      "leadStatus": "Attempted Contact",
+      "leadSubStatus": "NC 1",
+      "createdTime": "2026-06-18T00:20:14+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T08:58:18+05:30"
+    },
+    {
+      "name": "Deepa",
+      "phone": "9741117082",
+      "owner": "Shahin BR",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Wrong Number",
+      "createdTime": "2026-06-17T23:14:13+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T09:33:40+05:30"
+    },
+    {
+      "name": "Dharmendr Shukla",
+      "phone": "9880253348",
+      "owner": "Neha Aziz",
+      "leadStatus": "Attempted Contact",
+      "leadSubStatus": "NC 1",
+      "createdTime": "2026-06-17T22:52:43+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T08:46:21+05:30"
+    },
+    {
+      "name": "Partha",
+      "phone": "9686568075",
+      "owner": "Rani K J",
+      "leadStatus": "Contacted",
+      "leadSubStatus": "Call Back Later",
+      "createdTime": "2026-06-17T22:51:13+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T08:27:52+05:30"
+    },
+    {
+      "name": "Aditya B",
+      "phone": "9923752000",
+      "owner": "Rith Tamang",
+      "leadStatus": "Attempted Contact",
+      "leadSubStatus": "NC 1",
+      "createdTime": "2026-06-17T22:17:13+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T08:12:34+05:30"
+    },
+    {
+      "name": "Ankit Bhilkar",
+      "phone": "9870713734",
+      "owner": "Neha Aziz",
+      "leadStatus": "Attempted Contact",
+      "leadSubStatus": "NC 1",
+      "createdTime": "2026-06-17T21:53:43+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T09:50:25+05:30"
+    },
+    {
+      "name": "Veda",
+      "phone": "9448446412",
+      "owner": "Neha Aziz",
+      "leadStatus": "Attempted Contact",
+      "leadSubStatus": "NC 1",
+      "createdTime": "2026-06-17T21:36:43+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T09:51:07+05:30"
+    },
+    {
+      "name": "Smitha",
+      "phone": "9742047895",
+      "owner": "Rith Tamang",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-17T21:35:12+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T08:07:07+05:30"
+    },
+    {
+      "name": "Rashmi",
+      "phone": "9448153246",
+      "owner": "Rani K J",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Service Not Available",
+      "createdTime": "2026-06-17T21:19:42+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T09:19:35+05:30"
+    },
+    {
+      "name": "Veena",
+      "phone": "9110617421",
+      "owner": "Catherine Lovisa",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Service Not Available",
+      "createdTime": "2026-06-17T21:14:12+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T09:36:31+05:30"
+    },
+    {
+      "name": "Ravikumar",
+      "phone": "9894538685",
+      "owner": "Rani K J",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Not Answering",
+      "createdTime": "2026-06-17T21:02:12+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T10:05:01+05:30"
+    },
+    {
+      "name": "Poornima Manjunath",
+      "phone": "9986543331",
+      "owner": "Rani K J",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Not Answering",
+      "createdTime": "2026-06-17T20:55:12+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T10:13:15+05:30"
+    },
+    {
+      "name": "Divya",
+      "phone": "8892530955",
+      "owner": "Reshma Reddy",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Out Of Service Area",
+      "createdTime": "2026-06-17T19:51:41+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T20:19:38+05:30"
+    },
+    {
+      "name": "NAVEENA M E",
+      "phone": "9742232901",
+      "owner": "Rani K J",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Not Answering",
+      "createdTime": "2026-06-17T19:25:41+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T09:36:37+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "7760016222",
+      "owner": "Anuj Poladia",
+      "leadStatus": "Contacted",
+      "leadSubStatus": "Call Back Later",
+      "createdTime": "2026-06-17T19:14:05+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T08:21:14+05:30"
+    },
+    {
+      "name": "Aravind Ruthvik",
+      "phone": "9886455685",
+      "owner": "Anuj Poladia",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Wrong Number",
+      "createdTime": "2026-06-17T19:09:41+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T19:29:27+05:30"
+    },
+    {
+      "name": "Ekaa MK",
+      "phone": "9108707364",
+      "owner": "Catherine Lovisa",
+      "leadStatus": "Attempted Contact",
+      "leadSubStatus": "NC 1",
+      "createdTime": "2026-06-17T18:55:41+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T11:05:58+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9826142101",
       "owner": "Anuj Poladia",
       "leadStatus": "Rejected",
       "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T11:20:04+05:30",
+      "createdTime": "2026-06-17T18:54:07+05:30",
       "called": true,
-      "modifiedTime": "2026-06-15T11:20:27+05:30"
-    },
-    {
-      "name": "Jimmy",
-      "phone": "8884950111",
-      "owner": "Rith Tamang",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T11:17:30+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T13:22:55+05:30"
+      "modifiedTime": "2026-06-17T18:58:37+05:30"
     },
     {
       "name": "Inbound Call Lead",
-      "phone": "9900796700",
+      "phone": "7013135044",
       "owner": "Rani K J",
       "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T11:16:28+05:30",
+      "leadSubStatus": "Not Answering",
+      "createdTime": "2026-06-17T18:52:04+05:30",
       "called": true,
-      "modifiedTime": "2026-06-15T11:16:56+05:30"
-    },
-    {
-      "name": "Vijay",
-      "phone": "9880426294",
-      "owner": "Banda Sandhya",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Slot Not Available",
-      "createdTime": "2026-06-15T11:16:00+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T11:58:14+05:30"
+      "modifiedTime": "2026-06-18T08:24:13+05:30"
     },
     {
       "name": "Inbound Call Lead",
-      "phone": "8618696468",
-      "owner": "Rajeswari S",
-      "leadStatus": "Contacted",
-      "leadSubStatus": "Call Back Later",
-      "createdTime": "2026-06-15T11:14:20+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T11:16:44+05:30"
-    },
-    {
-      "name": "Murali Sundararaju",
-      "phone": "9845642968",
-      "owner": "Rith Tamang",
+      "phone": "8748039950",
+      "owner": "Anuj Poladia",
       "leadStatus": "Rejected",
       "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T11:13:00+05:30",
+      "createdTime": "2026-06-17T18:46:23+05:30",
       "called": true,
-      "modifiedTime": "2026-06-15T11:16:11+05:30"
+      "modifiedTime": "2026-06-17T18:59:34+05:30"
+    },
+    {
+      "name": "Rukhsana",
+      "phone": "9591145526",
+      "owner": "Reshma Reddy",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Price is high",
+      "createdTime": "2026-06-17T18:24:41+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T18:45:43+05:30"
     },
     {
       "name": "Inbound Call Lead",
-      "phone": "9731721217",
+      "phone": "7879155356",
+      "owner": "Reshma Reddy",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-17T18:20:18+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T18:22:10+05:30"
+    },
+    {
+      "name": "Hussain Ahmed laskar",
+      "phone": "7899513087",
+      "owner": "Reshma Reddy",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Looking For Job",
+      "createdTime": "2026-06-17T18:18:10+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T18:46:46+05:30"
+    },
+    {
+      "name": "SHRISHAIL MULAGE",
+      "phone": "9347215816",
       "owner": "Rani K J",
       "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T11:03:23+05:30",
+      "leadSubStatus": "False Lead",
+      "createdTime": "2026-06-17T18:13:53+05:30",
       "called": true,
-      "modifiedTime": "2026-06-15T11:07:42+05:30"
+      "modifiedTime": "2026-06-18T08:41:13+05:30"
     },
     {
-      "name": "Divya das k g",
-      "phone": "9846671933",
+      "name": "Priya",
+      "phone": "9916436767",
       "owner": "Reshma Reddy",
       "leadStatus": "Contacted",
       "leadSubStatus": "Call Back Later",
-      "createdTime": "2026-06-15T11:02:59+05:30",
+      "createdTime": "2026-06-17T18:04:40+05:30",
       "called": true,
-      "modifiedTime": "2026-06-15T12:30:56+05:30"
-    },
-    {
-      "name": "Varsha",
-      "phone": "9035705141",
-      "owner": "Rith Tamang",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Slot Not Available",
-      "createdTime": "2026-06-15T10:59:59+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T11:03:16+05:30"
-    },
-    {
-      "name": "Deepak",
-      "phone": "9901212223",
-      "owner": "Banda Sandhya",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T10:59:30+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T11:14:00+05:30"
-    },
-    {
-      "name": "Anil",
-      "phone": "9611002589",
-      "owner": "Neha Aziz",
-      "leadStatus": "Attempted Contact",
-      "leadSubStatus": "NC 1",
-      "createdTime": "2026-06-15T10:58:29+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T12:17:49+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9902609072",
-      "owner": "Rajeswari S",
-      "leadStatus": "Contacted",
-      "leadSubStatus": "Call Back Later",
-      "createdTime": "2026-06-15T10:51:55+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T10:52:08+05:30"
-    },
-    {
-      "name": "Gopika",
-      "phone": "8130200886",
-      "owner": "Rith Tamang",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Not Answering",
-      "createdTime": "2026-06-15T10:49:59+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T15:12:37+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9741095000",
-      "owner": "Rith Tamang",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T10:49:53+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T10:50:13+05:30"
-    },
-    {
-      "name": "Pinky",
-      "phone": "9880832315",
-      "owner": "Banda Sandhya",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T10:42:29+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T14:40:16+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9448361460",
-      "owner": "Neha Aziz",
-      "leadStatus": "Contacted",
-      "leadSubStatus": "Call Back Later",
-      "createdTime": "2026-06-15T10:41:54+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T11:01:30+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9413748354",
-      "owner": "Banda Sandhya",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T10:39:02+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T10:39:21+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "7010388215",
-      "owner": "Anuj Poladia",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T10:30:26+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T10:34:46+05:30"
-    },
-    {
-      "name": "Aakash",
-      "phone": "9360332325",
-      "owner": "Rani K J",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Price is high",
-      "createdTime": "2026-06-15T10:28:59+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T10:34:23+05:30"
-    },
-    {
-      "name": "Rahil",
-      "phone": "9742143069",
-      "owner": "Rajeswari S",
-      "leadStatus": "Attempted Contact",
-      "leadSubStatus": "NC 1",
-      "createdTime": "2026-06-15T10:25:30+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T10:31:21+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9449839194",
-      "owner": "Anuj Poladia",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T10:21:49+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T10:24:15+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9845002460",
-      "owner": "Rith Tamang",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T10:16:46+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T10:41:33+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9731588332",
-      "owner": "Rajeswari S",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Slot Not Available",
-      "createdTime": "2026-06-15T10:10:39+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T11:01:57+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "8197087365",
-      "owner": "Rani K J",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T10:05:45+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T10:07:52+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9448721486",
-      "owner": "Anuj Poladia",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T10:03:04+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T10:24:30+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9632839475",
-      "owner": "Rith Tamang",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T09:57:19+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T09:58:29+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9559023279",
-      "owner": "Rith Tamang",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T09:56:35+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T10:02:09+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9986503117",
-      "owner": "Rani K J",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T09:55:40+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T09:56:18+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9886558354",
-      "owner": "Rith Tamang",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T09:55:36+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T09:58:05+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9886558354",
-      "owner": "Rith Tamang",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T09:55:36+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T09:57:46+05:30"
-    },
-    {
-      "name": "Santosh",
-      "phone": "9880450840",
-      "owner": "Rith Tamang",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Not Answering",
-      "createdTime": "2026-06-15T09:55:29+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T10:08:38+05:30"
-    },
-    {
-      "name": "Rohit Jain",
-      "phone": "9900951571",
-      "owner": "Rith Tamang",
-      "leadStatus": "Attempted Contact",
-      "leadSubStatus": "NC 2",
-      "createdTime": "2026-06-15T09:51:59+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T15:11:14+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "8660582519",
-      "owner": "Anuj Poladia",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T09:47:45+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T09:48:08+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9845166707",
-      "owner": "Banda Sandhya",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Duplicate",
-      "createdTime": "2026-06-15T09:44:26+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T09:48:01+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "7829523092",
-      "owner": "Rajeswari S",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Duplicate",
-      "createdTime": "2026-06-15T09:43:53+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T09:46:23+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9380944634",
-      "owner": "Anuj Poladia",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T09:42:28+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T09:48:24+05:30"
-    },
-    {
-      "name": "Misbah",
-      "phone": "7406862494",
-      "owner": "Banda Sandhya",
-      "leadStatus": "Contacted",
-      "leadSubStatus": "Call Back Later",
-      "createdTime": "2026-06-15T09:29:28+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T09:36:06+05:30"
-    },
-    {
-      "name": "mansvi sharma",
-      "phone": "7829100222",
-      "owner": "Rani K J",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Service Not Available",
-      "createdTime": "2026-06-15T09:16:58+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T10:32:04+05:30"
-    },
-    {
-      "name": "Hari Rao",
-      "phone": "9445142605",
-      "owner": "Rajeswari S",
-      "leadStatus": "Attempted Contact",
-      "leadSubStatus": "NC 2",
-      "createdTime": "2026-06-15T09:15:29+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T12:14:15+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9845016837",
-      "owner": "Rith Tamang",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T09:06:39+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T09:10:48+05:30"
-    },
-    {
-      "name": "Rituraj",
-      "phone": "9845611886",
-      "owner": "Rith Tamang",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Service Not Available",
-      "createdTime": "2026-06-15T09:04:58+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T09:34:13+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9986504935",
-      "owner": "Banda Sandhya",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Duplicate",
-      "createdTime": "2026-06-15T09:01:46+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T09:02:32+05:30"
-    },
-    {
-      "name": "sukla",
-      "phone": "9845408826",
-      "owner": "Neha Aziz",
-      "leadStatus": "Attempted Contact",
-      "leadSubStatus": "NC 1",
-      "createdTime": "2026-06-15T08:58:58+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T09:18:47+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9709703257",
-      "owner": "Rani K J",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T08:52:44+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T08:53:33+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9818325166",
-      "owner": "Banda Sandhya",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Duplicate",
-      "createdTime": "2026-06-15T08:48:18+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T08:54:59+05:30"
-    },
-    {
-      "name": "Dhana",
-      "phone": "8050030506",
-      "owner": "Rani K J",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Booked From Others",
-      "createdTime": "2026-06-15T08:47:58+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T10:24:47+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "7829666966",
-      "owner": "Banda Sandhya",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T08:41:49+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T09:00:52+05:30"
-    },
-    {
-      "name": "Divya Sridhar",
-      "phone": "8123517185",
-      "owner": "Neha Aziz",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Cancelled by Customer",
-      "createdTime": "2026-06-15T08:34:58+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T09:24:57+05:30"
-    },
-    {
-      "name": "Malathi",
-      "phone": "9449836316",
-      "owner": "Banda Sandhya",
-      "leadStatus": "Attempted Contact",
-      "leadSubStatus": "NC 2",
-      "createdTime": "2026-06-15T08:30:58+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T15:31:32+05:30"
-    },
-    {
-      "name": "Nkshowtech",
-      "phone": "7829515909",
-      "owner": "Neha Aziz",
-      "leadStatus": "Attempted Contact",
-      "leadSubStatus": "NC 1",
-      "createdTime": "2026-06-15T08:19:43+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T09:25:37+05:30"
-    },
-    {
-      "name": "David",
-      "phone": "7676558009",
-      "owner": "Neha Aziz",
-      "leadStatus": "Attempted Contact",
-      "leadSubStatus": "NC 1",
-      "createdTime": "2026-06-15T08:19:29+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T09:26:45+05:30"
-    },
-    {
-      "name": "Archana",
-      "phone": "7795931505",
-      "owner": "Rani K J",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Booked From Others",
-      "createdTime": "2026-06-15T08:11:58+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T11:11:02+05:30"
-    },
-    {
-      "name": "Nishant",
-      "phone": "9900028913",
-      "owner": "Rani K J",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T08:06:28+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T09:36:23+05:30"
-    },
-    {
-      "name": "Anulatha",
-      "phone": "9731846111",
-      "owner": "Rith Tamang",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T08:05:58+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T08:21:11+05:30"
-    },
-    {
-      "name": "vignesh mannar",
-      "phone": "9942142660",
-      "owner": "Rajeswari S",
-      "leadStatus": "Attempted Contact",
-      "leadSubStatus": "NC 1",
-      "createdTime": "2026-06-15T08:03:58+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T10:03:08+05:30"
-    },
-    {
-      "name": "G Ravi Shankar Shinde",
-      "phone": "9448587136",
-      "owner": "Rani K J",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Not Answering",
-      "createdTime": "2026-06-15T07:48:58+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T11:15:52+05:30"
-    },
-    {
-      "name": "Rakesh",
-      "phone": "7829953953",
-      "owner": "Neha Aziz",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Slot Not Available",
-      "createdTime": "2026-06-15T07:44:28+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T09:29:17+05:30"
-    },
-    {
-      "name": "Maibam susanta singh",
-      "phone": "9035007788",
-      "owner": "Rith Tamang",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-15T07:42:57+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T13:52:38+05:30"
-    },
-    {
-      "name": "Rishika",
-      "phone": "8810537570",
-      "owner": "Neha Aziz",
-      "leadStatus": "Attempted Contact",
-      "leadSubStatus": "NC 1",
-      "createdTime": "2026-06-15T07:38:27+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T11:51:34+05:30"
-    },
-    {
-      "name": "Srividya",
-      "phone": "9945697511",
-      "owner": "Neha Aziz",
-      "leadStatus": "Attempted Contact",
-      "leadSubStatus": "NC 1",
-      "createdTime": "2026-06-15T07:13:27+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T10:20:16+05:30"
-    },
-    {
-      "name": "Sreelakshmi",
-      "phone": "8095162515",
-      "owner": "Banda Sandhya",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "False Lead",
-      "createdTime": "2026-06-15T02:43:54+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T09:24:45+05:30"
-    },
-    {
-      "name": "Neha",
-      "phone": "9008670358",
-      "owner": "Shahin BR",
-      "leadStatus": "Open Leads",
-      "leadSubStatus": "Not Contacted",
-      "createdTime": "2026-06-14T23:39:23+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T15:00:27+05:30"
-    },
-    {
-      "name": "Miss Shravya",
-      "phone": "9206561525",
-      "owner": "Neha Aziz",
-      "leadStatus": "Contacted",
-      "leadSubStatus": "Call Back Later",
-      "createdTime": "2026-06-14T23:29:22+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T09:30:16+05:30"
-    },
-    {
-      "name": "Somdatta",
-      "phone": "9986697082",
-      "owner": "Neha Aziz",
-      "leadStatus": "Contacted",
-      "leadSubStatus": "Call Back Later",
-      "createdTime": "2026-06-14T23:27:52+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T09:31:06+05:30"
-    },
-    {
-      "name": "Saurabh Gupta",
-      "phone": "7011556067",
-      "owner": "Rani K J",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-14T23:02:22+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T10:19:10+05:30"
-    },
-    {
-      "name": "Dharam",
-      "phone": "7406635040",
-      "owner": "Rani K J",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Not Answering",
-      "createdTime": "2026-06-14T22:56:52+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T12:25:18+05:30"
-    },
-    {
-      "name": "riki",
-      "phone": "7004643197",
-      "owner": "Banda Sandhya",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Price is high",
-      "createdTime": "2026-06-14T22:54:52+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T09:30:10+05:30"
-    },
-    {
-      "name": "Chandralal Prasad",
-      "phone": "09916661556",
-      "owner": "Banda Sandhya",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-14T22:50:52+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T09:23:19+05:30"
-    },
-    {
-      "name": "Shylaja Ravikiran",
-      "phone": "9900579891",
-      "owner": "Banda Sandhya",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Duplicate",
-      "createdTime": "2026-06-14T20:55:51+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T15:34:03+05:30"
-    },
-    {
-      "name": "Jyotsna",
-      "phone": "9874260007",
-      "owner": "Neha Aziz",
-      "leadStatus": "Contacted",
-      "leadSubStatus": "Call Back Later",
-      "createdTime": "2026-06-14T20:09:21+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-14T21:01:07+05:30"
-    },
-    {
-      "name": "Rambhupal uppara",
-      "phone": "9980546485",
-      "owner": "Banda Sandhya",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "False Lead",
-      "createdTime": "2026-06-14T19:59:20+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T11:53:17+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9972528499",
-      "owner": "Neha Aziz",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-14T19:47:13+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-14T19:50:18+05:30"
-    },
-    {
-      "name": "Lokesh Bs",
-      "phone": "9538867377",
-      "owner": "Rajeswari S",
-      "leadStatus": "Attempted Contact",
-      "leadSubStatus": "NC 1",
-      "createdTime": "2026-06-14T19:37:29+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T10:02:15+05:30"
+      "modifiedTime": "2026-06-17T18:07:12+05:30"
     },
     {
       "name": "Ramesh",
-      "phone": "9629770894",
+      "phone": "09449480954",
       "owner": "Rith Tamang",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "False Lead",
-      "createdTime": "2026-06-14T19:03:20+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T09:32:05+05:30"
-    },
-    {
-      "name": "Murugesan A",
-      "phone": "9686888973",
-      "owner": "Banda Sandhya",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-14T18:57:20+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T12:30:12+05:30"
-    },
-    {
-      "name": "Vidya",
-      "phone": "8884006500",
-      "owner": "Rith Tamang",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-14T18:43:50+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T15:16:05+05:30"
-    },
-    {
-      "name": "Nitish",
-      "phone": "7855346643",
-      "owner": "Neha Aziz",
       "leadStatus": "Attempted Contact",
       "leadSubStatus": "NC 1",
-      "createdTime": "2026-06-14T18:41:19+05:30",
+      "createdTime": "2026-06-17T18:03:10+05:30",
       "called": true,
-      "modifiedTime": "2026-06-14T18:58:10+05:30"
+      "modifiedTime": "2026-06-18T09:57:24+05:30"
     },
     {
-      "name": "Inbound Call Lead",
-      "phone": "9490662095",
-      "owner": "Neha Aziz",
-      "leadStatus": "Contacted",
-      "leadSubStatus": "Call Back Later",
-      "createdTime": "2026-06-14T18:32:42+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-14T21:26:58+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9886360004",
-      "owner": "Neha Aziz",
-      "leadStatus": "Contacted",
-      "leadSubStatus": "Call Back Later",
-      "createdTime": "2026-06-14T18:24:44+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T09:02:37+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "8318109706",
+      "name": "Gayathri",
+      "phone": "9980766699",
       "owner": "Reshma Reddy",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-14T18:20:18+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-14T18:38:04+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9535646074",
-      "owner": "Neha Aziz",
-      "leadStatus": "Contacted",
-      "leadSubStatus": "Call Back Later",
-      "createdTime": "2026-06-14T18:13:56+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T09:01:57+05:30"
-    },
-    {
-      "name": "Neeraja",
-      "phone": "7760087863",
-      "owner": "Reshma Reddy",
-      "leadStatus": "Contacted",
-      "leadSubStatus": "Call Back Later",
-      "createdTime": "2026-06-14T18:06:33+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-14T19:01:37+05:30"
-    },
-    {
-      "name": "Nirmala",
-      "phone": "9845538996",
-      "owner": "Rani K J",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "False Lead",
-      "createdTime": "2026-06-14T17:39:49+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T09:27:59+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9886798046",
-      "owner": "Shahin BR",
-      "leadStatus": "Contacted",
-      "leadSubStatus": "Call Back Later",
-      "createdTime": "2026-06-14T17:37:21+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T09:01:16+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9632888832",
-      "owner": "Reshma Reddy",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-14T17:35:43+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T12:33:48+05:30"
-    },
-    {
-      "name": "Shruthi Narkhed",
-      "phone": "9731818555",
-      "owner": "Shahin BR",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Price is high",
-      "createdTime": "2026-06-14T17:10:49+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-14T17:17:35+05:30"
-    },
-    {
-      "name": "Shifali Goyal",
-      "phone": "7600785391",
-      "owner": "Banda Sandhya",
-      "leadStatus": "Attempted Contact",
-      "leadSubStatus": "NC 2",
-      "createdTime": "2026-06-14T17:10:15+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T15:30:41+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9980552385",
-      "owner": "Neha Aziz",
       "leadStatus": "Attempted Contact",
       "leadSubStatus": "NC 1",
-      "createdTime": "2026-06-14T17:07:14+05:30",
+      "createdTime": "2026-06-17T18:00:40+05:30",
       "called": true,
-      "modifiedTime": "2026-06-15T09:53:14+05:30"
+      "modifiedTime": "2026-06-17T18:47:43+05:30"
     },
     {
       "name": "Inbound Call Lead",
-      "phone": "7358599648",
+      "phone": "9886499679",
       "owner": "Reshma Reddy",
       "leadStatus": "Rejected",
       "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-14T16:51:31+05:30",
+      "createdTime": "2026-06-17T17:56:15+05:30",
       "called": true,
-      "modifiedTime": "2026-06-14T16:58:53+05:30"
+      "modifiedTime": "2026-06-17T18:48:27+05:30"
     },
     {
-      "name": "K S S UDUPA",
-      "phone": "9663673675",
+      "name": "Guruprasad DR",
+      "phone": "9740030476",
+      "owner": "Reshma Reddy",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-17T17:55:40+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T18:52:09+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "7204916974",
+      "owner": "Reshma Reddy",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-17T17:54:11+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T18:53:59+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9995760254",
+      "owner": "Rith Tamang",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-17T17:53:56+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T10:02:43+05:30"
+    },
+    {
+      "name": "Sandeep V",
+      "phone": "9535027649",
       "owner": "Rajeswari S",
       "leadStatus": "Rejected",
-      "leadSubStatus": "Duplicate",
-      "createdTime": "2026-06-14T16:46:48+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-14T17:32:28+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "7358425149",
-      "owner": "Shahin BR",
-      "leadStatus": "Contacted",
-      "leadSubStatus": "Call Back Later",
-      "createdTime": "2026-06-14T16:42:10+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T09:52:07+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9791841806",
-      "owner": "Banda Sandhya",
-      "leadStatus": "Rejected",
       "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-14T16:32:38+05:30",
+      "createdTime": "2026-06-17T17:42:40+05:30",
       "called": true,
-      "modifiedTime": "2026-06-14T16:48:25+05:30"
+      "modifiedTime": "2026-06-17T18:00:31+05:30"
     },
     {
-      "name": "Dhanya",
-      "phone": "7353936754",
-      "owner": "Reshma Reddy",
-      "leadStatus": "Attempted Contact",
-      "leadSubStatus": "NC 2",
-      "createdTime": "2026-06-14T16:27:18+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T12:34:34+05:30"
-    },
-    {
-      "name": "Ravi Rajamony",
-      "phone": "8056055541",
+      "name": "Kodachadri chits Pvt Ltd",
+      "phone": "9591495767",
       "owner": "Neha Aziz",
       "leadStatus": "Rejected",
       "leadSubStatus": "Duplicate",
-      "createdTime": "2026-06-14T16:25:48+05:30",
+      "createdTime": "2026-06-17T17:42:10+05:30",
       "called": true,
-      "modifiedTime": "2026-06-15T09:42:09+05:30"
+      "modifiedTime": "2026-06-18T09:57:43+05:30"
     },
     {
       "name": "Inbound Call Lead",
-      "phone": "9019534623",
+      "phone": "8494888067",
+      "owner": "Anuj Poladia",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-17T17:42:06+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T17:58:12+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "8884100978",
+      "owner": "Shahin BR",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Service Not Available",
+      "createdTime": "2026-06-17T17:41:04+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T17:42:38+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9108763643",
+      "owner": "Shahin BR",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-17T17:28:12+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T17:43:27+05:30"
+    },
+    {
+      "name": "Shivam Kharat",
+      "phone": "8767356795",
+      "owner": "Shahin BR",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Service Not Available",
+      "createdTime": "2026-06-17T17:27:13+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T09:38:59+05:30"
+    },
+    {
+      "name": "Syed Syed Nusrath",
+      "phone": "9060578661",
+      "owner": "Reshma Reddy",
+      "leadStatus": "Attempted Contact",
+      "leadSubStatus": "NC 1",
+      "createdTime": "2026-06-17T17:25:40+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T18:56:27+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9008734837",
+      "owner": "Anuj Poladia",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-17T17:15:09+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T17:19:37+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "8892539036",
+      "owner": "Rajeswari S",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Duplicate",
+      "createdTime": "2026-06-17T17:15:03+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T17:15:59+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9886018000",
+      "owner": "Catherine Lovisa",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Duplicate",
+      "createdTime": "2026-06-17T17:13:16+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T17:29:29+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "7903456611",
       "owner": "Rajeswari S",
       "leadStatus": "Rejected",
       "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-14T16:13:13+05:30",
+      "createdTime": "2026-06-17T17:08:54+05:30",
       "called": true,
-      "modifiedTime": "2026-06-14T16:13:27+05:30"
+      "modifiedTime": "2026-06-17T17:09:09+05:30"
     },
     {
-      "name": "Raghavendra mr",
-      "phone": "8792245882",
+      "name": "Pavithra",
+      "phone": "9980384649",
       "owner": "Rajeswari S",
+      "leadStatus": "Attempted Contact",
+      "leadSubStatus": "NC 2",
+      "createdTime": "2026-06-17T16:59:40+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T09:53:32+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9980017339",
+      "owner": "Reshma Reddy",
       "leadStatus": "Rejected",
       "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-14T16:11:47+05:30",
+      "createdTime": "2026-06-17T16:45:54+05:30",
       "called": true,
-      "modifiedTime": "2026-06-14T16:16:50+05:30"
+      "modifiedTime": "2026-06-17T16:54:49+05:30"
     },
     {
-      "name": "SIVAKUMAR",
-      "phone": "9080439199",
+      "name": "Inbound Call Lead",
+      "phone": "9980010006",
+      "owner": "Neha Aziz",
+      "leadStatus": "Contacted",
+      "leadSubStatus": "Call Back Later",
+      "createdTime": "2026-06-17T16:28:35+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T16:43:19+05:30"
+    },
+    {
+      "name": "Mohammad",
+      "phone": "8130502235",
       "owner": "Rani K J",
       "leadStatus": "Rejected",
       "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-14T16:11:47+05:30",
+      "createdTime": "2026-06-17T16:22:39+05:30",
       "called": true,
-      "modifiedTime": "2026-06-15T09:39:26+05:30"
+      "modifiedTime": "2026-06-17T16:26:10+05:30"
     },
     {
-      "name": "Reshma Nadaf",
-      "phone": "9538225954",
-      "owner": "Rajeswari S",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Slot Not Available",
-      "createdTime": "2026-06-14T16:02:17+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-14T17:03:46+05:30"
-    },
-    {
-      "name": "Gowri Shanker Subramaniam",
-      "phone": "9008123598",
-      "owner": "Shahin BR",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Service Not Available",
-      "createdTime": "2026-06-14T15:58:47+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-14T17:02:35+05:30"
-    },
-    {
-      "name": "Sushma",
-      "phone": "9166656615",
-      "owner": "Rajeswari S",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Cancelled by Customer",
-      "createdTime": "2026-06-14T15:50:17+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-14T16:15:26+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "8861478728",
-      "owner": "Rajeswari S",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-14T15:49:59+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-14T15:50:14+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "7002856648",
-      "owner": "Shahin BR",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-14T15:40:28+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-14T16:43:46+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "8904877970",
-      "owner": "Rith Tamang",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-14T15:31:07+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-14T15:31:35+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9844004336",
-      "owner": "Shahin BR",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-14T15:18:34+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-14T15:21:17+05:30"
-    },
-    {
-      "name": "Prashanth",
-      "phone": "9886610794",
-      "owner": "Banda Sandhya",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Duplicate",
-      "createdTime": "2026-06-14T15:12:55+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T09:31:23+05:30"
-    },
-    {
-      "name": "Abhishek Samanta",
-      "phone": "8197900116",
-      "owner": "Rajeswari S",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Not Answering",
-      "createdTime": "2026-06-14T15:12:46+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T09:38:12+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9962706320",
-      "owner": "Rajeswari S",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Price is high",
-      "createdTime": "2026-06-14T15:12:24+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-14T15:13:21+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9880352581",
-      "owner": "Rajeswari S",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-14T14:57:31+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-14T14:57:46+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "7022573627",
-      "owner": "Rith Tamang",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-14T14:49:44+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-14T14:50:10+05:30"
-    },
-    {
-      "name": "Althaf",
-      "phone": "9884655746",
-      "owner": "Banda Sandhya",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Duplicate",
-      "createdTime": "2026-06-14T14:46:05+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-14T15:49:49+05:30"
-    },
-    {
-      "name": "Jyothi M",
-      "phone": "7624965963",
-      "owner": "Reshma Reddy",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Slot Not Available",
-      "createdTime": "2026-06-14T14:45:46+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-14T14:54:08+05:30"
-    },
-    {
-      "name": "Anirudh",
-      "phone": "6363175949",
-      "owner": "Reshma Reddy",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Slot Not Available",
-      "createdTime": "2026-06-14T14:43:16+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-14T14:56:56+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "7026543116",
-      "owner": "Rajeswari S",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Price is high",
-      "createdTime": "2026-06-14T14:41:17+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-14T14:41:31+05:30"
-    },
-    {
-      "name": "Chethana M",
-      "phone": "9632220402",
-      "owner": "Rajeswari S",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Not Answering",
-      "createdTime": "2026-06-14T14:28:16+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T10:35:48+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "7045647550",
-      "owner": "Rajeswari S",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-14T14:27:50+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-14T14:28:07+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9746975980",
-      "owner": "Banda Sandhya",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Duplicate",
-      "createdTime": "2026-06-14T14:25:59+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-14T14:31:59+05:30"
-    },
-    {
-      "name": "Shahnawaz",
-      "phone": "9717510887",
-      "owner": "Shahin BR",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-14T14:13:33+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-14T14:23:03+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9199054888",
-      "owner": "Rith Tamang",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-14T14:09:48+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-14T14:24:26+05:30"
-    },
-    {
-      "name": "Sumesh",
-      "phone": "9993334724",
-      "owner": "Banda Sandhya",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-14T14:09:15+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T11:41:59+05:30"
-    },
-    {
-      "name": "Aiswarya Mohan",
-      "phone": "9900517282",
+      "name": "Sireesha Nallagatla",
+      "phone": "9986888607",
       "owner": "Rajeswari S",
       "leadStatus": "Contacted",
       "leadSubStatus": "Call Back Later",
-      "createdTime": "2026-06-14T14:04:16+05:30",
+      "createdTime": "2026-06-17T16:15:09+05:30",
       "called": true,
-      "modifiedTime": "2026-06-14T14:08:25+05:30"
+      "modifiedTime": "2026-06-18T09:59:35+05:30"
     },
     {
-      "name": "Sunil kumar",
-      "phone": "9663390124",
-      "owner": "Banda Sandhya",
+      "name": "nanda kumar",
+      "phone": "06362098473",
+      "owner": "Shahin BR",
+      "leadStatus": "Attempted Contact",
+      "leadSubStatus": "NC 1",
+      "createdTime": "2026-06-17T16:14:09+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T17:45:10+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9611745551",
+      "owner": "Rani K J",
       "leadStatus": "Rejected",
       "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-14T14:03:50+05:30",
+      "createdTime": "2026-06-17T16:10:48+05:30",
       "called": true,
-      "modifiedTime": "2026-06-15T11:40:15+05:30"
+      "modifiedTime": "2026-06-17T16:13:28+05:30"
+    },
+    {
+      "name": "Thamanna",
+      "phone": "8197928166",
+      "owner": "Rith Tamang",
+      "leadStatus": "Attempted Contact",
+      "leadSubStatus": "NC 1",
+      "createdTime": "2026-06-17T16:10:09+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T09:59:49+05:30"
     },
     {
       "name": "Inbound Call Lead",
-      "phone": "9611130906",
+      "phone": "8220069225",
       "owner": "Rajeswari S",
       "leadStatus": "Rejected",
-      "leadSubStatus": "Not Answering",
-      "createdTime": "2026-06-14T14:01:38+05:30",
+      "leadSubStatus": "Service Not Available",
+      "createdTime": "2026-06-17T16:01:43+05:30",
       "called": true,
-      "modifiedTime": "2026-06-15T09:52:15+05:30"
+      "modifiedTime": "2026-06-17T16:02:08+05:30"
     },
     {
       "name": "Inbound Call Lead",
-      "phone": "9113983901",
-      "owner": "Rajeswari S",
+      "phone": "9740431104",
+      "owner": "Reshma Reddy",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Duplicate",
+      "createdTime": "2026-06-17T15:59:57+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T16:11:40+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9740431104",
+      "owner": "Reshma Reddy",
       "leadStatus": "Rejected",
       "leadSubStatus": "Price is high",
-      "createdTime": "2026-06-14T13:59:45+05:30",
+      "createdTime": "2026-06-17T15:59:57+05:30",
       "called": true,
-      "modifiedTime": "2026-06-14T14:00:00+05:30"
+      "modifiedTime": "2026-06-17T16:06:46+05:30"
     },
     {
       "name": "Inbound Call Lead",
-      "phone": "9036574577",
-      "owner": "Reshma Reddy",
-      "leadStatus": "Attempted Contact",
-      "leadSubStatus": "NC 2",
-      "createdTime": "2026-06-14T13:56:37+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-15T12:34:49+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "6379122871",
-      "owner": "Reshma Reddy",
+      "phone": "9886386886",
+      "owner": "Neha Aziz",
       "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-14T13:54:43+05:30",
+      "leadSubStatus": "Duplicate",
+      "createdTime": "2026-06-17T15:51:05+05:30",
       "called": true,
-      "modifiedTime": "2026-06-15T12:37:41+05:30"
+      "modifiedTime": "2026-06-17T17:06:14+05:30"
     },
     {
-      "name": "Neha Garg",
-      "phone": "9485175410",
+      "name": "Inbound Call Lead",
+      "phone": "9845767214",
       "owner": "Rajeswari S",
       "leadStatus": "Rejected",
       "leadSubStatus": "Service Not Available",
-      "createdTime": "2026-06-14T13:34:45+05:30",
+      "createdTime": "2026-06-17T15:39:50+05:30",
       "called": true,
-      "modifiedTime": "2026-06-14T13:49:25+05:30"
-    },
-    {
-      "name": "Neha Garg",
-      "phone": "9485175411",
-      "owner": "Rajeswari S",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Service Not Available",
-      "createdTime": "2026-06-14T13:32:45+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-14T14:10:37+05:30"
+      "modifiedTime": "2026-06-17T15:44:44+05:30"
     },
     {
       "name": "Inbound Call Lead",
-      "phone": "9686993194",
-      "owner": "Reshma Reddy",
-      "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-14T13:32:25+05:30",
-      "called": true,
-      "modifiedTime": "2026-06-14T13:33:22+05:30"
-    },
-    {
-      "name": "Inbound Call Lead",
-      "phone": "9573416752",
+      "phone": "8904465546",
       "owner": "Banda Sandhya",
       "leadStatus": "Rejected",
-      "leadSubStatus": "Slot Not Available",
-      "createdTime": "2026-06-14T13:26:55+05:30",
+      "leadSubStatus": "Duplicate",
+      "createdTime": "2026-06-17T15:35:24+05:30",
       "called": true,
-      "modifiedTime": "2026-06-14T13:28:09+05:30"
+      "modifiedTime": "2026-06-17T15:36:02+05:30"
     },
     {
-      "name": "Sonali Prusty",
-      "phone": "7892424507",
+      "name": "Inbound Call Lead",
+      "phone": "8369353320",
+      "owner": "Catherine Lovisa",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Duplicate",
+      "createdTime": "2026-06-17T15:32:58+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T17:28:47+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9148417900",
+      "owner": "Neha Aziz",
+      "leadStatus": "Contacted",
+      "leadSubStatus": "Call Back Later",
+      "createdTime": "2026-06-17T15:32:43+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T16:16:56+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9538243748",
+      "owner": "Rajeswari S",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-17T15:28:20+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T15:28:38+05:30"
+    },
+    {
+      "name": "VeeraReddy",
+      "phone": "9902868788",
+      "owner": "Catherine Lovisa",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-17T15:25:09+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T09:54:57+05:30"
+    },
+    {
+      "name": "Govardhan",
+      "phone": "09901693878",
+      "owner": "Rajeswari S",
+      "leadStatus": "Attempted Contact",
+      "leadSubStatus": "NC 2",
+      "createdTime": "2026-06-17T15:20:09+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T09:39:47+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9742807374",
+      "owner": "Neha Aziz",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-17T15:08:56+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T15:13:12+05:30"
+    },
+    {
+      "name": "Sachin Kalekar",
+      "phone": "09986199783",
+      "owner": "Rani K J",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Price is high",
+      "createdTime": "2026-06-17T15:01:38+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T09:31:23+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9835189425",
+      "owner": "Banda Sandhya",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-17T14:58:50+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T14:59:30+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9500192204",
+      "owner": "Neha Aziz",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-17T14:56:54+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T16:34:45+05:30"
+    },
+    {
+      "name": "Ramshad",
+      "phone": "9611459202",
+      "owner": "Banda Sandhya",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Duplicate",
+      "createdTime": "2026-06-17T14:55:08+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T15:07:26+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9742677773",
+      "owner": "Rani K J",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Service Not Available",
+      "createdTime": "2026-06-17T14:39:06+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T14:49:47+05:30"
+    },
+    {
+      "name": "narasimha murthy s Murthy",
+      "phone": "9886141375",
+      "owner": "Rani K J",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Duplicate",
+      "createdTime": "2026-06-17T14:32:38+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T14:46:56+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9495411522",
       "owner": "Reshma Reddy",
       "leadStatus": "Rejected",
       "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-14T13:26:15+05:30",
+      "createdTime": "2026-06-17T14:11:23+05:30",
       "called": true,
-      "modifiedTime": "2026-06-14T13:30:56+05:30"
+      "modifiedTime": "2026-06-17T14:34:40+05:30"
     },
     {
-      "name": "ramakumar ds",
-      "phone": "09739562073",
-      "owner": "Rith Tamang",
+      "name": "Anil",
+      "phone": "9940277665",
+      "owner": "Rani K J",
       "leadStatus": "Rejected",
-      "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-14T13:19:15+05:30",
+      "leadSubStatus": "Service Not Available",
+      "createdTime": "2026-06-17T13:58:07+05:30",
       "called": true,
-      "modifiedTime": "2026-06-15T15:10:31+05:30"
+      "modifiedTime": "2026-06-17T14:14:10+05:30"
+    },
+    {
+      "name": "Tanisha",
+      "phone": "8763650615",
+      "owner": "Rani K J",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Price is high",
+      "createdTime": "2026-06-17T13:55:38+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T14:15:58+05:30"
     },
     {
       "name": "Inbound Call Lead",
-      "phone": "7795052416",
-      "owner": "Rith Tamang",
+      "phone": "8271005929",
+      "owner": "Reshma Reddy",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Wrong Number",
+      "createdTime": "2026-06-17T13:50:58+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T15:18:02+05:30"
+    },
+    {
+      "name": "suresh",
+      "phone": "9980866424",
+      "owner": "Catherine Lovisa",
+      "leadStatus": "Attempted Contact",
+      "leadSubStatus": "NC 1",
+      "createdTime": "2026-06-17T13:46:07+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T09:02:41+05:30"
+    },
+    {
+      "name": "Aanchal",
+      "phone": "9899943589",
+      "owner": "Banda Sandhya",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Service Not Available",
+      "createdTime": "2026-06-17T13:46:07+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T14:20:13+05:30"
+    },
+    {
+      "name": "Gaurav",
+      "phone": "9008713233",
+      "owner": "Banda Sandhya",
       "leadStatus": "Rejected",
       "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-14T13:18:09+05:30",
+      "createdTime": "2026-06-17T13:45:37+05:30",
       "called": true,
-      "modifiedTime": "2026-06-14T13:18:34+05:30"
+      "modifiedTime": "2026-06-17T13:59:05+05:30"
+    },
+    {
+      "name": "Uma Hebbal",
+      "phone": "09663687637",
+      "owner": "Shahin BR",
+      "leadStatus": "Attempted Contact",
+      "leadSubStatus": "NC 1",
+      "createdTime": "2026-06-17T13:45:31+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T17:57:48+05:30"
+    },
+    {
+      "name": "Nethra",
+      "phone": "9900111272",
+      "owner": "Neha Aziz",
+      "leadStatus": "Attempted Contact",
+      "leadSubStatus": "NC 3",
+      "createdTime": "2026-06-17T13:41:37+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T15:58:59+05:30"
+    },
+    {
+      "name": "Mr Ishan",
+      "phone": "9040311550",
+      "owner": "Neha Aziz",
+      "leadStatus": "Contacted",
+      "leadSubStatus": "Call Back Later",
+      "createdTime": "2026-06-17T13:39:14+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T14:30:35+05:30"
+    },
+    {
+      "name": "PUNITH REDDY",
+      "phone": "9390803115",
+      "owner": "Rajeswari S",
+      "leadStatus": "Attempted Contact",
+      "leadSubStatus": "NC 2",
+      "createdTime": "2026-06-17T13:33:37+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T09:54:51+05:30"
     },
     {
       "name": "Inbound Call Lead",
-      "phone": "9141055535",
+      "phone": "7406000818",
+      "owner": "Rajeswari S",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-17T13:32:37+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T13:34:08+05:30"
+    },
+    {
+      "name": "Udayashankar Babu",
+      "phone": "9448063434",
+      "owner": "Reshma Reddy",
+      "leadStatus": "Contacted",
+      "leadSubStatus": "Call Back Later",
+      "createdTime": "2026-06-17T13:21:07+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T19:59:06+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9900419234",
+      "owner": "Rani K J",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-17T13:19:17+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T13:19:49+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "8886993091",
+      "owner": "Rajeswari S",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Duplicate",
+      "createdTime": "2026-06-17T13:14:53+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T13:26:02+05:30"
+    },
+    {
+      "name": "Lakshmana Rao",
+      "phone": "09845491170",
+      "owner": "Shahin BR",
+      "leadStatus": "Attempted Contact",
+      "leadSubStatus": "NC 1",
+      "createdTime": "2026-06-17T13:14:07+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T17:46:22+05:30"
+    },
+    {
+      "name": "Inbound Call lead",
+      "phone": "9900589427",
+      "owner": "Rani K J",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-17T13:04:33+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T13:09:10+05:30"
+    },
+    {
+      "name": "Mahesh Gandhi",
+      "phone": "9920630658",
+      "owner": "Reshma Reddy",
+      "leadStatus": "Attempted Contact",
+      "leadSubStatus": "NC 1",
+      "createdTime": "2026-06-17T13:03:07+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T13:08:48+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9810033319",
+      "owner": "Anuj Poladia",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Duplicate",
+      "createdTime": "2026-06-17T12:55:45+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T12:58:28+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "8511168694",
+      "owner": "Shahin BR",
+      "leadStatus": "Contacted",
+      "leadSubStatus": "Call Back Later",
+      "createdTime": "2026-06-17T12:50:11+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T13:35:40+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "8147913620",
+      "owner": "Banda Sandhya",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Duplicate",
+      "createdTime": "2026-06-17T12:42:04+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T12:43:15+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "8792632698",
+      "owner": "Neha Aziz",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-17T12:39:58+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T12:45:42+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9538130850",
+      "owner": "Shahin BR",
+      "leadStatus": "Contacted",
+      "leadSubStatus": "Call Back Later",
+      "createdTime": "2026-06-17T12:39:38+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T13:10:13+05:30"
+    },
+    {
+      "name": "soumya",
+      "phone": "6363288841",
+      "owner": "Reshma Reddy",
+      "leadStatus": "Contacted",
+      "leadSubStatus": "Call Back Later",
+      "createdTime": "2026-06-17T12:39:11+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T12:43:08+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "8368804625",
+      "owner": "Anuj Poladia",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-17T12:31:07+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T12:51:10+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9113949061",
+      "owner": "Shahin BR",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Out Of Service Area",
+      "createdTime": "2026-06-17T12:27:48+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T12:29:54+05:30"
+    },
+    {
+      "name": "Girish",
+      "phone": "8310992128",
+      "owner": "Reshma Reddy",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-17T12:24:47+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T12:42:35+05:30"
+    },
+    {
+      "name": "Jyothi",
+      "phone": "9384712842",
+      "owner": "Rajeswari S",
+      "leadStatus": "Attempted Contact",
+      "leadSubStatus": "NC 2",
+      "createdTime": "2026-06-17T12:19:36+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T09:52:54+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "6366367498",
+      "owner": "Shahin BR",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "False Lead",
+      "createdTime": "2026-06-17T12:15:39+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T13:16:54+05:30"
+    },
+    {
+      "name": "mahesh mc",
+      "phone": "9844472952",
+      "owner": "Rajeswari S",
+      "leadStatus": "Contacted",
+      "leadSubStatus": "Call Back Later",
+      "createdTime": "2026-06-17T12:14:36+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T09:45:31+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9686828628",
+      "owner": "Catherine Lovisa",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-17T12:11:17+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T12:11:57+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "8050820770",
+      "owner": "Rani K J",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Service Not Available",
+      "createdTime": "2026-06-17T12:10:41+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T12:11:56+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9845403236",
+      "owner": "Rajeswari S",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-17T11:56:59+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T11:57:24+05:30"
+    },
+    {
+      "name": "Subramanian Chellappa",
+      "phone": "9880375257",
+      "owner": "Banda Sandhya",
+      "leadStatus": "Attempted Contact",
+      "leadSubStatus": "NC 1",
+      "createdTime": "2026-06-17T11:53:36+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T11:57:14+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9448383582",
       "owner": "Shahin BR",
       "leadStatus": "Rejected",
       "leadSubStatus": "Just Enquiring",
-      "createdTime": "2026-06-14T13:16:54+05:30",
+      "createdTime": "2026-06-17T11:50:33+05:30",
       "called": true,
-      "modifiedTime": "2026-06-14T13:32:56+05:30"
+      "modifiedTime": "2026-06-17T12:52:21+05:30"
     },
     {
-      "name": "sanjay Gowda S",
-      "phone": "9980902445",
+      "name": "Inbound Call Lead",
+      "phone": "9980104833",
+      "owner": "Banda Sandhya",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Duplicate",
+      "createdTime": "2026-06-17T11:48:55+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T11:50:20+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9901816179",
+      "owner": "Anuj Poladia",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-17T11:48:16+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T16:47:54+05:30"
+    },
+    {
+      "name": "Shilpashree HP",
+      "phone": "9686604826",
+      "owner": "Neha Aziz",
+      "leadStatus": "Contacted",
+      "leadSubStatus": "Call Back Later",
+      "createdTime": "2026-06-17T11:40:35+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T15:24:31+05:30"
+    },
+    {
+      "name": "Inbound Call Lea",
+      "phone": "8592987666",
+      "owner": "Anuj Poladia",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-17T11:38:38+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T18:00:54+05:30"
+    },
+    {
+      "name": "Fuzail Sait",
+      "phone": "9845079570",
+      "owner": "Rani K J",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Service Not Available",
+      "createdTime": "2026-06-17T11:38:05+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T11:52:47+05:30"
+    },
+    {
+      "name": "Sreelatha",
+      "phone": "9819983630",
+      "owner": "Rajeswari S",
+      "leadStatus": "Attempted Contact",
+      "leadSubStatus": "NC 2",
+      "createdTime": "2026-06-17T11:36:05+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T09:30:43+05:30"
+    },
+    {
+      "name": "Niklesh",
+      "phone": "8686619755",
+      "owner": "Catherine Lovisa",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-17T11:32:17+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T10:03:51+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "7208996238",
+      "owner": "Rani K J",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Service Not Available",
+      "createdTime": "2026-06-17T11:32:10+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T11:33:07+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9677260825",
+      "owner": "Shahin BR",
+      "leadStatus": "Attempted Contact",
+      "leadSubStatus": "NC 1",
+      "createdTime": "2026-06-17T11:30:30+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T12:01:48+05:30"
+    },
+    {
+      "name": "karthik",
+      "phone": "8553273790",
+      "owner": "Catherine Lovisa",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-17T11:26:16+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T08:56:50+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9980504873",
+      "owner": "Banda Sandhya",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Duplicate",
+      "createdTime": "2026-06-17T11:25:34+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T11:26:56+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "8248872365",
+      "owner": "Anuj Poladia",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-17T11:21:03+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T11:21:38+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9940450930",
+      "owner": "Anuj Poladia",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-17T11:12:28+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T11:21:24+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9841433303",
+      "owner": "Banda Sandhya",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-17T11:12:09+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T11:20:27+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9845778925",
+      "owner": "Catherine Lovisa",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Service Not Available",
+      "createdTime": "2026-06-17T11:01:17+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T11:28:51+05:30"
+    },
+    {
+      "name": "Varun associates",
+      "phone": "9731969459",
+      "owner": "Neha Aziz",
+      "leadStatus": "Contacted",
+      "leadSubStatus": "Call Back Later",
+      "createdTime": "2026-06-17T10:59:05+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T11:22:35+05:30"
+    },
+    {
+      "name": "Monisha",
+      "phone": "7406660346",
+      "owner": "Banda Sandhya",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "False Lead",
+      "createdTime": "2026-06-17T10:59:05+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T11:02:37+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9972327055",
+      "owner": "Shahin BR",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Service Not Available",
+      "createdTime": "2026-06-17T10:55:17+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T10:59:04+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9663911087",
+      "owner": "Anuj Poladia",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-17T10:49:59+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T10:58:35+05:30"
+    },
+    {
+      "name": "Lakshmeesha",
+      "phone": "9945464418",
+      "owner": "Rajeswari S",
+      "leadStatus": "Attempted Contact",
+      "leadSubStatus": "NC 2",
+      "createdTime": "2026-06-17T10:48:05+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T09:31:32+05:30"
+    },
+    {
+      "name": "Chetan K",
+      "phone": "9986357996",
+      "owner": "Shahin BR",
+      "leadStatus": "Attempted Contact",
+      "leadSubStatus": "NC 1",
+      "createdTime": "2026-06-17T10:46:34+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T11:01:10+05:30"
+    },
+    {
+      "name": "Kishore",
+      "phone": "9900601647",
+      "owner": "Catherine Lovisa",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Service Not Available",
+      "createdTime": "2026-06-17T10:43:04+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T11:02:19+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9074609077",
+      "owner": "Anuj Poladia",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-17T10:35:19+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T10:45:53+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9831259090",
+      "owner": "Shahin BR",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Duplicate",
+      "createdTime": "2026-06-17T10:32:17+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T11:00:00+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9845226206",
+      "owner": "Anuj Poladia",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-17T10:31:40+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T10:32:06+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9611803800",
+      "owner": "Anuj Poladia",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-17T10:21:51+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T10:31:13+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9880232065",
+      "owner": "Rani K J",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-17T10:07:25+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T10:13:27+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9980994135",
+      "owner": "Anuj Poladia",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Out Of Service Area",
+      "createdTime": "2026-06-17T10:03:10+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T10:06:20+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9980148162",
+      "owner": "Catherine Lovisa",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-17T10:02:57+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T10:03:54+05:30"
+    },
+    {
+      "name": "Manish",
+      "phone": "9481105000",
+      "owner": "Rani K J",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Service Not Available",
+      "createdTime": "2026-06-17T09:44:03+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T10:16:56+05:30"
+    },
+    {
+      "name": "Binuja Karthik",
+      "phone": "9789167536",
+      "owner": "Neha Aziz",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-17T09:43:54+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T13:36:11+05:30"
+    },
+    {
+      "name": "Bhavya",
+      "phone": "9901290241",
+      "owner": "Neha Aziz",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Service Not Available",
+      "createdTime": "2026-06-17T09:43:04+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T09:49:20+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9220766499",
+      "owner": "Anuj Poladia",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-17T09:39:35+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T10:06:37+05:30"
+    },
+    {
+      "name": "Adarsh Gautam",
+      "phone": "9046923819",
+      "owner": "Rajeswari S",
+      "leadStatus": "Attempted Contact",
+      "leadSubStatus": "NC 2",
+      "createdTime": "2026-06-17T09:36:04+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T09:41:52+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9982946381",
+      "owner": "Rani K J",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Out Of Service Area",
+      "createdTime": "2026-06-17T09:32:42+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T09:46:39+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9811015773",
+      "owner": "Anuj Poladia",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-17T09:29:38+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T09:30:31+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "7510803010",
+      "owner": "Rajeswari S",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Out Of Service Area",
+      "createdTime": "2026-06-17T09:27:21+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T09:28:30+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9962723405",
+      "owner": "Catherine Lovisa",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-17T09:25:43+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T09:26:18+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "7406371693",
+      "owner": "Rani K J",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-17T09:20:51+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T09:22:48+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9945672398",
+      "owner": "Anuj Poladia",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Price is high",
+      "createdTime": "2026-06-17T09:18:37+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T09:22:56+05:30"
+    },
+    {
+      "name": "Anindita Mathur",
+      "phone": "9986635383",
+      "owner": "Shahin BR",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Service Not Available",
+      "createdTime": "2026-06-17T09:17:33+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T09:23:13+05:30"
+    },
+    {
+      "name": "Babu",
+      "phone": "9880482942",
+      "owner": "Banda Sandhya",
+      "leadStatus": "Contacted",
+      "leadSubStatus": "Call Back Later",
+      "createdTime": "2026-06-17T09:14:44+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T09:15:47+05:30"
+    },
+    {
+      "name": "prakash kamath",
+      "phone": "08310986531",
+      "owner": "Rajeswari S",
+      "leadStatus": "Attempted Contact",
+      "leadSubStatus": "NC 2",
+      "createdTime": "2026-06-17T09:08:03+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T09:54:13+05:30"
+    },
+    {
+      "name": "Laxmi Thimmaiah",
+      "phone": "9986208116",
+      "owner": "Shahin BR",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Service Not Available",
+      "createdTime": "2026-06-17T08:58:03+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-18T11:16:46+05:30"
+    },
+    {
+      "name": "Ramu Appanna",
+      "phone": "9480335522",
       "owner": "Banda Sandhya",
       "leadStatus": "Rejected",
       "leadSubStatus": "Booked From Others",
-      "createdTime": "2026-06-14T13:08:45+05:30",
+      "createdTime": "2026-06-17T08:57:03+05:30",
       "called": true,
-      "modifiedTime": "2026-06-15T15:29:39+05:30"
+      "modifiedTime": "2026-06-17T09:40:31+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9663684278",
+      "owner": "Catherine Lovisa",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Price is high",
+      "createdTime": "2026-06-17T08:55:26+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T17:20:10+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "8019711009",
+      "owner": "Neha Aziz",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-17T08:47:33+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T09:22:57+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "9845766922",
+      "owner": "Banda Sandhya",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Price is high",
+      "createdTime": "2026-06-17T08:21:43+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T08:22:14+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "8197917112",
+      "owner": "Rani K J",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Duplicate",
+      "createdTime": "2026-06-17T08:19:59+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T08:55:10+05:30"
+    },
+    {
+      "name": "VIGNESH PRABHU V",
+      "phone": "9900330751",
+      "owner": "Banda Sandhya",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Price is high",
+      "createdTime": "2026-06-17T08:15:04+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T09:50:04+05:30"
+    },
+    {
+      "name": "Inbound Call Lead",
+      "phone": "8056995999",
+      "owner": "Banda Sandhya",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Just Enquiring",
+      "createdTime": "2026-06-17T08:10:36+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T08:57:42+05:30"
+    },
+    {
+      "name": "Latha",
+      "phone": "7406799777",
+      "owner": "Banda Sandhya",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Not Answering",
+      "createdTime": "2026-06-17T07:10:32+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T14:53:07+05:30"
+    },
+    {
+      "name": "Namita",
+      "phone": "9008411171",
+      "owner": "Banda Sandhya",
+      "leadStatus": "Attempted Contact",
+      "leadSubStatus": "NC 2",
+      "createdTime": "2026-06-17T06:35:02+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T14:49:25+05:30"
+    },
+    {
+      "name": "Ramana Murthy",
+      "phone": "9866758850",
+      "owner": "Banda Sandhya",
+      "leadStatus": "Attempted Contact",
+      "leadSubStatus": "NC 2",
+      "createdTime": "2026-06-17T05:47:01+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T14:47:27+05:30"
+    },
+    {
+      "name": "Anmol Shankar",
+      "phone": "6360286926",
+      "owner": "Shahin BR",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Out Of Service Area",
+      "createdTime": "2026-06-17T02:37:37+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T09:41:09+05:30"
+    },
+    {
+      "name": "Greeshma",
+      "phone": "9035827689",
+      "owner": "Banda Sandhya",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Wrong Number",
+      "createdTime": "2026-06-17T00:57:58+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T08:43:38+05:30"
+    },
+    {
+      "name": "Nethra",
+      "phone": "6366236740",
+      "owner": "Banda Sandhya",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "Slot Not Available",
+      "createdTime": "2026-06-16T23:57:58+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T12:20:03+05:30"
+    },
+    {
+      "name": "Praveen",
+      "phone": "8754519039",
+      "owner": "Shahin BR",
+      "leadStatus": "Attempted Contact",
+      "leadSubStatus": "NC 1",
+      "createdTime": "2026-06-16T23:21:27+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T09:18:26+05:30"
+    },
+    {
+      "name": "Vanitha Denny",
+      "phone": "9945878529",
+      "owner": "Banda Sandhya",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "False Lead",
+      "createdTime": "2026-06-16T23:06:57+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T14:43:28+05:30"
+    },
+    {
+      "name": "Sarmista",
+      "phone": "8861282486",
+      "owner": "Rani K J",
+      "leadStatus": "Rejected",
+      "leadSubStatus": "False Lead",
+      "createdTime": "2026-06-16T22:42:27+05:30",
+      "called": true,
+      "modifiedTime": "2026-06-17T08:13:09+05:30"
     }
   ],
   "overdueFollowups": [
     {
-      "name": "Manju M R",
-      "owner": "Rith Tamang",
-      "phone": "9769737807",
-      "minutesSinceCreated": 40
+      "name": "Inbound Call Lead - 9945092747",
+      "owner": "Neha Aziz",
+      "phone": "9945092747",
+      "minutesSinceCreated": 71
     },
     {
-      "name": "Prashant meena",
-      "owner": "Reshma Reddy",
-      "phone": "9887348161",
-      "minutesSinceCreated": 50
-    },
-    {
-      "name": "Inbound Call Lead - 9606713711",
-      "owner": "Reshma Reddy",
-      "phone": "9606713711",
-      "minutesSinceCreated": 91
+      "name": "Inbound Call Lead - 9743395522",
+      "owner": "Neha Aziz",
+      "phone": "9743395522",
+      "minutesSinceCreated": 77
     }
   ],
   "ownerStats": [
     {
       "owner": "Rith Tamang",
-      "todaysLeads": 25,
-      "calledLeads": 24,
-      "leads7d": 155,
-      "todaysDeals": 13,
-      "convertedLeads": 57,
-      "leadToDealConversionPercent": 36.8,
-      "totalTasks": 29,
-      "completedTasks": 11,
-      "taskCompletionPercent": 37.9,
-      "retentionPercent": 96
-    },
-    {
-      "owner": "Banda Sandhya",
-      "todaysLeads": 23,
-      "calledLeads": 23,
-      "leads7d": 202,
-      "todaysDeals": 10,
-      "convertedLeads": 45,
-      "leadToDealConversionPercent": 22.3,
-      "totalTasks": 36,
-      "completedTasks": 18,
-      "taskCompletionPercent": 50,
-      "retentionPercent": 100
-    },
-    {
-      "owner": "Rani K J",
-      "todaysLeads": 21,
-      "calledLeads": 21,
-      "leads7d": 136,
-      "todaysDeals": 16,
-      "convertedLeads": 72,
-      "leadToDealConversionPercent": 52.9,
-      "totalTasks": 42,
-      "completedTasks": 23,
-      "taskCompletionPercent": 54.8,
-      "retentionPercent": 100
-    },
-    {
-      "owner": "Rajeswari S",
-      "todaysLeads": 19,
-      "calledLeads": 19,
-      "leads7d": 115,
-      "todaysDeals": 11,
-      "convertedLeads": 22,
-      "leadToDealConversionPercent": 19.1,
-      "totalTasks": 22,
-      "completedTasks": 14,
-      "taskCompletionPercent": 63.6,
-      "retentionPercent": 100
-    },
-    {
-      "owner": "Reshma Reddy",
-      "todaysLeads": 14,
-      "calledLeads": 12,
-      "leads7d": 104,
-      "todaysDeals": 3,
-      "convertedLeads": 25,
-      "leadToDealConversionPercent": 24,
-      "totalTasks": 13,
+      "todaysLeads": 12,
+      "calledLeads": 11,
+      "leads7d": 151,
+      "todaysDeals": 5,
+      "convertedLeads": 41,
+      "leadToDealConversionPercent": 27.2,
+      "totalTasks": 5,
       "completedTasks": 3,
-      "taskCompletionPercent": 23.1,
-      "retentionPercent": 85.7
+      "taskCompletionPercent": 60,
+      "retentionPercent": 91.7
     },
     {
       "owner": "Neha Aziz",
-      "todaysLeads": 13,
-      "calledLeads": 13,
-      "leads7d": 147,
-      "todaysDeals": 10,
+      "todaysLeads": 8,
+      "calledLeads": 5,
+      "leads7d": 126,
+      "todaysDeals": 1,
       "convertedLeads": 36,
-      "leadToDealConversionPercent": 24.5,
-      "totalTasks": 38,
+      "leadToDealConversionPercent": 28.6,
+      "totalTasks": 10,
       "completedTasks": 0,
       "taskCompletionPercent": 0,
-      "retentionPercent": 100
+      "retentionPercent": 62.5
     },
     {
-      "owner": "Anuj Poladia",
-      "todaysLeads": 11,
-      "calledLeads": 11,
-      "leads7d": 49,
-      "todaysDeals": 4,
-      "convertedLeads": 20,
-      "leadToDealConversionPercent": 40.8,
-      "totalTasks": 15,
-      "completedTasks": 0,
-      "taskCompletionPercent": 0,
+      "owner": "Rani K J",
+      "todaysLeads": 7,
+      "calledLeads": 7,
+      "leads7d": 144,
+      "todaysDeals": 8,
+      "convertedLeads": 69,
+      "leadToDealConversionPercent": 47.9,
+      "totalTasks": 8,
+      "completedTasks": 5,
+      "taskCompletionPercent": 62.5,
       "retentionPercent": 100
     },
     {
       "owner": "Shahin BR",
-      "todaysLeads": 1,
-      "calledLeads": 1,
-      "leads7d": 109,
-      "todaysDeals": 0,
-      "convertedLeads": 23,
-      "leadToDealConversionPercent": 21.1,
-      "totalTasks": 3,
+      "todaysLeads": 4,
+      "calledLeads": 4,
+      "leads7d": 117,
+      "todaysDeals": 5,
+      "convertedLeads": 25,
+      "leadToDealConversionPercent": 21.4,
+      "totalTasks": 12,
       "completedTasks": 0,
       "taskCompletionPercent": 0,
       "retentionPercent": 100
     },
     {
+      "owner": "Rajeswari S",
+      "todaysLeads": 3,
+      "calledLeads": 3,
+      "leads7d": 109,
+      "todaysDeals": 2,
+      "convertedLeads": 22,
+      "leadToDealConversionPercent": 20.2,
+      "totalTasks": 12,
+      "completedTasks": 11,
+      "taskCompletionPercent": 91.7,
+      "retentionPercent": 100
+    },
+    {
       "owner": "Catherine Lovisa",
+      "todaysLeads": 3,
+      "calledLeads": 3,
+      "leads7d": 90,
+      "todaysDeals": 3,
+      "convertedLeads": 19,
+      "leadToDealConversionPercent": 21.1,
+      "totalTasks": 7,
+      "completedTasks": 4,
+      "taskCompletionPercent": 57.1,
+      "retentionPercent": 100
+    },
+    {
+      "owner": "Anuj Poladia",
+      "todaysLeads": 1,
+      "calledLeads": 1,
+      "leads7d": 77,
+      "todaysDeals": 5,
+      "convertedLeads": 17,
+      "leadToDealConversionPercent": 22.1,
+      "totalTasks": 1,
+      "completedTasks": 0,
+      "taskCompletionPercent": 0,
+      "retentionPercent": 100
+    },
+    {
+      "owner": "Reshma Reddy",
       "todaysLeads": 0,
       "calledLeads": 0,
-      "leads7d": 93,
+      "leads7d": 127,
       "todaysDeals": 0,
-      "convertedLeads": 24,
-      "leadToDealConversionPercent": 25.8,
-      "totalTasks": 2,
+      "convertedLeads": 26,
+      "leadToDealConversionPercent": 20.5,
+      "totalTasks": 8,
+      "completedTasks": 0,
+      "taskCompletionPercent": 0,
+      "retentionPercent": 0
+    },
+    {
+      "owner": "Banda Sandhya",
+      "todaysLeads": 0,
+      "calledLeads": 0,
+      "leads7d": 191,
+      "todaysDeals": 0,
+      "convertedLeads": 40,
+      "leadToDealConversionPercent": 20.9,
+      "totalTasks": 5,
       "completedTasks": 0,
       "taskCompletionPercent": 0,
       "retentionPercent": 0
